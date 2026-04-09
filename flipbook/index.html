@@ -4,242 +4,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Read the Magazine | Bridle &amp; Bit</title>
-<meta name="description" content="Read Bridle & Bit Magazine — March 2026 issue. Arizona's premier horse publication since 1978.">
+<meta name="description" content="Read Bridle & Bit Magazine — April 2026 issue. Arizona's premier horse publication since 1978.">
 <meta name="theme-color" content="#3D2B1F">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap');
-
-  :root {
-    --rust:      #C1440E;
-    --tan:       #D4A96A;
-    --cream:     #F5EDD8;
-    --dark:      #1A1208;
-    --bark:      #3D2B1F;
-    --flip-dur:  0.7s;
-  }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-
-  body {
-    background: var(--bark);
-    background-image: radial-gradient(ellipse at 50% 0%, #5a3820 0%, transparent 55%);
-    min-height: 100vh;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    color: var(--cream);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .topbar {
-    width: 100%;
-    background: var(--dark);
-    border-bottom: 2px solid var(--rust);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-  }
-  .topbar-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    color: var(--tan);
-    letter-spacing: 0.06em;
-    text-decoration: none;
-  }
-  .topbar-back {
-    font-size: 0.8rem;
-    color: var(--tan);
-    opacity: 0.75;
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    border: 1px solid rgba(212,169,106,0.35);
-    padding: 4px 12px;
-    border-radius: 20px;
-    transition: opacity 0.2s;
-  }
-  .topbar-back:hover { opacity: 1; }
-
-  header {
-    text-align: center;
-    padding: 18px 20px 14px;
-  }
-  header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-    color: var(--tan);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  header p { font-size: 0.8rem; color: rgba(212,169,106,0.55); margin-top: 3px; }
-
-  #loading-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 40px 20px;
-    color: var(--tan);
-  }
-  .spinner {
-    width: 44px; height: 44px;
-    border: 3px solid rgba(212,169,106,0.2);
-    border-top-color: var(--tan);
-    border-radius: 50%;
-    animation: spin 0.9s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  #loading-screen p { font-family: 'Playfair Display', serif; font-size: 1rem; letter-spacing: 0.06em; }
-
-  #flipbook-section {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    width: 100%;
-    padding: 0 10px 40px;
-  }
-
-  #book-outer {
-    filter: drop-shadow(0 20px 44px rgba(0,0,0,0.75)) drop-shadow(0 4px 10px rgba(0,0,0,0.5));
-  }
-  #book-stage { perspective: 2000px; position: relative; }
-  #book { position: relative; display: flex; transform-style: preserve-3d; }
-
-  .book-cover { position: relative; overflow: hidden; background: var(--cream); }
-  #left-cover  { border-radius: 4px 0 0 4px; border-right: 1px solid rgba(0,0,0,0.08); }
-  #right-cover { border-radius: 0 4px 4px 0; border-left: 1px solid rgba(0,0,0,0.08); }
-  .book-cover canvas { display: block; }
-
-  #left-cover::after {
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(to right, transparent 85%, rgba(0,0,0,0.22));
-    pointer-events:none;
-  }
-  #right-cover::before {
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(to left, transparent 85%, rgba(0,0,0,0.22));
-    pointer-events:none; z-index:1;
-  }
-
-  #spine-line {
-    position:absolute; top:0; bottom:0; left:50%;
-    transform:translateX(-50%);
-    width:6px;
-    background: linear-gradient(to bottom, #c4823a, #8b4513, #c4823a);
-    z-index:10; border-radius:2px;
-    box-shadow: 0 0 10px rgba(139,69,19,0.7);
-    transition: opacity 0.3s;
-  }
-
-  #flip-page {
-    position:absolute; top:0; height:100%;
-    transform-style:preserve-3d;
-    pointer-events:none; z-index:20; display:none;
-  }
-  #flip-page.from-right { left:50%; transform-origin:left center; }
-  #flip-page.from-left  { left:0;   transform-origin:right center; }
-
-  .flip-face { position:absolute; inset:0; backface-visibility:hidden; overflow:hidden; }
-  .flip-face canvas { display:block; }
-  #flip-front { background:var(--cream); }
-  #flip-back  { background:var(--cream); transform:rotateY(180deg); }
-
-  .nav-zone { position:absolute; top:0; bottom:0; width:40%; z-index:30; cursor:pointer; }
-  #nav-left  { left:0; }
-  #nav-right { right:0; }
-
-  #controls {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: rgba(26,18,8,0.5);
-    border: 1px solid rgba(212,169,106,0.28);
-    border-radius: 40px;
-    padding: 9px 22px;
-    backdrop-filter: blur(6px);
-  }
-  .btn-icon {
-    background: none;
-    border: 1.5px solid var(--tan);
-    color: var(--tan);
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    font-size: 1.05rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, color 0.2s;
-  }
-  .btn-icon:hover:not(:disabled) { background:var(--tan); color:var(--dark); }
-  .btn-icon:disabled { opacity:0.3; cursor:default; }
-
-  .btn {
-    background: none;
-    border: 1.5px solid var(--tan);
-    color: var(--tan);
-    font-family: 'Playfair Display', serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
-  .btn:hover { background:var(--tan); color:var(--dark); }
-
-  #page-display {
-    font-family: 'Playfair Display', serif;
-    color: var(--tan);
-    font-size: 0.85rem;
-    min-width: 120px;
-    text-align: center;
-    letter-spacing: 0.04em;
-  }
-
-  #thumb-strip {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    max-width: min(95vw, 860px);
-    padding-bottom: 4px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--tan) transparent;
-  }
-  .thumb {
-    flex-shrink: 0;
-    border: 1.5px solid rgba(212,169,106,0.3);
-    border-radius: 3px;
-    overflow: hidden;
-    cursor: pointer;
-    opacity: 0.55;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-  .thumb:hover { opacity: 0.8; transform: translateY(-2px); }
-  .thumb.active { border-color: var(--tan); opacity: 1; }
-  .thumb canvas { display:block; }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+:root{--rust:#C1440E;--tan:#D4A96A;--cream:#F5EDD8;--dark:#1A1208;--bark:#3D2B1F;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bark);background-image:radial-gradient(ellipse at 50% 0%,#5a3820 0%,transparent 55%);min-height:100vh;font-family:'Source Sans 3',sans-serif;font-weight:300;color:var(--cream);display:flex;flex-direction:column;align-items:center;}
+.topbar{width:100%;background:var(--dark);border-bottom:2px solid var(--rust);display:flex;align-items:center;justify-content:space-between;padding:10px 20px;}
+.topbar-brand{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--tan);letter-spacing:.06em;text-decoration:none;}
+.topbar-back{font-size:.8rem;color:var(--tan);opacity:.75;text-decoration:none;letter-spacing:.04em;border:1px solid rgba(212,169,106,.35);padding:4px 12px;border-radius:20px;transition:opacity .2s;}
+.topbar-back:hover{opacity:1;}
+header{text-align:center;padding:18px 20px 14px;}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,3.5vw,1.8rem);color:var(--tan);letter-spacing:.1em;text-transform:uppercase;}
+header p{font-size:.8rem;color:rgba(212,169,106,.55);margin-top:3px;}
+#loading-screen{display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 20px;color:var(--tan);}
+.spinner{width:44px;height:44px;border:3px solid rgba(212,169,106,.2);border-top-color:var(--tan);border-radius:50%;animation:spin .9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+#loading-screen p{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.06em;}
+#loading-progress{font-size:.75rem;color:rgba(212,169,106,.6);margin-top:-8px;}
+#flipbook-section{display:none;flex-direction:column;align-items:center;gap:18px;width:100%;padding:0 10px 40px;}
+#book-outer{filter:drop-shadow(0 20px 44px rgba(0,0,0,.75)) drop-shadow(0 4px 10px rgba(0,0,0,.5));}
+#book-stage{perspective:2000px;position:relative;}
+#book{position:relative;display:flex;transform-style:preserve-3d;}
+.book-cover{position:relative;overflow:hidden;background:var(--cream);}
+#left-cover{border-radius:4px 0 0 4px;border-right:1px solid rgba(0,0,0,.08);}
+#right-cover{border-radius:0 4px 4px 0;border-left:1px solid rgba(0,0,0,.08);}
+.book-cover canvas{display:block;}
+#left-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 85%,rgba(0,0,0,.22));pointer-events:none;}
+#right-cover::before{content:'';position:absolute;inset:0;background:linear-gradient(to left,transparent 85%,rgba(0,0,0,.22));pointer-events:none;z-index:1;}
+#spine-line{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:6px;background:linear-gradient(to bottom,#c4823a,#8b4513,#c4823a);z-index:10;border-radius:2px;box-shadow:0 0 10px rgba(139,69,19,.7);transition:opacity .3s;}
+#flip-page{position:absolute;top:0;height:100%;transform-style:preserve-3d;pointer-events:none;z-index:20;display:none;}
+#flip-page.from-right{left:50%;transform-origin:left center;}
+#flip-page.from-left{left:0;transform-origin:right center;}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;overflow:hidden;}
+.flip-face canvas{display:block;}
+#flip-front{background:var(--cream);}
+#flip-back{background:var(--cream);transform:rotateY(180deg);}
+.nav-zone{position:absolute;top:0;bottom:0;width:40%;z-index:30;cursor:pointer;}
+#nav-left{left:0;}
+#nav-right{right:0;}
+#controls{display:flex;align-items:center;gap:14px;background:rgba(26,18,8,.5);border:1px solid rgba(212,169,106,.28);border-radius:40px;padding:9px 22px;backdrop-filter:blur(6px);}
+.btn-icon{background:none;border:1.5px solid var(--tan);color:var(--tan);width:36px;height:36px;border-radius:50%;font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+.btn-icon:hover:not(:disabled){background:var(--tan);color:var(--dark);}
+.btn-icon:disabled{opacity:.3;cursor:default;}
+.btn{background:none;border:1.5px solid var(--tan);color:var(--tan);font-family:'Playfair Display',serif;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:30px;cursor:pointer;transition:background .2s,color .2s;}
+.btn:hover{background:var(--tan);color:var(--dark);}
+#page-display{font-family:'Playfair Display',serif;color:var(--tan);font-size:.85rem;min-width:120px;text-align:center;letter-spacing:.04em;}
+#thumb-strip{display:flex;gap:6px;overflow-x:auto;max-width:min(95vw,860px);padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--tan) transparent;}
+.thumb{flex-shrink:0;border:1.5px solid rgba(212,169,106,.3);border-radius:3px;overflow:hidden;cursor:pointer;opacity:.55;transition:border-color .2s,transform .15s;}
+.thumb:hover{opacity:.8;transform:translateY(-2px);}
+.thumb.active{border-color:var(--tan);opacity:1;}
+.thumb canvas{display:block;}
+.thumb-placeholder{background:rgba(212,169,106,.1);display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.3);font-size:9px;}
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a class="topbar-brand" href="../">🐴 Bridle &amp; Bit Magazine</a>
   <a class="topbar-back" href="../">← Back</a>
 </div>
-
 <header>
-  <h1>Bridle &amp; Bit — March 2026</h1>
+  <h1>Bridle &amp; Bit — April 2026</h1>
   <p>Arizona's premier horse publication since 1978</p>
 </header>
-
 <div id="loading-screen">
   <div class="spinner"></div>
   <p>Loading magazine…</p>
+  <div id="loading-progress"></div>
 </div>
-
 <div id="flipbook-section">
   <div id="book-outer">
     <div id="book-stage">
@@ -256,202 +91,235 @@
       </div>
     </div>
   </div>
-
   <div id="controls">
     <button class="btn-icon" id="prev-btn">&#8592;</button>
     <span id="page-display">Cover</span>
     <button class="btn-icon" id="next-btn">&#8594;</button>
     <button class="btn" id="zoom-btn">Zoom</button>
   </div>
-
   <div id="thumb-strip"></div>
 </div>
-
 <script>
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-const PDF_URL = 'magazine.pdf';
+const PDF_URL='magazine.pdf';
+let pdfDoc=null,totalPages=0,spread=0,PAGE_W=0,PAGE_H=0,SCALE=1,isFlipping=false;
+const pageCache={};
 
-let pdfDoc = null, totalPages = 0, spread = 0;
-let PAGE_W = 0, PAGE_H = 0, SCALE = 1;
-let isFlipping = false;
+function leftPage(){return spread===0?0:spread*2;}
+function rightPage(){return spread===0?1:spread*2+1;}
+function maxSpread(){return Math.ceil(totalPages/2);}
 
-function leftPage()  { return spread === 0 ? 0 : spread * 2; }
-function rightPage() { return spread === 0 ? 1 : spread * 2 + 1; }
-function maxSpread() { return Math.ceil(totalPages / 2); }
+const loadingScreen=document.getElementById('loading-screen');
+const loadingProgress=document.getElementById('loading-progress');
+const flipbookSection=document.getElementById('flipbook-section');
+const leftCanvas=document.getElementById('left-canvas');
+const rightCanvas=document.getElementById('right-canvas');
+const flipPage=document.getElementById('flip-page');
+const flipFrontCanvas=document.getElementById('flip-front-canvas');
+const flipBackCanvas=document.getElementById('flip-back-canvas');
+const prevBtn=document.getElementById('prev-btn');
+const nextBtn=document.getElementById('next-btn');
+const pageDisplay=document.getElementById('page-display');
+const zoomBtn=document.getElementById('zoom-btn');
+const thumbStrip=document.getElementById('thumb-strip');
+const spineEl=document.getElementById('spine-line');
+const bookStage=document.getElementById('book-stage');
+const book=document.getElementById('book');
 
-const loadingScreen  = document.getElementById('loading-screen');
-const flipbookSection= document.getElementById('flipbook-section');
-const book           = document.getElementById('book');
-const bookStage      = document.getElementById('book-stage');
-const leftCanvas     = document.getElementById('left-canvas');
-const rightCanvas    = document.getElementById('right-canvas');
-const flipPage       = document.getElementById('flip-page');
-const flipFrontCanvas= document.getElementById('flip-front-canvas');
-const flipBackCanvas = document.getElementById('flip-back-canvas');
-const prevBtn        = document.getElementById('prev-btn');
-const nextBtn        = document.getElementById('next-btn');
-const pageDisplay    = document.getElementById('page-display');
-const zoomBtn        = document.getElementById('zoom-btn');
-const thumbStrip     = document.getElementById('thumb-strip');
-const spineEl        = document.getElementById('spine-line');
+async function init(){
+  const loadingTask=pdfjsLib.getDocument({url:PDF_URL,rangeChunkSize:65536,disableAutoFetch:false,disableStream:false});
+  
+  loadingTask.onProgress=function(data){
+    if(data.total){
+      const pct=Math.round(data.loaded/data.total*100);
+      loadingProgress.textContent=pct+'% loaded';
+    }
+  };
 
-async function init() {
-  pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
-  totalPages = pdfDoc.numPages;
+  pdfDoc=await loadingTask.promise;
+  totalPages=pdfDoc.numPages;
+  loadingProgress.textContent='Rendering…';
 
-  const firstPage = await pdfDoc.getPage(1);
-  const vp = firstPage.getViewport({ scale: 1 });
-  const maxW = Math.min(window.innerWidth * 0.44, 450);
-  const maxH = Math.min(window.innerHeight * 0.62, 580);
-  SCALE = Math.min(maxW / vp.width, maxH / vp.height);
-  PAGE_W = Math.round(vp.width  * SCALE);
-  PAGE_H = Math.round(vp.height * SCALE);
+  const firstPage=await pdfDoc.getPage(1);
+  const vp=firstPage.getViewport({scale:1});
+  const maxW=Math.min(window.innerWidth*.44,450);
+  const maxH=Math.min(window.innerHeight*.62,580);
+  SCALE=Math.min(maxW/vp.width,maxH/vp.height);
+  PAGE_W=Math.round(vp.width*SCALE);
+  PAGE_H=Math.round(vp.height*SCALE);
 
-  book.style.width  = (PAGE_W * 2) + 'px';
-  book.style.height = PAGE_H + 'px';
-  [leftCanvas, rightCanvas, flipFrontCanvas, flipBackCanvas].forEach(c => {
-    c.width = PAGE_W; c.height = PAGE_H;
-  });
-  document.getElementById('left-cover').style.cssText  = `width:${PAGE_W}px;height:${PAGE_H}px`;
-  document.getElementById('right-cover').style.cssText = `width:${PAGE_W}px;height:${PAGE_H}px`;
-  flipPage.style.width  = PAGE_W + 'px';
-  flipPage.style.height = PAGE_H + 'px';
+  book.style.width=(PAGE_W*2)+'px';
+  book.style.height=PAGE_H+'px';
+  [leftCanvas,rightCanvas,flipFrontCanvas,flipBackCanvas].forEach(c=>{c.width=PAGE_W;c.height=PAGE_H;});
+  document.getElementById('left-cover').style.cssText=`width:${PAGE_W}px;height:${PAGE_H}px`;
+  document.getElementById('right-cover').style.cssText=`width:${PAGE_W}px;height:${PAGE_H}px`;
+  flipPage.style.width=PAGE_W+'px';
+  flipPage.style.height=PAGE_H+'px';
 
-  buildThumbs();
-  spread = 0;
+  // Render first spread immediately
+  spread=0;
   await renderSpread();
   updateUI();
 
-  loadingScreen.style.display = 'none';
-  flipbookSection.style.display = 'flex';
+  loadingScreen.style.display='none';
+  flipbookSection.style.display='flex';
+
+  // Build thumbs and pre-cache pages in background
+  buildThumbs();
+  preCachePages();
 }
 
-async function renderPageToCanvas(pageNum, canvas) {
-  canvas.width = PAGE_W; canvas.height = PAGE_H;
-  if (pageNum < 1 || pageNum > totalPages) {
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#F5EDD8';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+// Pre-cache pages 1-10 in background after display
+async function preCachePages(){
+  for(let p=1;p<=Math.min(10,totalPages);p++){
+    if(!pageCache[p]) await renderPageToOffscreen(p);
+    await sleep(50);
+  }
+}
+
+async function renderPageToOffscreen(pageNum){
+  if(pageNum<1||pageNum>totalPages) return null;
+  if(pageCache[pageNum]) return pageCache[pageNum];
+  const page=await pdfDoc.getPage(pageNum);
+  const viewport=page.getViewport({scale:SCALE});
+  const canvas=document.createElement('canvas');
+  canvas.width=PAGE_W;canvas.height=PAGE_H;
+  await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
+  pageCache[pageNum]=canvas;
+  return canvas;
+}
+
+async function renderPageToCanvas(pageNum,canvas){
+  canvas.width=PAGE_W;canvas.height=PAGE_H;
+  if(pageNum<1||pageNum>totalPages){
+    const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#F5EDD8';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
     return;
   }
-  const page = await pdfDoc.getPage(pageNum);
-  const viewport = page.getViewport({ scale: SCALE });
-  await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-}
-
-async function renderSpread() {
-  spineEl.style.opacity = spread === 0 ? '0' : '1';
-  await Promise.all([
-    renderPageToCanvas(leftPage(),  leftCanvas),
-    renderPageToCanvas(rightPage(), rightCanvas),
-  ]);
-}
-
-async function flipForward() {
-  if (isFlipping || spread >= maxSpread()) return;
-  isFlipping = true;
-  const nextSpread = spread + 1;
-  const nextRight  = nextSpread === 0 ? 1 : nextSpread * 2 + 1;
-  await renderPageToCanvas(rightPage(), flipFrontCanvas);
-  await renderPageToCanvas(nextRight,   flipBackCanvas);
-  flipPage.className = 'from-right';
-  flipPage.style.left = '50%';
-  flipPage.style.transform = 'rotateY(0deg)';
-  flipPage.style.display = 'block';
-  requestAnimationFrame(() => {
-    flipPage.style.transition = `transform var(--flip-dur) cubic-bezier(0.645,0.045,0.355,1)`;
-    flipPage.style.transform  = 'rotateY(-180deg)';
-  });
-  await sleep(680);
-  spread++;
-  await renderSpread();
-  flipPage.style.display = 'none';
-  flipPage.style.transition = 'none';
-  updateUI(); isFlipping = false;
-}
-
-async function flipBackward() {
-  if (isFlipping || spread <= 0) return;
-  isFlipping = true;
-  const prevSpread = spread - 1;
-  const prevRight  = prevSpread === 0 ? 1 : prevSpread * 2 + 1;
-  await renderPageToCanvas(leftPage(), flipFrontCanvas);
-  await renderPageToCanvas(prevRight,  flipBackCanvas);
-  flipPage.className = 'from-left';
-  flipPage.style.left = '0';
-  flipPage.style.transform = 'rotateY(180deg)';
-  flipPage.style.transition = 'none';
-  flipPage.style.display = 'block';
-  requestAnimationFrame(() => {
-    flipPage.style.transition = `transform var(--flip-dur) cubic-bezier(0.645,0.045,0.355,1)`;
-    flipPage.style.transform  = 'rotateY(0deg)';
-  });
-  await sleep(680);
-  spread--;
-  await renderSpread();
-  flipPage.style.display = 'none';
-  flipPage.style.transition = 'none';
-  updateUI(); isFlipping = false;
-}
-
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-async function buildThumbs() {
-  const TW = 58;
-  for (let p = 1; p <= totalPages; p++) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'thumb'; wrapper.dataset.page = p;
-    const c = document.createElement('canvas');
-    wrapper.appendChild(c); thumbStrip.appendChild(wrapper);
-    wrapper.addEventListener('click', () => goToPage(p));
-    (async (page, canvas) => {
-      const pg = await pdfDoc.getPage(page);
-      const vp = pg.getViewport({ scale: 1 });
-      const sc = TW / vp.width;
-      canvas.width = TW; canvas.height = Math.round(vp.height * sc);
-      await pg.render({ canvasContext: canvas.getContext('2d'), viewport: pg.getViewport({ scale: sc }) }).promise;
-    })(p, c);
+  const cached=await renderPageToOffscreen(pageNum);
+  if(cached){
+    canvas.getContext('2d').drawImage(cached,0,0);
   }
 }
 
-async function goToPage(pageNum) {
-  if (isFlipping) return;
-  spread = pageNum <= 1 ? 0 : Math.min(Math.ceil((pageNum - 1) / 2), maxSpread());
-  await renderSpread(); updateUI();
+async function renderSpread(){
+  spineEl.style.opacity=spread===0?'0':'1';
+  await Promise.all([
+    renderPageToCanvas(leftPage(),leftCanvas),
+    renderPageToCanvas(rightPage(),rightCanvas),
+  ]);
+  // Pre-cache next spread in background
+  const next1=spread===0?2:(spread+1)*2;
+  const next2=next1+1;
+  setTimeout(()=>{renderPageToOffscreen(next1);renderPageToOffscreen(next2);},100);
 }
 
-function updateUI() {
-  const lp = leftPage(), rp = Math.min(rightPage(), totalPages);
-  if (spread === 0) pageDisplay.textContent = `Cover · Page 1 of ${totalPages}`;
-  else if (rp > lp) pageDisplay.textContent = `Pages ${lp}–${rp} of ${totalPages}`;
-  else pageDisplay.textContent = `Page ${lp} of ${totalPages}`;
-  prevBtn.disabled = spread <= 0;
-  nextBtn.disabled = spread >= maxSpread();
-  document.querySelectorAll('.thumb').forEach(t => {
-    const p = +t.dataset.page;
-    t.classList.toggle('active', p === lp || p === rp);
+async function flipForward(){
+  if(isFlipping||spread>=maxSpread()) return;
+  isFlipping=true;
+  const nextSpread=spread+1;
+  const nextRight=nextSpread===0?1:nextSpread*2+1;
+  await renderPageToCanvas(rightPage(),flipFrontCanvas);
+  await renderPageToCanvas(nextRight,flipBackCanvas);
+  flipPage.className='from-right';
+  flipPage.style.left='50%';
+  flipPage.style.transform='rotateY(0deg)';
+  flipPage.style.display='block';
+  requestAnimationFrame(()=>{
+    flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
+    flipPage.style.transform='rotateY(-180deg)';
   });
-  const at = thumbStrip.querySelector('.thumb.active');
-  if (at) at.scrollIntoView({ inline: 'nearest', behavior: 'smooth' });
+  await sleep(620);
+  spread++;
+  await renderSpread();
+  flipPage.style.display='none';
+  flipPage.style.transition='none';
+  updateUI();isFlipping=false;
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') flipForward();
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   flipBackward();
-});
-document.getElementById('nav-left').addEventListener('click',  flipBackward);
-document.getElementById('nav-right').addEventListener('click', flipForward);
-prevBtn.addEventListener('click', flipBackward);
-nextBtn.addEventListener('click', flipForward);
+async function flipBackward(){
+  if(isFlipping||spread<=0) return;
+  isFlipping=true;
+  const prevSpread=spread-1;
+  const prevRight=prevSpread===0?1:prevSpread*2+1;
+  await renderPageToCanvas(leftPage(),flipFrontCanvas);
+  await renderPageToCanvas(prevRight,flipBackCanvas);
+  flipPage.className='from-left';
+  flipPage.style.left='0';
+  flipPage.style.transform='rotateY(180deg)';
+  flipPage.style.transition='none';
+  flipPage.style.display='block';
+  requestAnimationFrame(()=>{
+    flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
+    flipPage.style.transform='rotateY(0deg)';
+  });
+  await sleep(620);
+  spread--;
+  await renderSpread();
+  flipPage.style.display='none';
+  flipPage.style.transition='none';
+  updateUI();isFlipping=false;
+}
 
-let zoomed = false;
-zoomBtn.addEventListener('click', () => {
-  zoomed = !zoomed;
-  bookStage.style.transform  = zoomed ? 'scale(1.16)' : 'scale(1)';
-  bookStage.style.transition = 'transform 0.3s ease';
-  zoomBtn.textContent = zoomed ? 'Zoom Out' : 'Zoom';
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+
+async function buildThumbs(){
+  const TW=58;
+  for(let p=1;p<=totalPages;p++){
+    const wrapper=document.createElement('div');
+    wrapper.className='thumb';wrapper.dataset.page=p;
+    const c=document.createElement('canvas');
+    wrapper.appendChild(c);thumbStrip.appendChild(wrapper);
+    wrapper.addEventListener('click',()=>goToPage(p));
+    // Render thumbs lazily with a small delay between each
+    setTimeout(async()=>{
+      const pg=await pdfDoc.getPage(p);
+      const vp=pg.getViewport({scale:1});
+      const sc=TW/vp.width;
+      c.width=TW;c.height=Math.round(vp.height*sc);
+      await pg.render({canvasContext:c.getContext('2d'),viewport:pg.getViewport({scale:sc})}).promise;
+    },p*80);
+  }
+}
+
+async function goToPage(pageNum){
+  if(isFlipping) return;
+  spread=pageNum<=1?0:Math.min(Math.ceil((pageNum-1)/2),maxSpread());
+  await renderSpread();updateUI();
+}
+
+function updateUI(){
+  const lp=leftPage(),rp=Math.min(rightPage(),totalPages);
+  if(spread===0) pageDisplay.textContent=`Cover · Page 1 of ${totalPages}`;
+  else if(rp>lp) pageDisplay.textContent=`Pages ${lp}–${rp} of ${totalPages}`;
+  else pageDisplay.textContent=`Page ${lp} of ${totalPages}`;
+  prevBtn.disabled=spread<=0;
+  nextBtn.disabled=spread>=maxSpread();
+  document.querySelectorAll('.thumb').forEach(t=>{
+    const p=+t.dataset.page;
+    t.classList.toggle('active',p===lp||p===rp);
+  });
+  const at=thumbStrip.querySelector('.thumb.active');
+  if(at) at.scrollIntoView({inline:'nearest',behavior:'smooth'});
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') flipForward();
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') flipBackward();
+});
+document.getElementById('nav-left').addEventListener('click',flipBackward);
+document.getElementById('nav-right').addEventListener('click',flipForward);
+prevBtn.addEventListener('click',flipBackward);
+nextBtn.addEventListener('click',flipForward);
+
+let zoomed=false;
+zoomBtn.addEventListener('click',()=>{
+  zoomed=!zoomed;
+  bookStage.style.transform=zoomed?'scale(1.16)':'scale(1)';
+  bookStage.style.transition='transform .3s ease';
+  zoomBtn.textContent=zoomed?'Zoom Out':'Zoom';
 });
 
 init();
