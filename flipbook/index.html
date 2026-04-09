@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Read the Magazine | Bridle &amp; Bit</title>
-<meta name="description" content="Read Bridle & Bit Magazine — April 2026 issue. Arizona's premier horse publication since 1978.">
+<meta name="description" content="Read Bridle & Bit Magazine — April 2026. Arizona's premier horse publication since 1978.">
 <meta name="theme-color" content="#3D2B1F">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -20,12 +20,7 @@ body{background:var(--bark);background-image:radial-gradient(ellipse at 50% 0%,#
 header{text-align:center;padding:18px 20px 14px;}
 header h1{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,3.5vw,1.8rem);color:var(--tan);letter-spacing:.1em;text-transform:uppercase;}
 header p{font-size:.8rem;color:rgba(212,169,106,.55);margin-top:3px;}
-#loading-screen{display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 20px;color:var(--tan);}
-.spinner{width:44px;height:44px;border:3px solid rgba(212,169,106,.2);border-top-color:var(--tan);border-radius:50%;animation:spin .9s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-#loading-screen p{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.06em;}
-#loading-progress{font-size:.75rem;color:rgba(212,169,106,.6);margin-top:-8px;}
-#flipbook-section{display:none;flex-direction:column;align-items:center;gap:18px;width:100%;padding:0 10px 40px;}
+#flipbook-section{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;padding:0 10px 40px;}
 #book-outer{filter:drop-shadow(0 20px 44px rgba(0,0,0,.75)) drop-shadow(0 4px 10px rgba(0,0,0,.5));}
 #book-stage{perspective:2000px;position:relative;}
 #book{position:relative;display:flex;transform-style:preserve-3d;}
@@ -53,12 +48,12 @@ header p{font-size:.8rem;color:rgba(212,169,106,.55);margin-top:3px;}
 .btn{background:none;border:1.5px solid var(--tan);color:var(--tan);font-family:'Playfair Display',serif;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:30px;cursor:pointer;transition:background .2s,color .2s;}
 .btn:hover{background:var(--tan);color:var(--dark);}
 #page-display{font-family:'Playfair Display',serif;color:var(--tan);font-size:.85rem;min-width:120px;text-align:center;letter-spacing:.04em;}
+#status-bar{font-size:.72rem;color:rgba(212,169,106,.5);letter-spacing:.04em;height:16px;}
 #thumb-strip{display:flex;gap:6px;overflow-x:auto;max-width:min(95vw,860px);padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--tan) transparent;}
-.thumb{flex-shrink:0;border:1.5px solid rgba(212,169,106,.3);border-radius:3px;overflow:hidden;cursor:pointer;opacity:.55;transition:border-color .2s,transform .15s;}
+.thumb{flex-shrink:0;border:1.5px solid rgba(212,169,106,.3);border-radius:3px;overflow:hidden;cursor:pointer;opacity:.55;transition:border-color .2s,transform .15s;background:rgba(212,169,106,.08);}
 .thumb:hover{opacity:.8;transform:translateY(-2px);}
 .thumb.active{border-color:var(--tan);opacity:1;}
 .thumb canvas{display:block;}
-.thumb-placeholder{background:rgba(212,169,106,.1);display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.3);font-size:9px;}
 </style>
 </head>
 <body>
@@ -70,11 +65,7 @@ header p{font-size:.8rem;color:rgba(212,169,106,.55);margin-top:3px;}
   <h1>Bridle &amp; Bit — April 2026</h1>
   <p>Arizona's premier horse publication since 1978</p>
 </header>
-<div id="loading-screen">
-  <div class="spinner"></div>
-  <p>Loading magazine…</p>
-  <div id="loading-progress"></div>
-</div>
+
 <div id="flipbook-section">
   <div id="book-outer">
     <div id="book-stage">
@@ -92,27 +83,28 @@ header p{font-size:.8rem;color:rgba(212,169,106,.55);margin-top:3px;}
     </div>
   </div>
   <div id="controls">
-    <button class="btn-icon" id="prev-btn">&#8592;</button>
-    <span id="page-display">Cover</span>
-    <button class="btn-icon" id="next-btn">&#8594;</button>
+    <button class="btn-icon" id="prev-btn" disabled>&#8592;</button>
+    <span id="page-display">Loading…</span>
+    <button class="btn-icon" id="next-btn" disabled>&#8594;</button>
     <button class="btn" id="zoom-btn">Zoom</button>
   </div>
+  <div id="status-bar"></div>
   <div id="thumb-strip"></div>
 </div>
+
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 const PDF_URL='magazine.pdf';
-let pdfDoc=null,totalPages=0,spread=0,PAGE_W=0,PAGE_H=0,SCALE=1,isFlipping=false;
+let pdfDoc=null,totalPages=0,spread=0,PAGE_W=0,PAGE_H=0,SCALE=1,isFlipping=false,ready=false;
 const pageCache={};
 
-function leftPage(){return spread===0?1:spread*2;}
-function rightPage(){return spread===0?0:spread*2+1;}
+// spread=0: left=blank, right=page1 (cover)
+// spread=1: left=page2, right=page3
+function leftPage(){return spread===0?0:spread*2;}
+function rightPage(){return spread===0?1:spread*2+1;}
 function maxSpread(){return Math.ceil(totalPages/2);}
 
-const loadingScreen=document.getElementById('loading-screen');
-const loadingProgress=document.getElementById('loading-progress');
-const flipbookSection=document.getElementById('flipbook-section');
 const leftCanvas=document.getElementById('left-canvas');
 const rightCanvas=document.getElementById('right-canvas');
 const flipPage=document.getElementById('flip-page');
@@ -121,34 +113,19 @@ const flipBackCanvas=document.getElementById('flip-back-canvas');
 const prevBtn=document.getElementById('prev-btn');
 const nextBtn=document.getElementById('next-btn');
 const pageDisplay=document.getElementById('page-display');
+const statusBar=document.getElementById('status-bar');
 const zoomBtn=document.getElementById('zoom-btn');
 const thumbStrip=document.getElementById('thumb-strip');
 const spineEl=document.getElementById('spine-line');
 const bookStage=document.getElementById('book-stage');
 const book=document.getElementById('book');
 
-async function init(){
-  const loadingTask=pdfjsLib.getDocument({url:PDF_URL,rangeChunkSize:65536,disableAutoFetch:false,disableStream:false});
-  
-  loadingTask.onProgress=function(data){
-    if(data.total){
-      const pct=Math.round(data.loaded/data.total*100);
-      loadingProgress.textContent=pct+'% loaded';
-    }
-  };
-
-  pdfDoc=await loadingTask.promise;
-  totalPages=pdfDoc.numPages;
-  loadingProgress.textContent='Rendering…';
-
-  const firstPage=await pdfDoc.getPage(1);
-  const vp=firstPage.getViewport({scale:1});
+function setDimensions(vp){
   const maxW=Math.min(window.innerWidth*.44,450);
   const maxH=Math.min(window.innerHeight*.62,580);
   SCALE=Math.min(maxW/vp.width,maxH/vp.height);
   PAGE_W=Math.round(vp.width*SCALE);
   PAGE_H=Math.round(vp.height*SCALE);
-
   book.style.width=(PAGE_W*2)+'px';
   book.style.height=PAGE_H+'px';
   [leftCanvas,rightCanvas,flipFrontCanvas,flipBackCanvas].forEach(c=>{c.width=PAGE_W;c.height=PAGE_H;});
@@ -156,91 +133,132 @@ async function init(){
   document.getElementById('right-cover').style.cssText=`width:${PAGE_W}px;height:${PAGE_H}px`;
   flipPage.style.width=PAGE_W+'px';
   flipPage.style.height=PAGE_H+'px';
-
-  // Render first spread immediately
-  spread=0;
-  await renderSpread();
-  updateUI();
-
-  loadingScreen.style.display='none';
-  flipbookSection.style.display='flex';
-
-  // Build thumbs and pre-cache pages in background
-  buildThumbs();
-  preCachePages();
 }
 
-// Pre-cache pages 1-10 in background after display
-async function preCachePages(){
-  for(let p=1;p<=Math.min(10,totalPages);p++){
-    if(!pageCache[p]) await renderPageToOffscreen(p);
-    await sleep(50);
-  }
+function fillBlank(canvas){
+  canvas.width=PAGE_W;canvas.height=PAGE_H;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#F5EDD8';
+  ctx.fillRect(0,0,PAGE_W,PAGE_H);
 }
 
-async function renderPageToOffscreen(pageNum){
-  if(pageNum<1||pageNum>totalPages) return null;
-  if(pageCache[pageNum]) return pageCache[pageNum];
+async function renderToCache(pageNum){
+  if(pageNum<1||pageNum>totalPages||pageCache[pageNum]) return;
   const page=await pdfDoc.getPage(pageNum);
   const viewport=page.getViewport({scale:SCALE});
-  const canvas=document.createElement('canvas');
-  canvas.width=PAGE_W;canvas.height=PAGE_H;
-  await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
-  pageCache[pageNum]=canvas;
-  return canvas;
+  const offscreen=document.createElement('canvas');
+  offscreen.width=PAGE_W;offscreen.height=PAGE_H;
+  await page.render({canvasContext:offscreen.getContext('2d'),viewport}).promise;
+  pageCache[pageNum]=offscreen;
 }
 
-async function renderPageToCanvas(pageNum,canvas){
+async function drawPage(pageNum,canvas){
   canvas.width=PAGE_W;canvas.height=PAGE_H;
-  if(pageNum<1||pageNum>totalPages){
-    const ctx=canvas.getContext('2d');
-    ctx.fillStyle='#F5EDD8';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    return;
-  }
-  const cached=await renderPageToOffscreen(pageNum);
-  if(cached){
-    canvas.getContext('2d').drawImage(cached,0,0);
-  }
+  if(pageNum<1||pageNum>totalPages){fillBlank(canvas);return;}
+  if(!pageCache[pageNum]) await renderToCache(pageNum);
+  canvas.getContext('2d').drawImage(pageCache[pageNum],0,0);
 }
 
 async function renderSpread(){
   spineEl.style.opacity=spread===0?'0':'1';
+  const lp=leftPage(),rp=rightPage();
   await Promise.all([
-    renderPageToCanvas(leftPage(),leftCanvas),
-    renderPageToCanvas(rightPage(),rightCanvas),
+    lp<1?Promise.resolve(fillBlank(leftCanvas)):drawPage(lp,leftCanvas),
+    drawPage(rp,rightCanvas)
   ]);
-  // Pre-cache next spread in background
-  const next1=spread===0?2:(spread+1)*2;
-  const next2=next1+1;
-  setTimeout(()=>{renderPageToOffscreen(next1);renderPageToOffscreen(next2);},100);
+  // Pre-cache adjacent pages in background
+  const np1=spread===0?2:(spread+1)*2;
+  const np2=np1+1;
+  setTimeout(()=>{renderToCache(np1);renderToCache(np2);},50);
+}
+
+async function init(){
+  // Start loading — show book shell immediately with blank pages
+  fillBlank(leftCanvas);
+  fillBlank(rightCanvas);
+
+  const loadingTask=pdfjsLib.getDocument({
+    url:PDF_URL,
+    rangeChunkSize:131072,  // 128KB chunks — gets first page fast
+  });
+
+  loadingTask.onProgress=function(data){
+    if(data.total){
+      const pct=Math.round(data.loaded/data.total*100);
+      statusBar.textContent=pct<100?`Loading… ${pct}%`:'';
+    }
+  };
+
+  pdfDoc=await loadingTask.promise;
+  totalPages=pdfDoc.numPages;
+  statusBar.textContent='';
+
+  // Get dimensions from page 1
+  const firstPage=await pdfDoc.getPage(1);
+  setDimensions(firstPage.getViewport({scale:1}));
+
+  // Render page 1 (cover) immediately to right canvas
+  const vp=firstPage.getViewport({scale:SCALE});
+  const offscreen=document.createElement('canvas');
+  offscreen.width=PAGE_W;offscreen.height=PAGE_H;
+  await firstPage.render({canvasContext:offscreen.getContext('2d'),viewport:vp}).promise;
+  pageCache[1]=offscreen;
+
+  // Draw: blank left, cover right
+  fillBlank(leftCanvas);
+  rightCanvas.width=PAGE_W;rightCanvas.height=PAGE_H;
+  rightCanvas.getContext('2d').drawImage(pageCache[1],0,0);
+  spineEl.style.opacity='0';
+
+  ready=true;
+  updateUI();
+
+  // Build thumbs and pre-cache remaining pages in background
+  buildThumbs();
+  backgroundCache();
+}
+
+async function backgroundCache(){
+  for(let p=2;p<=totalPages;p++){
+    await renderToCache(p);
+    await sleep(30);
+  }
 }
 
 async function flipForward(){
-  if(isFlipping||spread>=maxSpread()) return;
+  if(isFlipping||!ready||spread>=maxSpread()) return;
   isFlipping=true;
-  const nextSpread=spread+1;
-  const nextLeft=nextSpread*2;
-  const nextRight=nextSpread*2+1;
+
   if(spread===0){
-    // Cover flip: left canvas has page 1, flip it to reveal pages 2-3
-    await renderPageToCanvas(leftPage(),flipFrontCanvas);
-    await renderPageToCanvas(nextRight,flipBackCanvas);
-    flipPage.className='from-left';
-    flipPage.style.left='0';
-    flipPage.style.transform='rotateY(0deg)';
-  } else {
-    await renderPageToCanvas(rightPage(),flipFrontCanvas);
-    await renderPageToCanvas(nextRight,flipBackCanvas);
+    // Cover flip: right canvas (page 1) flips over to reveal pages 2-3
+    await drawPage(2,flipFrontCanvas);
+    await drawPage(3,flipBackCanvas);
+    // Pre-render left with page 2, right with page 3
+    await renderToCache(2);await renderToCache(3);
     flipPage.className='from-right';
     flipPage.style.left='50%';
     flipPage.style.transform='rotateY(0deg)';
+    flipPage.style.display='block';
+    // Swap cover canvas to show page 1 behind flip
+    rightCanvas.getContext('2d').drawImage(pageCache[1],0,0);
+    requestAnimationFrame(()=>{
+      flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
+      flipPage.style.transform='rotateY(-180deg)';
+    });
+  } else {
+    const nextRight=((spread+1)*2)+1;
+    await drawPage(rightPage(),flipFrontCanvas);
+    await drawPage(nextRight,flipBackCanvas);
+    flipPage.className='from-right';
+    flipPage.style.left='50%';
+    flipPage.style.transform='rotateY(0deg)';
+    flipPage.style.display='block';
+    requestAnimationFrame(()=>{
+      flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
+      flipPage.style.transform='rotateY(-180deg)';
+    });
   }
-  flipPage.style.display='block';
-  requestAnimationFrame(()=>{
-    flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
-    flipPage.style.transform=spread===0?'rotateY(-180deg)':'rotateY(-180deg)';
-  });
+
   await sleep(620);
   spread++;
   await renderSpread();
@@ -250,12 +268,13 @@ async function flipForward(){
 }
 
 async function flipBackward(){
-  if(isFlipping||spread<=0) return;
+  if(isFlipping||!ready||spread<=0) return;
   isFlipping=true;
+
   const prevSpread=spread-1;
   const prevRight=prevSpread===0?1:prevSpread*2+1;
-  await renderPageToCanvas(leftPage(),flipFrontCanvas);
-  await renderPageToCanvas(prevRight,flipBackCanvas);
+  await drawPage(leftPage(),flipFrontCanvas);
+  await drawPage(prevRight,flipBackCanvas);
   flipPage.className='from-left';
   flipPage.style.left='0';
   flipPage.style.transform='rotateY(180deg)';
@@ -265,6 +284,7 @@ async function flipBackward(){
     flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
     flipPage.style.transform='rotateY(0deg)';
   });
+
   await sleep(620);
   spread--;
   await renderSpread();
@@ -281,32 +301,33 @@ async function buildThumbs(){
     const wrapper=document.createElement('div');
     wrapper.className='thumb';wrapper.dataset.page=p;
     const c=document.createElement('canvas');
+    c.width=TW;c.height=Math.round(TW*1.3);
     wrapper.appendChild(c);thumbStrip.appendChild(wrapper);
     wrapper.addEventListener('click',()=>goToPage(p));
-    // Render thumbs lazily with a small delay between each
     setTimeout(async()=>{
       const pg=await pdfDoc.getPage(p);
       const vp=pg.getViewport({scale:1});
       const sc=TW/vp.width;
       c.width=TW;c.height=Math.round(vp.height*sc);
       await pg.render({canvasContext:c.getContext('2d'),viewport:pg.getViewport({scale:sc})}).promise;
-    },p*80);
+    },p*100);
   }
 }
 
 async function goToPage(pageNum){
-  if(isFlipping) return;
+  if(isFlipping||!ready) return;
   spread=pageNum<=1?0:Math.min(Math.ceil((pageNum-1)/2),maxSpread());
   await renderSpread();updateUI();
 }
 
 function updateUI(){
   const lp=leftPage(),rp=Math.min(rightPage(),totalPages);
+  if(!ready){pageDisplay.textContent='Loading…';return;}
   if(spread===0) pageDisplay.textContent=`Cover · Page 1 of ${totalPages}`;
   else if(rp>lp) pageDisplay.textContent=`Pages ${lp}–${rp} of ${totalPages}`;
   else pageDisplay.textContent=`Page ${lp} of ${totalPages}`;
-  prevBtn.disabled=spread<=0;
-  nextBtn.disabled=spread>=maxSpread();
+  prevBtn.disabled=spread<=0||!ready;
+  nextBtn.disabled=spread>=maxSpread()||!ready;
   document.querySelectorAll('.thumb').forEach(t=>{
     const p=+t.dataset.page;
     t.classList.toggle('active',p===lp||p===rp);
