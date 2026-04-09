@@ -106,8 +106,8 @@ const PDF_URL='magazine.pdf';
 let pdfDoc=null,totalPages=0,spread=0,PAGE_W=0,PAGE_H=0,SCALE=1,isFlipping=false;
 const pageCache={};
 
-function leftPage(){return spread===0?0:spread*2;}
-function rightPage(){return spread===0?1:spread*2+1;}
+function leftPage(){return spread===0?1:spread*2;}
+function rightPage(){return spread===0?0:spread*2+1;}
 function maxSpread(){return Math.ceil(totalPages/2);}
 
 const loadingScreen=document.getElementById('loading-screen');
@@ -220,16 +220,26 @@ async function flipForward(){
   if(isFlipping||spread>=maxSpread()) return;
   isFlipping=true;
   const nextSpread=spread+1;
-  const nextRight=nextSpread===0?1:nextSpread*2+1;
-  await renderPageToCanvas(rightPage(),flipFrontCanvas);
-  await renderPageToCanvas(nextRight,flipBackCanvas);
-  flipPage.className='from-right';
-  flipPage.style.left='50%';
-  flipPage.style.transform='rotateY(0deg)';
+  const nextLeft=nextSpread*2;
+  const nextRight=nextSpread*2+1;
+  if(spread===0){
+    // Cover flip: left canvas has page 1, flip it to reveal pages 2-3
+    await renderPageToCanvas(leftPage(),flipFrontCanvas);
+    await renderPageToCanvas(nextRight,flipBackCanvas);
+    flipPage.className='from-left';
+    flipPage.style.left='0';
+    flipPage.style.transform='rotateY(0deg)';
+  } else {
+    await renderPageToCanvas(rightPage(),flipFrontCanvas);
+    await renderPageToCanvas(nextRight,flipBackCanvas);
+    flipPage.className='from-right';
+    flipPage.style.left='50%';
+    flipPage.style.transform='rotateY(0deg)';
+  }
   flipPage.style.display='block';
   requestAnimationFrame(()=>{
     flipPage.style.transition='transform .6s cubic-bezier(0.645,0.045,0.355,1)';
-    flipPage.style.transform='rotateY(-180deg)';
+    flipPage.style.transform=spread===0?'rotateY(-180deg)':'rotateY(-180deg)';
   });
   await sleep(620);
   spread++;
