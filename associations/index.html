@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equestrian Associations | Bridle &amp; Bit Magazine</title>
+<meta name="description" content="A comprehensive guide to the major equestrian and western associations covered by Bridle & Bit Magazine — USTRC, NRHA, AQHA, PRCA, NBHA, USEF, WPRA, and more.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust: #C1440E;
+    --tan: #D4A96A;
+    --cream: #F5EDD8;
+    --dark: #1A1208;
+    --bark: #3D2B1F;
+    --sage: #7A8C6E;
+    --sky: #5B8FA8;
+    --light-tan: #EDE0C4;
+    --font-serif: 'Playfair Display', 'Georgia', serif;
+    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    background: var(--bark);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--rust);
+  }
+
+  .nav-back {
+    color: var(--tan);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .nav-title {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-left: auto;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--bark);
+    padding: 22px 16px 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(212,169,106,0.2);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tan);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 5vw, 30px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 em {
+    color: var(--tan);
+    font-style: normal;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* STATS BAR */
+  .stats-bar-wrap {
+    background: var(--bark);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(212,169,106,0.2);
+  }
+
+  .stats-bar {
+    background: var(--rust);
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .stat-item {
+    padding: 7px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    flex: 1;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+  }
+
+  /* FILTER TABS */
+  .filter-bar {
+    background: var(--dark);
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 3px solid var(--rust);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-btn {
+    padding: 11px 14px;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(245,237,216,0.45);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: color 0.15s;
+  }
+
+  .filter-btn.active {
+    color: var(--tan);
+    border-bottom-color: var(--tan);
+  }
+
+  @media(hover:hover) { .filter-btn:hover { color: var(--cream); } }
+
+  /* SECTION LABEL */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 14px 10px;
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-label h2 {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--bark);
+    white-space: nowrap;
+  }
+
+  .section-label .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(61,43,31,0.15);
+  }
+
+  .section-label .count-tag {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--rust);
+    white-space: nowrap;
+  }
+
+  /* ASSOC GRID */
+  .assoc-grid {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 12px 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  @media(min-width: 560px) {
+    .assoc-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ASSOC CARD */
+  .assoc-card {
+    background: white;
+    border: 1px solid rgba(61,43,31,0.1);
+    border-left: 4px solid var(--rust);
+    padding: 14px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    transition: box-shadow 0.15s, transform 0.1s;
+    position: relative;
+  }
+
+  .assoc-card[data-discipline="roping"] { border-left-color: #C1440E; }
+  .assoc-card[data-discipline="reining"] { border-left-color: #5B8FA8; }
+  .assoc-card[data-discipline="rodeo"] { border-left-color: #7A4A1E; }
+  .assoc-card[data-discipline="barrel"] { border-left-color: #C88B2A; }
+  .assoc-card[data-discipline="breed"] { border-left-color: #7A8C6E; }
+  .assoc-card[data-discipline="english"] { border-left-color: #8B5E9A; }
+
+  @media(hover:hover) { .assoc-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.1); transform: translateY(-1px); } }
+  .assoc-card:active { transform: scale(0.99); }
+
+  .assoc-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .assoc-abbr {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--rust);
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .assoc-card[data-discipline="reining"] .assoc-abbr { color: #5B8FA8; }
+  .assoc-card[data-discipline="rodeo"] .assoc-abbr { color: #7A4A1E; }
+  .assoc-card[data-discipline="barrel"] .assoc-abbr { color: #C88B2A; }
+  .assoc-card[data-discipline="breed"] .assoc-abbr { color: #7A8C6E; }
+  .assoc-card[data-discipline="english"] .assoc-abbr { color: #8B5E9A; }
+
+  .assoc-name-wrap { flex: 1; }
+
+  .assoc-full-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .assoc-discipline-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    background: rgba(193,68,14,0.1);
+    color: var(--rust);
+  }
+
+  .assoc-card[data-discipline="reining"] .assoc-discipline-tag { background: rgba(91,143,168,0.12); color: #5B8FA8; }
+  .assoc-card[data-discipline="rodeo"] .assoc-discipline-tag { background: rgba(122,74,30,0.1); color: #7A4A1E; }
+  .assoc-card[data-discipline="barrel"] .assoc-discipline-tag { background: rgba(200,139,42,0.12); color: #C88B2A; }
+  .assoc-card[data-discipline="breed"] .assoc-discipline-tag { background: rgba(122,140,110,0.12); color: #7A8C6E; }
+  .assoc-card[data-discipline="english"] .assoc-discipline-tag { background: rgba(139,94,154,0.1); color: #8B5E9A; }
+
+  .assoc-desc {
+    font-size: 12px;
+    color: rgba(26,18,8,0.65);
+    line-height: 1.5;
+  }
+
+  .assoc-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .assoc-website {
+    font-size: 11px;
+    color: var(--sky);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .assoc-hq {
+    font-size: 10px;
+    color: rgba(26,18,8,0.45);
+    letter-spacing: 0.3px;
+  }
+
+  .assoc-arrow {
+    margin-left: auto;
+    color: rgba(61,43,31,0.25);
+    font-size: 16px;
+  }
+
+  /* HIDDEN */
+  .assoc-card.hidden { display: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bark);
+    border-top: 2px solid var(--rust);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tan);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 14px;
+    margin-bottom: 8px;
+  }
+
+  .footer-links a {
+    color: rgba(245,237,216,0.6);
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .footer-links a:hover { color: var(--tan); }
+
+  .footer-copy {
+    font-size: 10px;
+    color: rgba(245,237,216,0.3);
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-back" href="../">← Back
+  </a>
+  <span class="nav-title">Bridle &amp; Bit Magazine</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Bridle &amp; Bit Magazine · AI Division</div>
+  <h1>Equestrian <em>Associations</em></h1>
+  <p>Every major organization we cover — from team roping sanctioning bodies to breed registries, rodeo federations, and English governing bodies.</p>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar-wrap">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Associations</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Disciplines</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1M+</span>
+      <span class="stat-label">Members</span>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+  <button class="filter-btn" onclick="filterCards('roping', this)">Team Roping</button>
+  <button class="filter-btn" onclick="filterCards('rodeo', this)">Rodeo</button>
+  <button class="filter-btn" onclick="filterCards('reining', this)">Reining</button>
+  <button class="filter-btn" onclick="filterCards('barrel', this)">Barrel Racing</button>
+  <button class="filter-btn" onclick="filterCards('breed', this)">Breed / Registry</button>
+  <button class="filter-btn" onclick="filterCards('english', this)">English</button>
+</div>
+
+<!-- ROPING SECTION -->
+<div class="section-label">
+  <h2>Team Roping</h2>
+  <div class="line"></div>
+  <span class="count-tag">5 Orgs</span>
+</div>
+
+<div class="assoc-grid">
+
+  <div class="assoc-card" data-discipline="roping" onclick="window.open('https://www.ustrc.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">USTRC</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">United States Team Roping Championships</div>
+        <span class="assoc-discipline-tag">Team Roping</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The world's largest team roping organization, sanctioning hundreds of ropings annually across numbered handicap divisions. Founded in 1989 — the go-to for amateur ropers coast to coast.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">ustrc.com</span>
+      <span class="assoc-hq">Guthrie, OK</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="assoc-card" data-discipline="roping" onclick="window.open('https://www.wstr.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">WSTR</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">World Series of Team Roping</div>
+        <span class="assoc-discipline-tag">Team Roping</span>
+      </div>
+    </div>
+    <div class="assoc-desc">One of the premier team roping circuits with massive jackpot events and a championship finale. Known for drawing top amateur competitors and life-changing payouts.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">wstr.com</span>
+      <span class="assoc-hq">Scottsdale, AZ</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="assoc-card" data-discipline="roping" onclick="window.open('https://www.ntr.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">NTR</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">National Team Roping</div>
+        <span class="assoc-discipline-tag">Team Roping</span>
+      </div>
+    </div>
+    <div class="assoc-desc">A growing team roping association running events at arenas across the Southwest and beyond. Popular with Arizona ropers for local circuit events and year-end finals.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">ntr.com</span>
+      <span class="assoc-hq">Southwest US</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="assoc-card" data-discipline="roping" onclick="window.open('https://www.bfi.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">BFI</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">Best of the Best / Bob Feist Invitational</div>
+        <span class="assoc-discipline-tag">Team Roping</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The richest team roping in the world. Held annually in Reno, NV — the BFI draws the top amateur ropers competing for million-dollar-plus prize pools across all handicap numbers.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">bfi.com</span>
+      <span class="assoc-hq">Reno, NV</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="assoc-card" data-discipline="roping" onclick="window.open('https://www.heeleronline.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">TRAA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">Team Roping Arizona Association</div>
+        <span class="assoc-discipline-tag">Team Roping</span>
+      </div>
+    </div>
+    <div class="assoc-desc">Arizona's home-state team roping association running local jackpots, ropings, and series events at venues across the Valley and statewide. Strong presence at arenas like HorsePower and Southwest.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">Arizona-based</span>
+      <span class="assoc-hq">Arizona</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- RODEO SECTION -->
+<div class="section-label">
+  <h2>Rodeo</h2>
+  <div class="line"></div>
+  <span class="count-tag">2 Orgs</span>
+</div>
+
+<div class="assoc-grid">
+
+  <div class="assoc-card" data-discipline="rodeo" onclick="window.open('https://www.prorodeo.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">PRCA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">Professional Rodeo Cowboys Association</div>
+        <span class="assoc-discipline-tag">Rodeo</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The world's oldest and largest rodeo sanctioning organization. Governs professional rodeo competition in all standard events — bull riding, tie-down roping, steer wrestling, team roping, and more. Home of the NFR.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">prorodeo.com</span>
+      <span class="assoc-hq">Colorado Springs, CO</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="assoc-card" data-discipline="rodeo" onclick="window.open('https://www.wpra.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">WPRA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">Women's Professional Rodeo Association</div>
+        <span class="assoc-discipline-tag">Rodeo</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The sanctioning body for women's barrel racing at PRCA-approved rodeos. Governs the barrel racing event at the National Finals Rodeo and runs the world standings for professional barrel racers.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">wpra.com</span>
+      <span class="assoc-hq">Colorado Springs, CO</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- REINING SECTION -->
+<div class="section-label">
+  <h2>Reining</h2>
+  <div class="line"></div>
+  <span class="count-tag">1 Org</span>
+</div>
+
+<div class="assoc-grid">
+
+  <div class="assoc-card" data-discipline="reining" onclick="window.open('https://www.nrha.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">NRHA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">National Reining Horse Association</div>
+        <span class="assoc-discipline-tag">Reining</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The international governing body for the sport of reining. Sanctions competitions worldwide, maintains world standings, and hosts the NRHA Futurity — one of the richest equine events in the world at Oklahoma City.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">nrha.com</span>
+      <span class="assoc-hq">Oklahoma City, OK</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- BARREL RACING SECTION -->
+<div class="section-label">
+  <h2>Barrel Racing</h2>
+  <div class="line"></div>
+  <span class="count-tag">1 Org</span>
+</div>
+
+<div class="assoc-grid">
+
+  <div class="assoc-card" data-discipline="barrel" onclick="window.open('https://www.nbha.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">NBHA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">National Barrel Horse Association</div>
+        <span class="assoc-discipline-tag">Barrel Racing</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The world's largest barrel racing organization with 25,000+ members across the US and Canada. Runs district, state, and world championship events with divisions for all ages and skill levels.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">nbha.com</span>
+      <span class="assoc-hq">Augusta, GA</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- BREED / REGISTRY SECTION -->
+<div class="section-label">
+  <h2>Breed &amp; Registry</h2>
+  <div class="line"></div>
+  <span class="count-tag">2 Orgs</span>
+</div>
+
+<div class="assoc-grid">
+
+  <div class="assoc-card" data-discipline="breed" onclick="window.open('https://www.aqha.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">AQHA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">American Quarter Horse Association</div>
+        <span class="assoc-discipline-tag">Breed / Registry</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The world's largest equine breed registry with over 3 million members and 6 million registered horses. Sanctions horse shows, racing, and performance events across all western and English disciplines.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">aqha.com</span>
+      <span class="assoc-hq">Amarillo, TX</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="assoc-card" data-discipline="breed" onclick="window.open('https://www.apha.com','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">APHA</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">American Paint Horse Association</div>
+        <span class="assoc-discipline-tag">Breed / Registry</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The second-largest equine breed registry in the US. Sanctions western and English performance competition, halter classes, and youth events for Paint horses of all patterns.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">apha.com</span>
+      <span class="assoc-hq">Fort Worth, TX</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ENGLISH SECTION -->
+<div class="section-label">
+  <h2>English</h2>
+  <div class="line"></div>
+  <span class="count-tag">1 Org</span>
+</div>
+
+<div class="assoc-grid">
+
+  <div class="assoc-card" data-discipline="english" onclick="window.open('https://www.usef.org','_blank')">
+    <div class="assoc-header">
+      <div class="assoc-abbr">USEF</div>
+      <div class="assoc-name-wrap">
+        <div class="assoc-full-name">United States Equestrian Federation</div>
+        <span class="assoc-discipline-tag">English</span>
+      </div>
+    </div>
+    <div class="assoc-desc">The national governing body for equestrian sport in the United States. Sanctions competitions across hunter/jumper, dressage, eventing, endurance, and more. Also oversees the US Olympic equestrian program.</div>
+    <div class="assoc-footer">
+      <span class="assoc-website">usef.org</span>
+      <span class="assoc-hq">Lexington, KY</span>
+      <span class="assoc-arrow">→</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bridle &amp; Bit Magazine</div>
+  <div class="footer-links">
+    <a href="../">Home</a>
+    <a href="../team-roping/">Team Roping</a>
+    <a href="../media-guide/">Media Guide</a>
+    <a href="https://bridleandbit.com" target="_blank">bridleandbit.com</a>
+    <a href="https://teamroping.ai" target="_blank">TeamRoping.AI</a>
+  </div>
+  <div class="footer-copy">© 2025 Bridle &amp; Bit Magazine · AI Division</div>
+</footer>
+
+<script>
+function filterCards(discipline, btn) {
+  // Update buttons
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+
+  // Filter cards
+  document.querySelectorAll('.assoc-card').forEach(function(card) {
+    if (discipline === 'all' || card.getAttribute('data-discipline') === discipline) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  // Show/hide section labels based on visible cards
+  document.querySelectorAll('.section-label').forEach(function(label) {
+    var grid = label.nextElementSibling;
+    if (!grid) return;
+    var visible = grid.querySelectorAll('.assoc-card:not(.hidden)');
+    label.style.display = visible.length > 0 ? '' : 'none';
+    grid.style.display = visible.length > 0 ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
