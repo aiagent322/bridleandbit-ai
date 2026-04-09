@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USDA — United States Department of Agriculture | Bridle &amp; Bit Magazine</title>
+<meta name="description" content="The USDA's APHIS enforces the Horse Protection Act, runs national equine health monitoring, oversees disease surveillance and import quarantine, and funds biosecurity programs across the industry. Covered by Bridle & Bit Magazine.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust: #C1440E;
+    --tan: #D4A96A;
+    --cream: #F5EDD8;
+    --dark: #1A1208;
+    --bark: #3D2B1F;
+    --sage: #7A8C6E;
+    --sky: #5B8FA8;
+    --usda: #1B4D8E;
+    --usda-dark: #122F56;
+    --usda-green: #2E7D32;
+    --font-serif: 'Playfair Display', 'Georgia', serif;
+    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--dark); font-family: var(--font-sans); font-weight: 300; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    background: var(--bark);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--rust);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-back { color: var(--tan); font-size: 13px; font-weight: 600; }
+  .nav-divider { color: rgba(212,169,106,0.4); font-size: 13px; }
+  .nav-current { color: var(--cream); font-size: 13px; font-weight: 700; font-family: var(--font-serif); }
+  .nav-logo { margin-left: auto; font-family: var(--font-serif); font-size: 11px; font-weight: 700; color: rgba(245,237,216,0.5); letter-spacing: 0.5px; }
+
+  .hero {
+    background: var(--usda-dark);
+    padding: 28px 16px 22px;
+    text-align: center;
+    border-bottom: 3px solid var(--usda);
+  }
+
+  .hero-discipline {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    background: var(--usda);
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  .hero-abbr {
+    font-family: var(--font-serif);
+    font-size: clamp(52px, 14vw, 80px);
+    font-weight: 900;
+    color: var(--tan);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 6px;
+  }
+
+  .hero-full-name {
+    font-family: var(--font-serif);
+    font-size: clamp(13px, 3vw, 18px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--tan);
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+
+  .hero-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    max-width: 460px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--usda);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .hero-cta:hover { opacity: 0.85; }
+
+  .stats-bar-wrap {
+    background: var(--usda-dark);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(27,77,142,0.4);
+  }
+
+  .stats-bar {
+    background: var(--usda);
+    display: flex;
+    justify-content: space-between;
+    max-width: 640px;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .stat-item {
+    padding: 8px 10px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    flex: 1;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    font-weight: 700;
+  }
+
+  .content { max-width: 720px; margin: 0 auto; padding: 0 14px 40px; }
+  .section { margin-top: 28px; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .section-label h2 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bark);
+    white-space: nowrap;
+  }
+
+  .section-label .line { flex: 1; height: 1px; background: rgba(61,43,31,0.15); }
+
+  .body-text { font-size: 14px; line-height: 1.8; color: rgba(26,18,8,0.82); font-weight: 400; }
+  .body-text p + p { margin-top: 12px; }
+  .body-text strong { font-weight: 700; color: var(--dark); }
+
+  /* PROGRAM CARDS */
+  .program-cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media(min-width:560px) { .program-cards { grid-template-columns: 1fr 1fr; } }
+
+  .program-card {
+    background: white;
+    border: 1px solid rgba(61,43,31,0.1);
+    border-left: 4px solid var(--usda);
+    padding: 14px;
+  }
+
+  .program-card.hpa { border-left-color: var(--rust); }
+  .program-card.nahms { border-left-color: var(--usda-green); }
+  .program-card.quarantine { border-left-color: var(--sky); }
+  .program-card.nass { border-left-color: var(--sage); }
+
+  .program-name {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .program-abbr {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--usda);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .program-card.hpa .program-abbr { color: var(--rust); }
+  .program-card.nahms .program-abbr { color: var(--usda-green); }
+  .program-card.quarantine .program-abbr { color: var(--sky); }
+  .program-card.nass .program-abbr { color: var(--sage); }
+
+  .program-desc { font-size: 12px; line-height: 1.6; color: rgba(26,18,8,0.72); }
+
+  .program-badge {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(27,77,142,0.08);
+    color: var(--usda);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .program-badge.hpa { background: rgba(193,68,14,0.08); color: var(--rust); }
+  .program-badge.nahms { background: rgba(46,125,50,0.08); color: var(--usda-green); }
+  .program-badge.sky { background: rgba(91,143,168,0.1); color: var(--sky); }
+
+  /* HPA UPDATE BOX */
+  .hpa-update {
+    background: rgba(27,77,142,0.05);
+    border: 1px solid rgba(27,77,142,0.15);
+    border-left: 4px solid var(--usda);
+    padding: 14px 16px;
+    margin-top: 14px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .hpa-update-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--usda);
+    margin-bottom: 6px;
+  }
+
+  .hpa-update p { font-size: 13px; color: rgba(26,18,8,0.78); line-height: 1.6; }
+  .hpa-update strong { font-weight: 700; color: var(--dark); }
+
+  /* 2025 HIGHLIGHTS */
+  .highlight-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+
+  .highlight-row {
+    background: white;
+    border: 1px solid rgba(61,43,31,0.08);
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .highlight-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .highlight-text { font-size: 13px; line-height: 1.55; color: rgba(26,18,8,0.78); }
+  .highlight-text strong { font-weight: 700; color: var(--dark); }
+
+  /* RELEVANCE BOX */
+  .relevance-box {
+    background: var(--usda-dark);
+    border-radius: 4px;
+    padding: 18px 18px 16px;
+    margin-top: 4px;
+  }
+
+  .relevance-box p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.7;
+  }
+
+  .relevance-box p + p { margin-top: 10px; }
+  .relevance-box strong { color: var(--tan); font-weight: 700; }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--bark);
+    border-left: 4px solid var(--tan);
+    padding: 16px 16px 14px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout p { font-size: 13px; color: rgba(245,237,216,0.85); line-height: 1.7; font-style: italic; }
+  .callout cite { display: block; margin-top: 8px; font-size: 11px; font-style: normal; font-weight: 700; color: var(--tan); }
+
+  /* FACT TABLE */
+  .fact-table { width: 100%; border-collapse: collapse; font-size: 13px; background: white; border: 1px solid rgba(61,43,31,0.1); }
+  .fact-table tr { border-bottom: 1px solid rgba(61,43,31,0.07); }
+  .fact-table tr:last-child { border-bottom: none; }
+  .fact-table td { padding: 10px 14px; vertical-align: top; line-height: 1.5; }
+  .fact-table td:first-child { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(26,18,8,0.45); width: 38%; white-space: nowrap; }
+  .fact-table td:last-child { font-weight: 600; color: var(--dark); }
+
+  .visit-wrap { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(61,43,31,0.12); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+  .visit-btn {
+    display: inline-block;
+    background: var(--usda);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .visit-btn:hover { opacity: 0.85; }
+
+  .visit-btn-secondary {
+    display: inline-block;
+    background: white;
+    color: var(--usda);
+    border: 2px solid var(--usda);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .visit-btn-secondary:hover { opacity: 0.8; }
+
+  footer { background: var(--bark); border-top: 2px solid var(--rust); padding: 20px 16px; text-align: center; }
+  .footer-logo { font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--tan); margin-bottom: 10px; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; margin-bottom: 8px; }
+  .footer-links a { color: rgba(245,237,216,0.6); font-size: 12px; }
+  .footer-links a:hover { color: var(--tan); }
+  .footer-copy { font-size: 10px; color: rgba(245,237,216,0.3); letter-spacing: 0.5px; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="../../">← Home</a>
+  <span class="nav-divider">/</span>
+  <a class="nav-back" href="../">Associations</a>
+  <span class="nav-divider">/</span>
+  <span class="nav-current">USDA</span>
+  <span class="nav-logo">Bridle &amp; Bit</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-discipline">Federal Agency</div>
+  <div class="hero-abbr">USDA</div>
+  <div class="hero-full-name">United States Department of Agriculture</div>
+  <div class="hero-sub">Animal &amp; Plant Health Inspection Service (APHIS)</div>
+  <p class="hero-tagline">Federal steward of equine health, welfare, and industry data — the agency behind the Horse Protection Act, disease surveillance, import quarantine, and biosecurity funding.</p>
+  <a class="hero-cta" href="https://www.aphis.usda.gov" target="_blank" rel="noopener">Visit APHIS.USDA.gov →</a>
+</div>
+
+<div class="stats-bar-wrap">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">$800M</span>
+      <span class="stat-label">APHIS Annual Budget</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">7,000</span>
+      <span class="stat-label">APHIS Employees</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$15.3M</span>
+      <span class="stat-label">2025 Disease Grants</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">Dec 2026</span>
+      <span class="stat-label">HPA New Rules Effective</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <div class="section-label">
+      <h2>About USDA &amp; APHIS</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>The United States Department of Agriculture touches the horse industry in more ways than most horse owners realize. Through its <strong>Animal and Plant Health Inspection Service (APHIS)</strong> — an $800 million agency employing roughly 7,000 people across ports, borders, and farms — the USDA administers the laws and programs that govern equine health monitoring, disease surveillance, import quarantine, the Horse Protection Act, and biosecurity funding that reaches every corner of the industry.</p>
+      <p>APHIS was formally established in 1972, though its roots trace to 1854 when the first federal agricultural inspection functions were created. It is the primary federal authority for protecting US agriculture from invasive pests and diseases. Its <strong>Deputy Administrator for Veterinary Services</strong> serves as the Chief Veterinary Officer of the United States — and represents the US at the World Organisation for Animal Health (OIE). Every Coggins test, every horse imported from Europe, every EHV outbreak response — all run through the federal framework APHIS maintains.</p>
+    </div>
+
+    <div class="callout">
+      <p>"These projects will provide producers, veterinarians, and states with tools to better control, treat, and recover from foreign animal disease outbreaks."</p>
+      <cite>— Michael Watson, APHIS Administrator, on the 2025 NADPRP disease prevention grants</cite>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>Key Programs for the Horse Industry</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="program-cards">
+
+      <div class="program-card hpa">
+        <div class="program-name">Horse Protection Act</div>
+        <span class="program-abbr">HPA · Enforced by APHIS VMOs</span>
+        <div class="program-desc">Prohibits the showing, exhibiting, selling, or transporting of "sored" horses — animals subjected to painful techniques on their front feet to exaggerate their gait, most associated with the Tennessee Walking Horse industry. APHIS Veterinary Medical Officers conduct inspections at covered events. A sweeping regulatory overhaul published May 2024 is replacing the industry's Designated Qualified Person system with APHIS-trained Horse Protection Inspectors — effective December 31, 2026.</div>
+        <span class="program-badge hpa">HPI System effective Dec 31, 2026</span>
+      </div>
+
+      <div class="program-card nahms">
+        <div class="program-name">National Animal Health Monitoring System</div>
+        <span class="program-abbr">NAHMS · Equine Health Studies</span>
+        <div class="program-desc">APHIS's statistical unit responsible for national equine population estimates and health management studies. NAHMS conducted comprehensive equine studies in 1998, 2005, and 2015 — each a landmark in understanding the health, demographics, and management practices of US horse operations. The next study, NAHMS Equine 2026, is underway with Phase I contacting operations in all 50 states with five or more equids beginning August 2026.</div>
+        <span class="program-badge nahms">NAHMS Equine 2026 — Phase I Aug 2026</span>
+      </div>
+
+      <div class="program-card quarantine">
+        <div class="program-name">Disease Surveillance &amp; Import Quarantine</div>
+        <span class="program-abbr">APHIS Veterinary Services</span>
+        <div class="program-desc">APHIS Veterinary Services oversees national equine disease surveillance, outbreak investigations, and all import quarantine for horses entering the US. Horses requiring quarantine are held in USDA-APHIS facilities or APHIS-approved private quarantine facilities, where they are examined and tested for foreign animal diseases. APHIS also responds to disease emergencies — including the EHV outbreaks that disrupted multiple major horse events in 2025.</div>
+        <span class="program-badge sky">Coggins · Import quarantine · EHV response</span>
+      </div>
+
+      <div class="program-card nass">
+        <div class="program-name">National Agricultural Statistics Service Census</div>
+        <span class="program-abbr">NASS · Every 5 Years</span>
+        <div class="program-desc">The USDA's NASS conducts a Census of Agriculture every five years, counting equine populations on registered farms nationwide. This is the federal government's primary equine population data source — though it underestimates total US horse numbers since it excludes horses at boarding facilities, racetracks, and other non-farm operations, which can account for more than half the actual national herd.</div>
+        <span class="program-badge">Federal equine population baseline data</span>
+      </div>
+
+    </div>
+
+    <div class="hpa-update">
+      <div class="hpa-update-label">Horse Protection Act — 2025/2026 Update</div>
+      <p>A major regulatory overhaul of the Horse Protection Act was published by APHIS in May 2024. The rule replaces the industry's Designated Qualified Person (DQP) system with APHIS-trained <strong>Horse Protection Inspectors (HPIs)</strong> — who must be licensed veterinarians, vet techs, or state/local animal welfare officers. The HPI training program is currently paused for curriculum reevaluation. The new system takes full effect <strong>December 31, 2026</strong>. Until then, existing DQP regulations remain in force. For 2025, APHIS is exercising enforcement discretion on the scar rule consistent with practice from 2017–2023.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>2025 USDA Highlights</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="highlight-list">
+      <div class="highlight-row">
+        <div class="highlight-icon">💰</div>
+        <div class="highlight-text"><strong>$15.3 million in NADPRP disease prevention grants</strong> awarded to 68 projects — including University of Kentucky's "Biosecurity Blueprint: Safeguarding Horses, Poultry, and Livestock," Ohio State's equine disease preparedness program, and Texas A&M's New World Screwworm preparedness research.</div>
+      </div>
+      <div class="highlight-row">
+        <div class="highlight-icon">🐛</div>
+        <div class="highlight-text"><strong>New World Screwworm preparedness</strong> — USDA and the Army Corps of Engineers advanced a new Texas sterile fly facility contract. FDA issued emergency use authorization for a topical spray to prevent and treat screwworm in horses, cattle, sheep, goats, and other animals.</div>
+      </div>
+      <div class="highlight-row">
+        <div class="highlight-icon">🦠</div>
+        <div class="highlight-text"><strong>EHV biosecurity response</strong> — USDA biosecurity guidelines and state animal health officials working under the federal framework shaped the response to EHV-1/EHM outbreaks that forced venue changes at the NRCHA Snaffle Bit Futurity, the NFBR, and other major events in late 2025.</div>
+      </div>
+      <div class="highlight-row">
+        <div class="highlight-icon">📊</div>
+        <div class="highlight-text"><strong>NAHMS Equine 2026 study in development</strong> — the first comprehensive national equine health study since 2015. Phase I will contact randomly selected equine operations in all 50 states beginning August 2026.</div>
+      </div>
+      <div class="highlight-row">
+        <div class="highlight-icon">⚖️</div>
+        <div class="highlight-text"><strong>Horse Protection Act regulatory update</strong> — HPI training program paused for curriculum reevaluation; effective date further delayed to December 31, 2026. DQP system remains in place for all covered horse show inspections until then.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>Why It Matters to the Horse Industry</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="relevance-box">
+      <p>Every horse transported across state lines, every international import, every disease outbreak response, and every major biosecurity protocol in the US runs through USDA APHIS in some form. When equine herpesvirus outbreaks forced venue changes at the NRCHA Snaffle Bit Futurity and the NFBR in late 2025, it was <strong>USDA biosecurity guidelines and state animal health officials</strong> working under the federal APHIS framework that shaped each decision — from whether events could proceed to which biosecurity measures were required.</p>
+      <p>When you get a Coggins test before hauling your horse, the equine infectious anemia testing infrastructure runs through <strong>APHIS-approved laboratories</strong>. When a horse comes off a plane from Europe, a <strong>USDA import quarantine facility</strong> is its first stop. When a new disease threat emerges — like the New World Screwworm concern in 2025 — it is APHIS that coordinates the federal response, funds the research, and issues the emergency guidance that flows down to veterinarians, producers, and horse owners across the country.</p>
+      <p>The USDA is not a membership organization, a competition body, or an advocacy group. It is the <strong>quiet infrastructure</strong> that keeps the American horse industry operating safely — and its decisions directly shape what is and isn't possible at every level of equine competition, commerce, and care.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>Key Facts</h2>
+      <div class="line"></div>
+    </div>
+    <table class="fact-table">
+      <tr>
+        <td>Department</td>
+        <td>US Department of Agriculture (USDA)</td>
+      </tr>
+      <tr>
+        <td>Key Agency</td>
+        <td>Animal and Plant Health Inspection Service (APHIS)</td>
+      </tr>
+      <tr>
+        <td>APHIS Founded</td>
+        <td>1972 (origins trace to 1854)</td>
+      </tr>
+      <tr>
+        <td>APHIS Budget</td>
+        <td>~$800 million annually</td>
+      </tr>
+      <tr>
+        <td>APHIS Employees</td>
+        <td>~7,000 (including ~5,000 inspectors at ports &amp; farms)</td>
+      </tr>
+      <tr>
+        <td>Horse Protection Act</td>
+        <td>Prohibits soring — enforced at covered horse shows by APHIS VMOs</td>
+      </tr>
+      <tr>
+        <td>HPI System Effective</td>
+        <td>December 31, 2026 — replaces DQP system</td>
+      </tr>
+      <tr>
+        <td>NAHMS Equine 2026</td>
+        <td>Next national equine health study — Phase I begins August 2026</td>
+      </tr>
+      <tr>
+        <td>2025 Disease Grants</td>
+        <td>$15.3M+ in NADPRP biosecurity &amp; preparedness funding</td>
+      </tr>
+      <tr>
+        <td>Chief Vet Officer</td>
+        <td>APHIS Deputy Administrator for Veterinary Services</td>
+      </tr>
+      <tr>
+        <td>Equine Import</td>
+        <td>USDA-APHIS import quarantine facilities — all international arrivals</td>
+      </tr>
+      <tr>
+        <td>APHIS Website</td>
+        <td><a href="https://www.aphis.usda.gov" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:underline;text-underline-offset:2px;">aphis.usda.gov</a></td>
+      </tr>
+      <tr>
+        <td>Horse Protection</td>
+        <td><a href="https://www.aphis.usda.gov/hpa" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:underline;text-underline-offset:2px;">aphis.usda.gov/hpa</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="visit-wrap">
+    <a class="visit-btn" href="https://www.aphis.usda.gov" target="_blank" rel="noopener">Visit APHIS.USDA.gov →</a>
+    <a class="visit-btn-secondary" href="https://www.aphis.usda.gov/hpa" target="_blank" rel="noopener">Horse Protection Act →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Bridle &amp; Bit Magazine</div>
+  <div class="footer-links">
+    <a href="../../">Home</a>
+    <a href="../">Associations</a>
+    <a href="../../horse-property/">Horse Property</a>
+    <a href="https://bridleandbit.com" target="_blank">bridleandbit.com</a>
+    <a href="https://horsecalendar.ai" target="_blank">HorseCalendar.AI</a>
+  </div>
+  <div class="footer-copy">© 2025 Bridle &amp; Bit Magazine · AI Division · Content sourced from public records and official USDA APHIS materials</div>
+</footer>
+
+</body>
+</html>
