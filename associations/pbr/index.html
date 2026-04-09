@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PBR — Professional Bull Riders | Bridle &amp; Bit Magazine</title>
+<meta name="description" content="The world's premier bull riding organization — 800+ riders, 250+ annual events, $15M+ in prize money, and a $1 million World Champion bonus. Covered by Bridle & Bit Magazine.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust: #C1440E;
+    --tan: #D4A96A;
+    --cream: #F5EDD8;
+    --dark: #1A1208;
+    --bark: #3D2B1F;
+    --sage: #7A8C6E;
+    --sky: #5B8FA8;
+    --pbr: #1C1C1C;
+    --pbr-gold: #C9A227;
+    --font-serif: 'Playfair Display', 'Georgia', serif;
+    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--dark); font-family: var(--font-sans); font-weight: 300; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    background: var(--bark);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--rust);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-back { color: var(--tan); font-size: 13px; font-weight: 600; }
+  .nav-divider { color: rgba(212,169,106,0.4); font-size: 13px; }
+  .nav-current { color: var(--cream); font-size: 13px; font-weight: 700; font-family: var(--font-serif); }
+  .nav-logo { margin-left: auto; font-family: var(--font-serif); font-size: 11px; font-weight: 700; color: rgba(245,237,216,0.5); letter-spacing: 0.5px; }
+
+  .hero {
+    background: var(--pbr);
+    padding: 28px 16px 22px;
+    text-align: center;
+    border-bottom: 3px solid var(--pbr-gold);
+  }
+
+  .hero-discipline {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--pbr);
+    background: var(--pbr-gold);
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  .hero-abbr {
+    font-family: var(--font-serif);
+    font-size: clamp(52px, 14vw, 80px);
+    font-weight: 900;
+    color: var(--pbr-gold);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 6px;
+  }
+
+  .hero-full-name {
+    font-family: var(--font-serif);
+    font-size: clamp(14px, 3.5vw, 20px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    max-width: 440px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--pbr-gold);
+    color: var(--pbr);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .hero-cta:hover { opacity: 0.85; }
+
+  .stats-bar-wrap {
+    background: var(--pbr);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+  }
+
+  .stats-bar {
+    background: rgba(201,162,39,0.15);
+    display: flex;
+    justify-content: space-between;
+    max-width: 680px;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .stat-item {
+    padding: 8px 10px;
+    text-align: center;
+    border-right: 1px solid rgba(201,162,39,0.2);
+    flex: 1;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--pbr-gold);
+    display: block;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    font-weight: 700;
+  }
+
+  .content { max-width: 720px; margin: 0 auto; padding: 0 14px 40px; }
+  .section { margin-top: 28px; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .section-label h2 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bark);
+    white-space: nowrap;
+  }
+
+  .section-label .line { flex: 1; height: 1px; background: rgba(61,43,31,0.15); }
+
+  .body-text { font-size: 14px; line-height: 1.8; color: rgba(26,18,8,0.82); font-weight: 400; }
+  .body-text p + p { margin-top: 12px; }
+  .body-text strong { font-weight: 700; color: var(--dark); }
+
+  /* FOUNDING STORY BOX */
+  .founding-box {
+    background: var(--pbr);
+    border-left: 4px solid var(--pbr-gold);
+    padding: 16px 18px 14px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .founding-box p { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.7; font-style: italic; }
+  .founding-box cite { display: block; margin-top: 8px; font-size: 11px; font-style: normal; font-weight: 700; color: var(--pbr-gold); }
+
+  /* 8 SECONDS FEATURE */
+  .eight-seconds {
+    background: var(--pbr);
+    border-radius: 6px;
+    padding: 20px 18px;
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .eight-num {
+    font-family: var(--font-serif);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--pbr-gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .eight-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .eight-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  @media(min-width: 480px) { .eight-rules { grid-template-columns: repeat(4, 1fr); } }
+
+  .eight-rule {
+    background: rgba(255,255,255,0.06);
+    padding: 8px 10px;
+    border-radius: 3px;
+    border-top: 2px solid var(--pbr-gold);
+  }
+
+  .eight-rule-title { font-size: 10px; font-weight: 700; color: var(--pbr-gold); letter-spacing: 0.5px; margin-bottom: 3px; }
+  .eight-rule-text { font-size: 11px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+
+  /* TOUR CARDS */
+  .tour-cards { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  @media(min-width: 560px) { .tour-cards { grid-template-columns: 1fr 1fr; } }
+
+  .tour-card {
+    background: white;
+    border: 1px solid rgba(61,43,31,0.1);
+    border-left: 4px solid var(--pbr-gold);
+    padding: 14px;
+  }
+
+  .tour-card.velocity { border-left-color: var(--rust); }
+  .tour-card.team { border-left-color: var(--sky); }
+  .tour-card.challenger { border-left-color: var(--sage); }
+  .tour-card.pwr { border-left-color: #9B59B6; }
+  .tour-card.tpd { border-left-color: rgba(61,43,31,0.4); }
+
+  .tour-name { font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 5px; line-height: 1.3; }
+  .tour-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--pbr-gold);
+    background: rgba(201,162,39,0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-bottom: 7px;
+  }
+
+  .tour-tag.velocity { color: var(--rust); background: rgba(193,68,14,0.08); }
+  .tour-tag.team { color: var(--sky); background: rgba(91,143,168,0.1); }
+  .tour-tag.pwr { color: #9B59B6; background: rgba(155,89,182,0.08); }
+
+  .tour-desc { font-size: 12px; line-height: 1.6; color: rgba(26,18,8,0.72); }
+
+  /* WORLD FINALS BOX */
+  .finals-box {
+    background: var(--pbr);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  .finals-header {
+    background: var(--pbr-gold);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .finals-icon { font-size: 22px; }
+
+  .finals-title {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pbr);
+    line-height: 1.2;
+  }
+
+  .finals-body { padding: 16px; }
+  .finals-body p { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.7; }
+  .finals-body p + p { margin-top: 10px; }
+  .finals-body strong { color: var(--pbr-gold); font-weight: 700; }
+
+  .finals-venues {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .finals-venue {
+    background: rgba(255,255,255,0.06);
+    padding: 10px 12px;
+    border-radius: 3px;
+    border-top: 2px solid var(--pbr-gold);
+  }
+
+  .venue-name { font-size: 12px; font-weight: 700; color: white; margin-bottom: 2px; }
+  .venue-dates { font-size: 11px; color: rgba(255,255,255,0.55); }
+
+  /* EARNINGS */
+  .earnings-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+
+  .earnings-row {
+    background: white;
+    border: 1px solid rgba(61,43,31,0.08);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .earnings-amount {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--pbr-gold);
+    white-space: nowrap;
+    min-width: 90px;
+  }
+
+  .earnings-name { font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+  .earnings-detail { font-size: 11px; color: rgba(26,18,8,0.55); margin-top: 2px; }
+
+  /* FACT TABLE */
+  .fact-table { width: 100%; border-collapse: collapse; font-size: 13px; background: white; border: 1px solid rgba(61,43,31,0.1); }
+  .fact-table tr { border-bottom: 1px solid rgba(61,43,31,0.07); }
+  .fact-table tr:last-child { border-bottom: none; }
+  .fact-table td { padding: 10px 14px; vertical-align: top; line-height: 1.5; }
+  .fact-table td:first-child { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(26,18,8,0.45); width: 38%; white-space: nowrap; }
+  .fact-table td:last-child { font-weight: 600; color: var(--dark); }
+
+  .visit-wrap { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(61,43,31,0.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+
+  .visit-btn {
+    display: inline-block;
+    background: var(--pbr);
+    color: var(--pbr-gold);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+    border: 2px solid var(--pbr-gold);
+  }
+
+  .visit-btn:hover { opacity: 0.85; }
+  .visit-note { font-size: 12px; color: rgba(26,18,8,0.45); }
+
+  footer { background: var(--bark); border-top: 2px solid var(--rust); padding: 20px 16px; text-align: center; }
+  .footer-logo { font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--tan); margin-bottom: 10px; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; margin-bottom: 8px; }
+  .footer-links a { color: rgba(245,237,216,0.6); font-size: 12px; }
+  .footer-links a:hover { color: var(--tan); }
+  .footer-copy { font-size: 10px; color: rgba(245,237,216,0.3); letter-spacing: 0.5px; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="../../">← Home</a>
+  <span class="nav-divider">/</span>
+  <a class="nav-back" href="../">Associations</a>
+  <span class="nav-divider">/</span>
+  <span class="nav-current">PBR</span>
+  <span class="nav-logo">Bridle &amp; Bit</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-discipline">Bull Riding</div>
+  <div class="hero-abbr">PBR</div>
+  <div class="hero-full-name">Professional Bull Riders</div>
+  <p class="hero-tagline">The world's premier bull riding organization — eight seconds, one million dollars, and the fastest-growing sport in America.</p>
+  <a class="hero-cta" href="https://www.pbr.com" target="_blank" rel="noopener">Visit PBR.com →</a>
+</div>
+
+<div class="stats-bar-wrap">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">800+</span>
+      <span class="stat-label">Riders Worldwide</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">250+</span>
+      <span class="stat-label">Annual Events</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$15M+</span>
+      <span class="stat-label">Annual Prize Money</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$1M</span>
+      <span class="stat-label">World Champ Bonus</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1992</span>
+      <span class="stat-label">Founded</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <div class="section-label">
+      <h2>About PBR</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>In 1992, twenty bull riders pooled <strong>$1,000 each</strong> — some borrowed from family and friends — walked away from the traditional rodeo format, and bet everything on a single conviction: that bull riding, the most popular event in professional rodeo, deserved to stand alone. Founded in Scottsdale, Arizona, the Professional Bull Riders launched with a grassroots operation and an unshakeable belief that no sport could grab an audience the way an 8-second man-versus-beast duel could.</p>
+      <p>They were right. Today PBR is headquartered in the <strong>Fort Worth Stockyards</strong> (relocated 2024) and stands as one of the fastest-growing sports organizations in history. More than <strong>800 bull riders</strong> from the US, Australia, Brazil, Canada, Mexico, and other countries hold PBR memberships. The organization holds <strong>250+ events worldwide</strong> annually and awards more than <strong>$15 million in prize money</strong> per year. In October 2024, PBR was acquired by <strong>TKO Group Holdings</strong> — parent company of UFC and WWE — as part of a <strong>$3.25 billion deal</strong>, cementing the sport's status as a mainstream global entertainment property.</p>
+    </div>
+
+    <div class="founding-box">
+      <p>"This is the only sport in the world that I can take anyone to see, whether they know anything about it or not, and I guarantee you that they won't be able to take their eyes off of it."</p>
+      <cite>— Ty Murray, PBR Co-Founder</cite>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>The Format — 8 Seconds</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>The concept is deceptively simple: stay on a bucking bull for 8 seconds with one hand in the bull rope and one hand in the air. Everything that happens in those 8 seconds — the spins, the kicks, the drops, the recoveries — is judged on a 0–100 point scale split equally between rider and bull. A perfect score is 100 points total. The top bulls are as famous as the top riders — elite bucking bulls are stars in their own right, contracted, insured, and celebrated as professional athletes in their own division.</p>
+    </div>
+
+    <div class="eight-seconds">
+      <span class="eight-num">8</span>
+      <span class="eight-label">Seconds to glory — or the ground</span>
+
+      <div class="eight-rules">
+        <div class="eight-rule">
+          <div class="eight-rule-title">Clock Start</div>
+          <div class="eight-rule-text">Bull's shoulder or hip breaks the plane of the gate</div>
+        </div>
+        <div class="eight-rule">
+          <div class="eight-rule-title">Clock Stop</div>
+          <div class="eight-rule-text">Rider's hand comes out of the rope — voluntarily or not</div>
+        </div>
+        <div class="eight-rule">
+          <div class="eight-rule-title">Disqualification</div>
+          <div class="eight-rule-text">Free hand touches self, bull, or ground during the ride</div>
+        </div>
+        <div class="eight-rule">
+          <div class="eight-rule-title">Scoring</div>
+          <div class="eight-rule-text">0–50 for rider, 0–50 for bull — 100 points possible</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>Tour Structure</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="tour-cards">
+
+      <div class="tour-card">
+        <div class="tour-name">Unleash The Beast (UTB)</div>
+        <span class="tour-tag">Elite Premier Series</span>
+        <div class="tour-desc">The top tier of PBR competition and the main path to the World Finals and World Championship. Televised on CBS Sports and CBS Sports Network. Beginning in 2026, Paramount+ becomes the exclusive streaming home of Unleash The Beast under a landmark five-year media rights deal.</div>
+      </div>
+
+      <div class="tour-card team">
+        <div class="tour-name">PBR Team Series</div>
+        <span class="tour-tag team">Team Format</span>
+        <div class="tour-desc">Launched in 2022, the Team Series pairs riders on 10 franchise teams competing in a league format from summer through fall. The Stockyards Showcase at Cowtown Coliseum reached its 100th event in April 2025 — nearly $1.2M paid out at the historic Fort Worth venue by year's end. All 10 teams compete at the 2025 Championship.</div>
+      </div>
+
+      <div class="tour-card velocity">
+        <div class="tour-name">Pendleton Whisky Velocity Tour</div>
+        <span class="tour-tag velocity">Primary Qualifier</span>
+        <div class="tour-desc">The most important qualifying series for riders aspiring to reach the Unleash The Beast. Runs in tandem with the premier series throughout the season, featuring emerging talent alongside veterans competing for points and advancement opportunities.</div>
+      </div>
+
+      <div class="tour-card challenger">
+        <div class="tour-name">Challenger Series</div>
+        <span class="tour-tag">Proving Ground</span>
+        <div class="tour-desc">Launched alongside PBR Teams in 2022. A proving ground for both affiliated and unaffiliated riders to earn berths into Unleash The Beast events the following season — the proving ground between the developmental level and the sport's elite stage.</div>
+      </div>
+
+      <div class="tour-card tpd">
+        <div class="tour-name">Touring Pro Division</div>
+        <span class="tour-tag">Development Tour</span>
+        <div class="tour-desc">The developmental tour where both established veterans and newcomers compete in PBR-sanctioned events while earning points to qualify for the Velocity Tour and ultimately the Unleash The Beast. Runs year-round in unison with the elite series.</div>
+      </div>
+
+      <div class="tour-card pwr">
+        <div class="tour-name">PWR — Premier Women's Rodeo</div>
+        <span class="tour-tag pwr">Launched 2025</span>
+        <div class="tour-desc">Launched in late 2025 under Commissioner Linsay Rosser Sumpter. The largest all-women's rodeo — featuring Breakaway Roping, Barrel Racing, and Team Roping with equal payouts across disciplines. Nearly $4.5 million paid to female athletes, and the highest-rated rodeo telecast in history on CBS. Pro, Challenger, and Limited tiers for athletes 16+.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>PBR World Finals</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="finals-box">
+      <div class="finals-header">
+        <span class="finals-icon">🏆</span>
+        <div class="finals-title">The Richest Bull Riding Event on the Planet</div>
+      </div>
+      <div class="finals-body">
+        <p>The PBR World Finals is the culmination of the entire season — where the top riders compete for the gold buckle and a <strong>$1 million World Champion bonus</strong> plus a <strong>$350,000 Finals win bonus</strong>. For the 2024 and 2025 seasons, the World Finals spanned two venues in the Dallas-Fort Worth metroplex. In 2026 the Finals return entirely to Fort Worth across two stages.</p>
+        <p>The 2026 World Finals runs <strong>May 7–10 at Cowtown Coliseum</strong> and <strong>May 14–17 at Dickies Arena</strong> in Fort Worth — two venues, one champion. Tickets are on sale now at pbr.com.</p>
+
+        <div class="finals-venues">
+          <div class="finals-venue">
+            <div class="venue-name">Cowtown Coliseum</div>
+            <div class="venue-dates">Fort Worth Stockyards · May 7–10, 2026</div>
+          </div>
+          <div class="finals-venue">
+            <div class="venue-name">Dickies Arena</div>
+            <div class="venue-dates">Fort Worth · May 14–17, 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>2025 Notable Earnings</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>PBR prize pools have increased more than 400% since the 1990s, driven by media rights, sponsorships, and the 2022 launch of the Team Series. Top riders now compete with athletes in mainstream sports for total annual earnings.</p>
+    </div>
+
+    <div class="earnings-list" style="margin-top:14px;">
+      <div class="earnings-row">
+        <div class="earnings-amount">$2,157,388</div>
+        <div>
+          <div class="earnings-name">Jose Vitor Leme</div>
+          <div class="earnings-detail">2025 season earnings — 93% from premier events</div>
+        </div>
+      </div>
+      <div class="earnings-row">
+        <div class="earnings-amount">$387,000+</div>
+        <div>
+          <div class="earnings-name">Top 10 Riders Average</div>
+          <div class="earnings-detail">Excluding sponsorship and team salary income</div>
+        </div>
+      </div>
+      <div class="earnings-row">
+        <div class="earnings-amount">$1,350,000</div>
+        <div>
+          <div class="earnings-name">World Champion Total Bonus</div>
+          <div class="earnings-detail">$1M champion bonus + $350K World Finals win bonus</div>
+        </div>
+      </div>
+      <div class="earnings-row">
+        <div class="earnings-amount">$84,337</div>
+        <div>
+          <div class="earnings-name">#50 Ranked Rider</div>
+          <div class="earnings-detail">2025 earnings — illustrates depth of the prize pool</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">
+      <h2>Key Facts</h2>
+      <div class="line"></div>
+    </div>
+    <table class="fact-table">
+      <tr>
+        <td>Founded</td>
+        <td>1992 — Scottsdale, Arizona (20 riders, $1,000 each)</td>
+      </tr>
+      <tr>
+        <td>Headquarters</td>
+        <td>Fort Worth Stockyards, Texas (relocated 2024)</td>
+      </tr>
+      <tr>
+        <td>Members</td>
+        <td>800+ riders worldwide</td>
+      </tr>
+      <tr>
+        <td>Annual Events</td>
+        <td>250+ worldwide</td>
+      </tr>
+      <tr>
+        <td>Annual Prize Money</td>
+        <td>$15M+</td>
+      </tr>
+      <tr>
+        <td>World Champion Bonus</td>
+        <td>$1 million + $350K Finals win bonus</td>
+      </tr>
+      <tr>
+        <td>Owner (2024)</td>
+        <td>TKO Group Holdings — $3.25B deal (UFC/WWE parent)</td>
+      </tr>
+      <tr>
+        <td>Premier Series</td>
+        <td>Unleash The Beast (UTB)</td>
+      </tr>
+      <tr>
+        <td>Streaming (2026)</td>
+        <td>Paramount+ — exclusive, 5-year deal</td>
+      </tr>
+      <tr>
+        <td>TV</td>
+        <td>CBS Sports / CBS Sports Network</td>
+      </tr>
+      <tr>
+        <td>Women's Division</td>
+        <td>PWR — Premier Women's Rodeo (launched late 2025)</td>
+      </tr>
+      <tr>
+        <td>2026 World Finals</td>
+        <td>May 7–17 · Cowtown Coliseum &amp; Dickies Arena, Fort Worth</td>
+      </tr>
+      <tr>
+        <td>Website</td>
+        <td><a href="https://www.pbr.com" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:underline;text-underline-offset:2px;">pbr.com</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="visit-wrap">
+    <a class="visit-btn" href="https://www.pbr.com" target="_blank" rel="noopener">Visit PBR.com →</a>
+    <span class="visit-note">Events, standings, tickets, Team Series &amp; RidePass streaming</span>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Bridle &amp; Bit Magazine</div>
+  <div class="footer-links">
+    <a href="../../">Home</a>
+    <a href="../">Associations</a>
+    <a href="../../team-roping/">Team Roping</a>
+    <a href="https://bridleandbit.com" target="_blank">bridleandbit.com</a>
+    <a href="https://horsecalendar.ai" target="_blank">HorseCalendar.AI</a>
+  </div>
+  <div class="footer-copy">© 2025 Bridle &amp; Bit Magazine · AI Division · Content sourced from public records and official association materials</div>
+</footer>
+
+</body>
+</html>
