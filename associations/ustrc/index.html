@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USTRC — United States Team Roping Championships | Bridle &amp; Bit Magazine</title>
+<meta name="description" content="The world's largest team roping organization. 35,000+ members, 100+ annual events, and the Cinch National Finals of Team Roping in Fort Worth, Texas — covered by Bridle & Bit Magazine.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust: #C1440E;
+    --tan: #D4A96A;
+    --cream: #F5EDD8;
+    --dark: #1A1208;
+    --bark: #3D2B1F;
+    --sage: #7A8C6E;
+    --sky: #5B8FA8;
+    --light-tan: #EDE0C4;
+    --font-serif: 'Playfair Display', 'Georgia', serif;
+    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    background: var(--bark);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--rust);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-back {
+    color: var(--tan);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-divider {
+    color: rgba(212,169,106,0.4);
+    font-size: 13px;
+  }
+
+  .nav-current {
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: var(--font-serif);
+  }
+
+  .nav-logo {
+    margin-left: auto;
+    font-family: var(--font-serif);
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(245,237,216,0.5);
+    letter-spacing: 0.5px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--bark);
+    padding: 28px 16px 22px;
+    text-align: center;
+    border-bottom: 1px solid rgba(212,169,106,0.2);
+  }
+
+  .hero-discipline {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    background: var(--rust);
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  .hero-abbr {
+    font-family: var(--font-serif);
+    font-size: clamp(52px, 14vw, 80px);
+    font-weight: 900;
+    color: var(--tan);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 6px;
+  }
+
+  .hero-full-name {
+    font-family: var(--font-serif);
+    font-size: clamp(14px, 3.5vw, 20px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 12px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    max-width: 440px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--rust);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+
+  .hero-cta:hover { background: #a33a0c; }
+
+  /* STATS BAR */
+  .stats-bar-wrap {
+    background: var(--bark);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(212,169,106,0.2);
+  }
+
+  .stats-bar {
+    background: var(--rust);
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .stat-item {
+    padding: 8px 10px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    flex: 1;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+  }
+
+  /* CONTENT WRAPPER */
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 14px 40px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-top: 28px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .section-label h2 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bark);
+    white-space: nowrap;
+  }
+
+  .section-label .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(61,43,31,0.15);
+  }
+
+  /* BODY TEXT */
+  .body-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(26,18,8,0.82);
+    font-weight: 400;
+  }
+
+  .body-text p + p {
+    margin-top: 12px;
+  }
+
+  .body-text strong {
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  /* DIVISIONS */
+  .divisions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .division-chip {
+    background: white;
+    border: 1px solid rgba(61,43,31,0.12);
+    border-left: 3px solid var(--rust);
+    padding: 8px 10px;
+    border-radius: 3px;
+  }
+
+  .division-chip.legends {
+    border-left-color: var(--sage);
+  }
+
+  .division-chip .div-num {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--rust);
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .division-chip.legends .div-num {
+    color: var(--sage);
+  }
+
+  .division-chip .div-label {
+    font-size: 10px;
+    color: rgba(26,18,8,0.55);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* RESULTS TABLE */
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .results-table thead th {
+    background: var(--bark);
+    color: var(--tan);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 8px 10px;
+    text-align: left;
+  }
+
+  .results-table tbody tr {
+    border-bottom: 1px solid rgba(61,43,31,0.08);
+    transition: background 0.1s;
+  }
+
+  .results-table tbody tr:hover { background: rgba(255,255,255,0.6); }
+
+  .results-table tbody td {
+    padding: 9px 10px;
+    vertical-align: top;
+    color: rgba(26,18,8,0.82);
+    line-height: 1.4;
+  }
+
+  .results-table .division-cell {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--rust);
+    white-space: nowrap;
+  }
+
+  .results-table .payout-cell {
+    font-weight: 700;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+
+  /* FACT TABLE */
+  .fact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid rgba(61,43,31,0.1);
+  }
+
+  .fact-table tr {
+    border-bottom: 1px solid rgba(61,43,31,0.07);
+  }
+
+  .fact-table tr:last-child { border-bottom: none; }
+
+  .fact-table td {
+    padding: 10px 14px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .fact-table td:first-child {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(26,18,8,0.45);
+    width: 38%;
+    white-space: nowrap;
+  }
+
+  .fact-table td:last-child {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 13px;
+  }
+
+  /* CALLOUT BOX */
+  .callout {
+    background: var(--bark);
+    border-left: 4px solid var(--tan);
+    padding: 16px 16px 14px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout p {
+    font-size: 13px;
+    color: rgba(245,237,216,0.85);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .callout cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--tan);
+    letter-spacing: 0.5px;
+  }
+
+  /* VISIT BUTTON */
+  .visit-wrap {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(61,43,31,0.12);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .visit-btn {
+    display: inline-block;
+    background: var(--rust);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+
+  .visit-btn:hover { background: #a33a0c; }
+
+  .visit-note {
+    font-size: 12px;
+    color: rgba(26,18,8,0.45);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bark);
+    border-top: 2px solid var(--rust);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tan);
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 14px;
+    margin-bottom: 8px;
+  }
+
+  .footer-links a {
+    color: rgba(245,237,216,0.6);
+    font-size: 12px;
+  }
+
+  .footer-links a:hover { color: var(--tan); }
+
+  .footer-copy {
+    font-size: 10px;
+    color: rgba(245,237,216,0.3);
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+  }
+
+  @media(min-width: 560px) {
+    .divisions-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-back" href="../../">← Home</a>
+  <span class="nav-divider">/</span>
+  <a class="nav-back" href="../">Associations</a>
+  <span class="nav-divider">/</span>
+  <span class="nav-current">USTRC</span>
+  <span class="nav-logo">Bridle &amp; Bit</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-discipline">Team Roping</div>
+  <div class="hero-abbr">USTRC</div>
+  <div class="hero-full-name">United States Team Roping Championships</div>
+  <p class="hero-tagline">The world's largest team roping organization — 35,000+ members, 100+ annual events, and the biggest roping finals on the planet.</p>
+  <a class="hero-cta" href="https://www.ustrc.com" target="_blank" rel="noopener">Visit USTRC.com →</a>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar-wrap">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">35K+</span>
+      <span class="stat-label">Members</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100+</span>
+      <span class="stat-label">Annual Events</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$3.3M</span>
+      <span class="stat-label">Finals Payout</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1989</span>
+      <span class="stat-label">Founded</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-label">
+      <h2>About the USTRC</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>Founded in 1989 by Denny Gentry in Stephenville, Texas, the United States Team Roping Championships is the world's leading team roping member organization and one of the largest single-discipline equine groups in the nation. What started as a grassroots effort to give amateur ropers a fair, organized place to compete has grown into a global enterprise with more than <strong>35,000 members</strong> across the United States, Canada, Mexico, and South America.</p>
+      <p>The USTRC built the infrastructure of amateur team roping as we know it today — a numbered handicap system, regional qualifying circuits, and a national finals that draws more competing teams than any other roping event in the world. In 2017, the organization was acquired by Active Interest Media (AIM), which also owns the World Series of Team Roping (WSTR), making AIM the dominant force in competitive amateur roping. Gentry stayed on as Director of Roping Operations, ensuring the culture and competitive integrity he built over nearly three decades remained intact.</p>
+    </div>
+  </div>
+
+  <!-- HANDICAP SYSTEM -->
+  <div class="section">
+    <div class="section-label">
+      <h2>The Handicap System</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>The USTRC runs on a numbered classification system managed by the <strong>TRIAD Classification Agency</strong> — a separate entity using proprietary software and real-time performance data to assign and adjust every roper's number. Each competitor carries a header number and a heeler number. To enter a division, the combined total of both partners cannot exceed the division cap. A #9.5 team, for example, might pair a 4.5 header with a 5.0 heeler — or any combination that adds up to 9.5 or under.</p>
+      <p>This system is the backbone of what makes the USTRC work. It puts recreational ropers against other recreational ropers, and prevents sandbagging at every level. TRIAD monitors performance in real time, and numbers can be adjusted based on results — keeping the competition honest from your local jackpot all the way to the National Finals.</p>
+    </div>
+
+    <div class="divisions-grid" style="margin-top:16px;">
+      <div class="division-chip">
+        <span class="div-num">#7</span>
+        <span class="div-label">Entry Level</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#8.5</span>
+        <span class="div-label">Recreational</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#9.5</span>
+        <span class="div-label">Truck Roping</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#10.5</span>
+        <span class="div-label">Intermediate</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#11.5</span>
+        <span class="div-label">Advanced</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#12.5</span>
+        <span class="div-label">Competitive</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#13.5</span>
+        <span class="div-label">Elite Amateur</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#14.5</span>
+        <span class="div-label">Elite Amateur</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#15.5</span>
+        <span class="div-label">Open-Adjacent</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">#16.5</span>
+        <span class="div-label">Open-Adjacent</span>
+      </div>
+      <div class="division-chip">
+        <span class="div-num">Open</span>
+        <span class="div-label">Pro / No Cap</span>
+      </div>
+      <div class="division-chip legends">
+        <span class="div-num">40+</span>
+        <span class="div-label">Legends Over 40</span>
+      </div>
+      <div class="division-chip legends">
+        <span class="div-num">50+</span>
+        <span class="div-label">Legends Over 50</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NATIONAL FINALS -->
+  <div class="section">
+    <div class="section-label">
+      <h2>The Cinch National Finals of Team Roping</h2>
+      <div class="line"></div>
+    </div>
+    <div class="body-text">
+      <p>The Cinch National Finals of Team Roping (NFTR) is the crown jewel of the USTRC — and the single largest team roping event in the world by entry count. Held each spring at the <strong>Will Rogers Memorial Center in Fort Worth, Texas</strong>, the NFTR spans eight action-packed days across three simultaneous arenas: the John Justin Arena, the Pavilion, and the Will Rogers Coliseum.</p>
+      <p>The three-arena format is an engineering achievement in its own right. A roping team can complete all three of their steers in under thirteen minutes — coiling up in the John Justin, riding into the Pavilion, and finishing in the Will Rogers Coliseum before the adrenaline has even worn off. It keeps the event moving, keeps competitors focused, and creates an atmosphere unlike anything else in the sport.</p>
+      <p>The 2025 edition — the <strong>36th annual Cinch NFTR</strong> — drew nearly <strong>5,500 teams</strong> from across the US, Canada, Mexico, and South America, awarding close to <strong>$3.3 million in cash</strong> plus an additional quarter million in prizes. Champions were crowned in nearly 40 separate events across all divisions, Legends categories, Shootouts, and specialty ropings. The event also hosted the <strong>Total Feeds National Breakaway Championships</strong>, reflecting the rapid growth of women's breakaway roping nationwide.</p>
+      <p>The <strong>37th annual Cinch NFTR</strong> is scheduled for <strong>April 19–26, 2026</strong> at the Will Rogers Memorial Center, Fort Worth, Texas.</p>
+    </div>
+
+    <div class="callout">
+      <p>"We are so fortunate to have so many talented people who contribute to the success of this event. Those producers and their local team ropers are the backbone of this association, and we couldn't do it without them."</p>
+      <cite>— Johnny Johnson, President, USTRC</cite>
+    </div>
+  </div>
+
+  <!-- 2025 RESULTS -->
+  <div class="section">
+    <div class="section-label">
+      <h2>2025 National Finals — Notable Results</h2>
+      <div class="line"></div>
+    </div>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Division</th>
+          <th>Champions</th>
+          <th>Time / Head</th>
+          <th>Payout</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="division-cell">#13.5 Succeed Shootout</td>
+          <td>Sterlin English &amp; Hollis Harris</td>
+          <td>—</td>
+          <td class="payout-cell">$55,000</td>
+        </tr>
+        <tr>
+          <td class="division-cell">#12.5 Resistol Shootout</td>
+          <td>Canyon Pennell &amp; Jay Shaffer</td>
+          <td>29.01 / 4 head</td>
+          <td class="payout-cell">$58,000</td>
+        </tr>
+        <tr>
+          <td class="division-cell">#11.5 WSTR Qualifier</td>
+          <td>John Fowler &amp; Kaleb Asay</td>
+          <td>31.85 / 4 head</td>
+          <td class="payout-cell">$44,000</td>
+        </tr>
+        <tr>
+          <td class="division-cell">#9.5 NRS Truck Roping</td>
+          <td>JD Dubois (swept 1st–3rd, age 15)</td>
+          <td>—</td>
+          <td class="payout-cell">$47,530</td>
+        </tr>
+        <tr>
+          <td class="division-cell">#16.5 Succeed Shootout</td>
+          <td>Justin Pruitt &amp; Tommy Zuniga</td>
+          <td>27.17 / 4 head</td>
+          <td class="payout-cell">$28,640</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- KEY FACTS -->
+  <div class="section">
+    <div class="section-label">
+      <h2>Key Facts</h2>
+      <div class="line"></div>
+    </div>
+    <table class="fact-table">
+      <tr>
+        <td>Founded</td>
+        <td>1989, Stephenville, Texas</td>
+      </tr>
+      <tr>
+        <td>Founder</td>
+        <td>Denny Gentry</td>
+      </tr>
+      <tr>
+        <td>Headquarters</td>
+        <td>Albuquerque, New Mexico</td>
+      </tr>
+      <tr>
+        <td>Membership</td>
+        <td>35,000+ worldwide</td>
+      </tr>
+      <tr>
+        <td>Annual Events</td>
+        <td>100+ qualifying ropings nationwide</td>
+      </tr>
+      <tr>
+        <td>National Finals</td>
+        <td>Will Rogers Memorial Center, Fort Worth, TX</td>
+      </tr>
+      <tr>
+        <td>2026 Finals Dates</td>
+        <td>April 19–26, 2026</td>
+      </tr>
+      <tr>
+        <td>Annual Payout</td>
+        <td>$3.3M+ cash &plus; $250K+ in prizes</td>
+      </tr>
+      <tr>
+        <td>Handicap System</td>
+        <td>TRIAD Classification Agency</td>
+      </tr>
+      <tr>
+        <td>Parent Company</td>
+        <td>Active Interest Media (since 2017)</td>
+      </tr>
+      <tr>
+        <td>Website</td>
+        <td><a href="https://www.ustrc.com" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:underline;text-underline-offset:2px;">ustrc.com</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- VISIT CTA -->
+  <div class="visit-wrap">
+    <a class="visit-btn" href="https://www.ustrc.com" target="_blank" rel="noopener">Visit USTRC.com →</a>
+    <span class="visit-note">Memberships, event locator, results, and entry information</span>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bridle &amp; Bit Magazine</div>
+  <div class="footer-links">
+    <a href="../../">Home</a>
+    <a href="../">Associations</a>
+    <a href="../../team-roping/">Team Roping Events</a>
+    <a href="https://teamroping.ai" target="_blank">TeamRoping.AI</a>
+    <a href="https://bridleandbit.com" target="_blank">bridleandbit.com</a>
+  </div>
+  <div class="footer-copy">© 2025 Bridle &amp; Bit Magazine · AI Division · Content sourced from public records and official association materials</div>
+</footer>
+
+</body>
+</html>
