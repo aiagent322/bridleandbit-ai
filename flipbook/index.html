@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read the Magazine | Bridle &amp; Bit</title>
+<meta name="description" content="Read Bridle & Bit Magazine as an interactive flipbook. Arizona's premier horse publication since 1978.">
+<meta name="theme-color" content="#3D2B1F">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+  :root {
+    --rust:      #C1440E;
+    --tan:       #D4A96A;
+    --cream:     #F5EDD8;
+    --dark:      #1A1208;
+    --bark:      #3D2B1F;
+    --sage:      #7A8C6E;
+    --light-tan: #EDE0C4;
+    --flip-dur:  0.7s;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bark);
+    background-image:
+      radial-gradient(ellipse at 50% 0%, #5a3820 0%, transparent 55%),
+      repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 6px);
+    min-height: 100vh;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Top bar ── */
+  .topbar {
+    width: 100%;
+    background: var(--dark);
+    border-bottom: 2px solid var(--rust);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  .topbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--tan);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+  .topbar-back {
+    font-size: 0.8rem;
+    color: var(--tan);
+    opacity: 0.75;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(212,169,106,0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+  .topbar-back:hover { opacity: 1; border-color: var(--tan); }
+
+  /* ── Page header ── */
+  header {
+    text-align: center;
+    padding: 22px 20px 16px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    color: var(--tan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  header p {
+    font-size: 0.82rem;
+    color: rgba(212,169,106,0.6);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Upload zone ── */
+  #upload-zone {
+    border: 2px dashed var(--tan);
+    border-radius: 8px;
+    padding: 36px 48px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(212,169,106,0.06);
+    transition: background 0.2s, border-color 0.2s;
+    max-width: 500px;
+    width: calc(100% - 40px);
+    margin-bottom: 20px;
+  }
+  #upload-zone:hover, #upload-zone.drag-over {
+    background: rgba(212,169,106,0.13);
+    border-color: #e8c97a;
+  }
+  #upload-zone svg { margin-bottom: 10px; }
+  #upload-zone h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--tan);
+    margin-bottom: 5px;
+  }
+  #upload-zone p { color: rgba(212,169,106,0.55); font-size: 0.82rem; }
+  #file-input { display: none; }
+
+  /* ── Flipbook section ── */
+  #flipbook-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    padding: 0 10px 40px;
+  }
+
+  /* ── Book outer glow ── */
+  #book-outer {
+    filter: drop-shadow(0 20px 44px rgba(0,0,0,0.75)) drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+  }
+
+  /* ── Book stage ── */
+  #book-stage { perspective: 2000px; position: relative; }
+
+  #book {
+    position: relative;
+    display: flex;
+    transform-style: preserve-3d;
+  }
+
+  /* ── Page halves ── */
+  .book-cover {
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  #left-cover  { border-radius: 4px 0 0 4px; border-right: 1px solid rgba(0,0,0,0.08); }
+  #right-cover { border-radius: 0 4px 4px 0; border-left:  1px solid rgba(0,0,0,0.08); }
+  .book-cover canvas { display: block; }
+
+  #left-cover::after {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(to right, transparent 85%, rgba(0,0,0,0.22));
+    pointer-events:none;
+  }
+  #right-cover::before {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(to left, transparent 85%, rgba(0,0,0,0.22));
+    pointer-events:none; z-index:1;
+  }
+
+  /* ── Spine ── */
+  #spine-line {
+    position:absolute; top:0; bottom:0; left:50%;
+    transform:translateX(-50%);
+    width:6px;
+    background: linear-gradient(to bottom, #c4823a, #8b4513, #c4823a);
+    z-index:10; border-radius:2px;
+    box-shadow: 0 0 10px rgba(139,69,19,0.7);
+    transition: opacity 0.3s;
+  }
+
+  /* ── Flip page ── */
+  #flip-page {
+    position:absolute; top:0; height:100%;
+    transform-style:preserve-3d;
+    pointer-events:none; z-index:20; display:none;
+  }
+  #flip-page.from-right { left:50%; transform-origin:left center; }
+  #flip-page.from-left  { left:0;   transform-origin:right center; }
+
+  .flip-face { position:absolute; inset:0; backface-visibility:hidden; overflow:hidden; }
+  .flip-face canvas { display:block; }
+  #flip-front { background:var(--cream); }
+  #flip-back  { background:var(--cream); transform:rotateY(180deg); }
+
+  /* ── Click nav zones ── */
+  .nav-zone { position:absolute; top:0; bottom:0; width:40%; z-index:30; cursor:pointer; }
+  #nav-left  { left:0; }
+  #nav-right { right:0; }
+
+  /* ── Controls ── */
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(26,18,8,0.5);
+    border: 1px solid rgba(212,169,106,0.28);
+    border-radius: 40px;
+    padding: 9px 22px;
+    backdrop-filter: blur(6px);
+  }
+  .btn-icon {
+    background: none;
+    border: 1.5px solid var(--tan);
+    color: var(--tan);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 1.05rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-icon:hover:not(:disabled) { background:var(--tan); color:var(--dark); }
+  .btn-icon:disabled { opacity:0.3; cursor:default; }
+
+  .btn {
+    background: none;
+    border: 1.5px solid var(--tan);
+    color: var(--tan);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover:not(:disabled) { background:var(--tan); color:var(--dark); }
+  .btn:disabled { opacity:0.3; cursor:default; }
+
+  #page-display {
+    font-family: 'Playfair Display', serif;
+    color: var(--tan);
+    font-size: 0.85rem;
+    min-width: 110px;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Thumbnails ── */
+  #thumb-strip {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    max-width: min(95vw, 860px);
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tan) transparent;
+  }
+  .thumb {
+    flex-shrink: 0;
+    border: 1.5px solid rgba(212,169,106,0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+    opacity: 0.55;
+  }
+  .thumb:hover { opacity: 0.8; transform: translateY(-2px); }
+  .thumb.active { border-color: var(--tan); opacity: 1; }
+  .thumb canvas { display:block; }
+
+  /* ── Loading ── */
+  #loading {
+    position:fixed; inset:0;
+    background: rgba(26,18,8,0.88);
+    display:none; flex-direction:column;
+    align-items:center; justify-content:center;
+    z-index:999; color:var(--tan);
+  }
+  #loading.active { display:flex; }
+  #loading-text {
+    font-family:'Playfair Display',serif;
+    font-size:1.05rem;
+    margin-top:18px;
+    letter-spacing:0.06em;
+  }
+  .spinner {
+    width:44px; height:44px;
+    border:3px solid rgba(212,169,106,0.2);
+    border-top-color:var(--tan);
+    border-radius:50%;
+    animation:spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  /* ── Reset btn ── */
+  #reset-btn {
+    position:fixed; top:14px; right:18px;
+    background:none;
+    border:1px solid rgba(212,169,106,0.35);
+    color:rgba(212,169,106,0.65);
+    font-family:'Source Sans 3',sans-serif;
+    font-size:0.75rem;
+    padding:4px 13px;
+    border-radius:20px;
+    cursor:pointer;
+    letter-spacing:0.04em;
+    display:none;
+    transition:border-color 0.2s, color 0.2s;
+    z-index:50;
+  }
+  #reset-btn:hover { border-color:var(--tan); color:var(--tan); }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <a class="topbar-brand" href="../">🐴 Bridle &amp; Bit Magazine</a>
+  <a class="topbar-back" href="../">← Back</a>
+</div>
+
+<header>
+  <h1>Read the Magazine</h1>
+  <p>Upload any issue PDF to read as an interactive flipbook</p>
+</header>
+
+<!-- Upload -->
+<div id="upload-zone">
+  <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+    <path d="M8 36V40H40V36" stroke="#D4A96A" stroke-width="2" stroke-linecap="round"/>
+    <path d="M24 28V12" stroke="#D4A96A" stroke-width="2" stroke-linecap="round"/>
+    <path d="M16 20L24 12L32 20" stroke="#D4A96A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="4" y="8" width="40" height="28" rx="3" stroke="rgba(212,169,106,0.3)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  </svg>
+  <h2>Drop your PDF here</h2>
+  <p>or click to browse</p>
+  <input type="file" id="file-input" accept=".pdf">
+</div>
+
+<!-- Flipbook -->
+<div id="flipbook-section">
+  <div id="book-outer">
+    <div id="book-stage">
+      <div id="book">
+        <div class="book-cover" id="left-cover"><canvas id="left-canvas"></canvas></div>
+        <div id="spine-line"></div>
+        <div class="book-cover" id="right-cover"><canvas id="right-canvas"></canvas></div>
+        <div id="flip-page">
+          <div class="flip-face" id="flip-front"><canvas id="flip-front-canvas"></canvas></div>
+          <div class="flip-face" id="flip-back"><canvas id="flip-back-canvas"></canvas></div>
+        </div>
+        <div class="nav-zone" id="nav-left"></div>
+        <div class="nav-zone" id="nav-right"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="controls">
+    <button class="btn-icon" id="prev-btn">&#8592;</button>
+    <span id="page-display">Cover</span>
+    <button class="btn-icon" id="next-btn">&#8594;</button>
+    <button class="btn" id="zoom-btn">Zoom</button>
+  </div>
+
+  <div id="thumb-strip"></div>
+</div>
+
+<!-- Loading -->
+<div id="loading">
+  <div class="spinner"></div>
+  <div id="loading-text">Preparing your issue…</div>
+</div>
+
+<!-- Reset -->
+<button id="reset-btn">✕ New PDF</button>
+
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+// ── State ──────────────────────────────────────────────
+let pdfDoc = null, totalPages = 0, spread = 0;
+let PAGE_W = 0, PAGE_H = 0, SCALE = 1;
+let isFlipping = false;
+
+// Cover-first layout:
+//   spread 0 → left=blank(0), right=page 1  (solo cover)
+//   spread 1 → left=page 2,   right=page 3
+//   spread N → left=N*2,      right=N*2+1
+function leftPage()  { return spread === 0 ? 0 : spread * 2; }
+function rightPage() { return spread === 0 ? 1 : spread * 2 + 1; }
+function maxSpread() { return Math.ceil(totalPages / 2); }
+
+// ── UI refs ────────────────────────────────────────────
+const uploadZone      = document.getElementById('upload-zone');
+const fileInput       = document.getElementById('file-input');
+const flipbookSection = document.getElementById('flipbook-section');
+const book            = document.getElementById('book');
+const bookStage       = document.getElementById('book-stage');
+const leftCanvas      = document.getElementById('left-canvas');
+const rightCanvas     = document.getElementById('right-canvas');
+const flipPage        = document.getElementById('flip-page');
+const flipFrontCanvas = document.getElementById('flip-front-canvas');
+const flipBackCanvas  = document.getElementById('flip-back-canvas');
+const prevBtn         = document.getElementById('prev-btn');
+const nextBtn         = document.getElementById('next-btn');
+const pageDisplay     = document.getElementById('page-display');
+const zoomBtn         = document.getElementById('zoom-btn');
+const thumbStrip      = document.getElementById('thumb-strip');
+const loadingEl       = document.getElementById('loading');
+const resetBtn        = document.getElementById('reset-btn');
+const navLeft         = document.getElementById('nav-left');
+const navRight        = document.getElementById('nav-right');
+const spineEl         = document.getElementById('spine-line');
+
+// ── Upload ─────────────────────────────────────────────
+uploadZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadPDF(e.target.files[0]); });
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault(); uploadZone.classList.remove('drag-over');
+  const f = e.dataTransfer.files[0];
+  if (f && f.type === 'application/pdf') loadPDF(f);
+});
+
+// ── Load PDF ───────────────────────────────────────────
+async function loadPDF(file) {
+  showLoading('Loading issue…');
+  const arrayBuffer = await file.arrayBuffer();
+  pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  totalPages = pdfDoc.numPages;
+
+  const firstPage = await pdfDoc.getPage(1);
+  const vp = firstPage.getViewport({ scale: 1 });
+  const maxW = Math.min(window.innerWidth * 0.44, 450);
+  const maxH = Math.min(window.innerHeight * 0.62, 580);
+  SCALE = Math.min(maxW / vp.width, maxH / vp.height);
+  PAGE_W = Math.round(vp.width  * SCALE);
+  PAGE_H = Math.round(vp.height * SCALE);
+
+  book.style.width  = (PAGE_W * 2) + 'px';
+  book.style.height = PAGE_H + 'px';
+  [leftCanvas, rightCanvas, flipFrontCanvas, flipBackCanvas].forEach(c => {
+    c.width = PAGE_W; c.height = PAGE_H;
+  });
+  document.getElementById('left-cover').style.cssText  = `width:${PAGE_W}px;height:${PAGE_H}px`;
+  document.getElementById('right-cover').style.cssText = `width:${PAGE_W}px;height:${PAGE_H}px`;
+  flipPage.style.width  = PAGE_W + 'px';
+  flipPage.style.height = PAGE_H + 'px';
+
+  buildThumbs();
+  spread = 0;
+  await renderSpread();
+  updateUI();
+  hideLoading();
+  uploadZone.style.display = 'none';
+  flipbookSection.style.display = 'flex';
+  resetBtn.style.display = 'block';
+}
+
+// ── Render page to canvas ──────────────────────────────
+async function renderPageToCanvas(pageNum, canvas) {
+  canvas.width = PAGE_W; canvas.height = PAGE_H;
+  if (pageNum < 1 || pageNum > totalPages) {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#F5EDD8'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    return;
+  }
+  const page = await pdfDoc.getPage(pageNum);
+  const viewport = page.getViewport({ scale: SCALE });
+  await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+}
+
+// ── Render spread ──────────────────────────────────────
+async function renderSpread() {
+  spineEl.style.opacity = spread === 0 ? '0' : '1';
+  await Promise.all([
+    renderPageToCanvas(leftPage(),  leftCanvas),
+    renderPageToCanvas(rightPage(), rightCanvas),
+  ]);
+}
+
+// ── Flip forward ──────────────────────────────────────
+async function flipForward() {
+  if (isFlipping || spread >= maxSpread()) return;
+  isFlipping = true;
+  const nextSpread = spread + 1;
+  const nextRight  = nextSpread === 0 ? 1 : nextSpread * 2 + 1;
+  await renderPageToCanvas(rightPage(), flipFrontCanvas);
+  await renderPageToCanvas(nextRight,   flipBackCanvas);
+  flipPage.className = 'from-right';
+  flipPage.style.left = '50%';
+  flipPage.style.transform = 'rotateY(0deg)';
+  flipPage.style.display = 'block';
+  requestAnimationFrame(() => {
+    flipPage.style.transition = `transform var(--flip-dur) cubic-bezier(0.645,0.045,0.355,1)`;
+    flipPage.style.transform  = 'rotateY(-180deg)';
+  });
+  await sleep(680);
+  spread++;
+  await renderSpread();
+  flipPage.style.display = 'none';
+  flipPage.style.transition = 'none';
+  updateUI(); isFlipping = false;
+}
+
+// ── Flip backward ─────────────────────────────────────
+async function flipBackward() {
+  if (isFlipping || spread <= 0) return;
+  isFlipping = true;
+  const prevSpread = spread - 1;
+  const prevRight  = prevSpread === 0 ? 1 : prevSpread * 2 + 1;
+  await renderPageToCanvas(leftPage(), flipFrontCanvas);
+  await renderPageToCanvas(prevRight,  flipBackCanvas);
+  flipPage.className = 'from-left';
+  flipPage.style.left = '0';
+  flipPage.style.transform = 'rotateY(180deg)';
+  flipPage.style.transition = 'none';
+  flipPage.style.display = 'block';
+  requestAnimationFrame(() => {
+    flipPage.style.transition = `transform var(--flip-dur) cubic-bezier(0.645,0.045,0.355,1)`;
+    flipPage.style.transform  = 'rotateY(0deg)';
+  });
+  await sleep(680);
+  spread--;
+  await renderSpread();
+  flipPage.style.display = 'none';
+  flipPage.style.transition = 'none';
+  updateUI(); isFlipping = false;
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── Thumbnails ─────────────────────────────────────────
+async function buildThumbs() {
+  thumbStrip.innerHTML = '';
+  const TW = 58;
+  for (let p = 1; p <= totalPages; p++) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'thumb'; wrapper.dataset.page = p;
+    const c = document.createElement('canvas');
+    wrapper.appendChild(c); thumbStrip.appendChild(wrapper);
+    wrapper.addEventListener('click', () => goToPage(p));
+    (async (page, canvas) => {
+      const pg = await pdfDoc.getPage(page);
+      const vp = pg.getViewport({ scale: 1 });
+      const sc = TW / vp.width;
+      canvas.width = TW; canvas.height = Math.round(vp.height * sc);
+      await pg.render({ canvasContext: canvas.getContext('2d'), viewport: pg.getViewport({ scale: sc }) }).promise;
+    })(p, c);
+  }
+}
+
+async function goToPage(pageNum) {
+  if (isFlipping) return;
+  spread = pageNum <= 1 ? 0 : Math.min(Math.ceil((pageNum - 1) / 2), maxSpread());
+  await renderSpread(); updateUI();
+}
+
+// ── Update UI ──────────────────────────────────────────
+function updateUI() {
+  const lp = leftPage(), rp = Math.min(rightPage(), totalPages);
+  if (spread === 0) pageDisplay.textContent = `Cover · 1 of ${totalPages}`;
+  else if (rp > lp) pageDisplay.textContent = `Pages ${lp}–${rp} of ${totalPages}`;
+  else pageDisplay.textContent = `Page ${lp} of ${totalPages}`;
+
+  prevBtn.disabled = spread <= 0;
+  nextBtn.disabled = spread >= maxSpread();
+
+  document.querySelectorAll('.thumb').forEach(t => {
+    const p = +t.dataset.page;
+    t.classList.toggle('active', p === lp || p === rp);
+  });
+  const at = thumbStrip.querySelector('.thumb.active');
+  if (at) at.scrollIntoView({ inline: 'nearest', behavior: 'smooth' });
+}
+
+// ── Keyboard ───────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') flipForward();
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   flipBackward();
+});
+
+// ── Click zones & buttons ─────────────────────────────
+navLeft.addEventListener('click',  flipBackward);
+navRight.addEventListener('click', flipForward);
+prevBtn.addEventListener('click',  flipBackward);
+nextBtn.addEventListener('click',  flipForward);
+
+let zoomed = false;
+zoomBtn.addEventListener('click', () => {
+  zoomed = !zoomed;
+  bookStage.style.transform  = zoomed ? 'scale(1.16)' : 'scale(1)';
+  bookStage.style.transition = 'transform 0.3s ease';
+  zoomBtn.textContent = zoomed ? 'Zoom Out' : 'Zoom';
+});
+
+resetBtn.addEventListener('click', () => {
+  pdfDoc = null; totalPages = 0; spread = 0;
+  thumbStrip.innerHTML = '';
+  flipbookSection.style.display = 'none';
+  uploadZone.style.display = 'block';
+  resetBtn.style.display = 'none';
+  fileInput.value = '';
+  zoomed = false; bookStage.style.transform = 'scale(1)';
+});
+
+// ── Loading ────────────────────────────────────────────
+function showLoading(msg) {
+  document.getElementById('loading-text').textContent = msg || 'Loading…';
+  loadingEl.classList.add('active');
+}
+function hideLoading() { loadingEl.classList.remove('active'); }
+</script>
+</body>
+</html>
