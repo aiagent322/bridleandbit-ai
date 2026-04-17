@@ -666,6 +666,22 @@
     footer .footer-logo { font-size: 18px; }
     .footer-links { gap: 16px; }
   }
+
+  /* =============================================
+     DESKTOP (1024px and up)
+     ============================================= */
+  @media (min-width: 1024px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+    .guide-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    header { padding: 6px 32px; }
+    .hero { padding: 48px 32px 40px; }
+    .section-label { padding: 28px 32px 14px; }
+  }
+
 </style>
 </head>
 <body>
