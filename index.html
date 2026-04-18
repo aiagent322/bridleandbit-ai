@@ -12,6 +12,7 @@
 <meta property="og:description" content="Bridle & Bit Magazine delivers expert coverage of the horse industry, including team roping, barrel racing, rodeo, training, breeding, and equestrian lifestyle. Discover events, insights, and elite horse culture across Western and English disciplines.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bridleandbit.com/ai/">
+<link rel="canonical" href="https://bridleandbit.ai/">
 <meta name="robots" content="index, follow">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bridle & Bit Magazine | Western & English Horse Industry News, Training & Events">
@@ -21,7 +22,9 @@
 <link rel="preload" as="image" href="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --rust: #C1440E;
@@ -921,7 +924,28 @@
     .section-label { padding: 28px 32px 14px; }
   }
 
+
+  @media print {
+    .site-nav, .format-tabs, .stats-bar-wrap, .hamburger-btn, .drawer, .drawer-overlay, footer { display: none !important; }
+    header { position: static; }
+    body { background: white; color: black; }
+    .card, .hub-card, .guide-card { break-inside: avoid; border: 1px solid #ccc; }
+  }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bridle & Bit Magazine",
+  "url": "https://bridleandbit.ai/",
+  "description": "Arizona's premier horse publication since 1978. Covering team roping, reining, barrel racing, rodeo, cutting, cowhorse, and equestrian lifestyle.",
+  "foundingDate": "1978",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bridle & Bit Magazine"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -988,9 +1012,10 @@
   <a href="/associations/">Associations</a>
 </nav>
 
+<main>
 <!-- HERO -->
 <div class="hero">
-  <img class="hero-logo" src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public" alt="Bridle & Bit">
+  <img class="hero-logo" width="400" height="64" src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public" alt="Bridle & Bit">
   <h1>Arizona's Premier <em>Horse Publication</em> Since 1978</h1>
   <p>Team Roping &middot; Reining &middot; Barrel Racing &middot; Rodeo &middot; Cutting &middot; Cowhorse &middot; Horse Property &middot; Events</p>
 </div>
@@ -1071,7 +1096,7 @@
 <!-- CURRENT ISSUE -->
 <div class="magazine-feature">
   <a class="magazine-card" href="/flipbook/" target="_blank" rel="noopener">
-    <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-1/public" loading="lazy" alt="Bridle & Bit April 2026 Cover"></div>
+    <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-1/public" loading="lazy" width="144" height="144" alt="Bridle & Bit April 2026 Cover"></div>
     <div class="card-body">
       <div class="issue-label">April 2026</div>
       <div class="card-title">Bridle &amp; Bit Magazine</div>
@@ -1083,13 +1108,13 @@
 
 <!-- FORMAT TABS -->
 <div class="format-tabs">
-  <button class="format-tab active" onclick="switchTab('all')">
+  <button class="format-tab active" onclick="switchTab('all', this)">
     <span class="tab-icon">&#9733;</span>All Properties
   </button>
-  <button class="format-tab" onclick="switchTab('facebook')">
+  <button class="format-tab" onclick="switchTab('facebook', this)">
     <span class="tab-icon">&#xf09a;</span>Facebook Groups
   </button>
-  <button class="format-tab" onclick="switchTab('websites')">
+  <button class="format-tab" onclick="switchTab('websites', this)">
     <span class="tab-icon">&#9741;</span>Websites
   </button>
   <button class="format-tab" onclick="window.location.href='interviews/'">
@@ -1113,7 +1138,7 @@
   <div class="card-grid" id="fb-cards-all">
 
     <a class="card" href="https://www.facebook.com/groups/735758536845612" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-2/public" loading="lazy" alt="Team Roping" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-2/public" loading="lazy" width="144" height="144" alt="Team Roping" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Team Roping</div>
         <div class="member-count">23,200 Members</div>
@@ -1126,7 +1151,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/476655912930011" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-3/public" loading="lazy" alt="Arizona Horse Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-3/public" loading="lazy" width="144" height="144" alt="Arizona Horse Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Arizona Horse Bulletin Board</div>
         <div class="member-count">13,500 Members</div>
@@ -1139,7 +1164,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/1724255897648803" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-4/public" loading="lazy" alt="Arizona Horse Property for Sale" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-4/public" loading="lazy" width="144" height="144" alt="Arizona Horse Property for Sale" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Arizona Horse Property for Sale</div>
         <div class="member-count">11,600 Members</div>
@@ -1152,7 +1177,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/511334695894703" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-5/public" loading="lazy" alt="Bridle and Bit Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-5/public" loading="lazy" width="144" height="144" alt="Bridle and Bit Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Bridle &amp; Bit Bulletin Board</div>
         <div class="member-count">5,200 Members</div>
@@ -1165,7 +1190,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/835769854456790" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-6/public" loading="lazy" alt="Rio Verde" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-6/public" loading="lazy" width="144" height="144" alt="Rio Verde" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Rio Verde Bulletin Board</div>
         <div class="member-count">4,000 Members</div>
@@ -1178,7 +1203,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/137326170326138" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-7/public" loading="lazy" alt="Horse Trailers for Sale" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-7/public" loading="lazy" width="144" height="144" alt="Horse Trailers for Sale" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Horse Trailers for Sale</div>
         <div class="member-count">2,100 Members</div>
@@ -1191,7 +1216,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/398512497690814" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-8/public" loading="lazy" alt="Reining Horse Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-8/public" loading="lazy" width="144" height="144" alt="Reining Horse Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">Reining Horse Bulletin Board</div>
         <div class="member-count">2,000 Members</div>
@@ -1204,7 +1229,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/2370896266463653" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-9/public" loading="lazy" alt="WestWorld of Scottsdale" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-9/public" loading="lazy" width="144" height="144" alt="WestWorld of Scottsdale" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">WestWorld of Scottsdale</div>
         <div class="card-desc">Community group for WestWorld — Arizona's premier equestrian venue for shows, events, and expos.</div>
@@ -1216,7 +1241,7 @@
     </a>
 
     <a class="card" href="https://www.facebook.com/groups/394292225272650" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-10/public" loading="lazy" alt="HorseShoe Park" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-10/public" loading="lazy" width="144" height="144" alt="HorseShoe Park" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">HorseShoe Park Bulletin Boards</div>
         <div class="card-desc">The go-to community for HorseShoe Park — events, stabling info, arena schedules, and announcements.</div>
@@ -1240,7 +1265,7 @@
   <div class="card-grid" id="web-cards-all">
 
     <a class="card" href="https://teamroping.ai" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-11/public" loading="lazy" alt="TeamRoping.AI" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-11/public" loading="lazy" width="144" height="144" alt="TeamRoping.AI" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">TeamRoping.AI</div>
         <div class="card-desc">AI-powered team roping event calendar, Q&amp;A, and community resource hub with 377+ events nationwide.</div>
@@ -1252,7 +1277,7 @@
     </a>
 
     <a class="card" href="https://teamropingvideos.com" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-12/public" loading="lazy" alt="TeamRopingVideos.com" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-12/public" loading="lazy" width="144" height="144" alt="TeamRopingVideos.com" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">TeamRopingVideos.com</div>
         <div class="card-desc">Curated team roping video library — competition footage, training tips, and instructional content.</div>
@@ -1264,7 +1289,7 @@
     </a>
 
     <a class="card" href="https://worldsgreatesthorseman.com" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-13/public" loading="lazy" alt="Worlds Greatest Horseman" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-13/public" loading="lazy" width="144" height="144" alt="Worlds Greatest Horseman" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">WorldsGreatestHorseman.com</div>
         <div class="card-desc">The definitive archive of the World's Greatest Horseman competition — 27 champions, history, and event coverage.</div>
@@ -1276,7 +1301,7 @@
     </a>
 
     <a class="card" href="https://horseinsurance.ai" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-14/public" loading="lazy" alt="HorseInsurance.ai" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-14/public" loading="lazy" width="144" height="144" alt="HorseInsurance.ai" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">HorseInsurance.ai</div>
         <div class="card-desc">Comprehensive equine insurance guide — 191 Q&amp;A entries, 108 glossary terms, 17 in-depth blog posts.</div>
@@ -1288,7 +1313,7 @@
     </a>
 
     <a class="card" href="https://podcastcorral.com" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-15/public" loading="lazy" alt="PodcastCorral.com" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-15/public" loading="lazy" width="144" height="144" alt="PodcastCorral.com" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">PodcastCorral.com</div>
         <div class="card-desc">The equestrian podcast directory — 129 shows across 13 categories, from roping to dressage.</div>
@@ -1300,7 +1325,7 @@
     </a>
 
     <a class="card" href="https://horsecalendar.ai" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-16/public" loading="lazy" alt="HorseCalendar.ai" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-16/public" loading="lazy" width="144" height="144" alt="HorseCalendar.ai" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="card-body">
         <div class="card-title">HorseCalendar.ai</div>
         <div class="card-desc">AI-powered Arizona equine event calendar — shows, clinics, rodeos, and competitions across the state.</div>
@@ -1490,6 +1515,8 @@
 
 </div>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Bridle &amp; Bit Magazine</div>
@@ -1521,10 +1548,10 @@
 
 <script>
   // Tab switching
-  function switchTab(tab) {
+  function switchTab(tab, el) {
     // Update tab buttons
     document.querySelectorAll('.format-tab').forEach(function(t) { t.classList.remove('active'); });
-    event.currentTarget.classList.add('active');
+    el.classList.add('active');
 
     // Hide all tab content
     document.querySelectorAll('.tab-content').forEach(function(tc) { tc.classList.remove('active'); });
