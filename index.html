@@ -105,6 +105,105 @@
   }
 
 
+
+  /* HAMBURGER MENU */
+  .hamburger-btn {
+    background: none;
+    border: none;
+    color: var(--cream);
+    font-size: 22px;
+    padding: 8px;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 202;
+  }
+  .hamburger-btn .bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--cream);
+    position: relative;
+    transition: 0.3s;
+  }
+  .hamburger-btn .bar::before,
+  .hamburger-btn .bar::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--cream);
+    position: absolute;
+    transition: 0.3s;
+  }
+  .hamburger-btn .bar::before { top: -6px; }
+  .hamburger-btn .bar::after { top: 6px; }
+  .hamburger-btn.open .bar { background: transparent; }
+  .hamburger-btn.open .bar::before { top: 0; transform: rotate(45deg); }
+  .hamburger-btn.open .bar::after { top: 0; transform: rotate(-45deg); }
+
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+  }
+  .drawer-overlay.open { display: block; }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100%;
+    background: var(--bark);
+    z-index: 200;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    padding-top: 60px;
+  }
+  .drawer.open { right: 0; }
+
+  .drawer-section {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(212,169,106,0.15);
+  }
+  .drawer-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--tan);
+    padding: 0 20px 8px;
+  }
+  .drawer a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    min-height: 44px;
+    color: var(--cream);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.15s;
+    touch-action: manipulation;
+  }
+  .drawer a:active,
+  .drawer a:hover { background: rgba(255,255,255,0.06); }
+
+  @media (min-width: 1024px) {
+    .hamburger-btn { display: none; }
+  }
+
   /* STICKY NAV BAR */
   .site-nav {
     background: var(--dark);
@@ -824,7 +923,48 @@
     <div class="logo-text">Bridle &amp; Bit Magazine</div>
   </div>
   <div class="tagline">AI Division</div>
+  <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Menu">
+    <span class="bar"></span>
+  </button>
 </header>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+
+<!-- SLIDE-OUT DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer-section">
+    <div class="drawer-section-title">Magazine</div>
+    <a href="/flipbook/">Read Current Issue</a>
+    <a href="/interviews/">Interviews &amp; Features</a>
+    <a href="/media-guide/">Media Guide &amp; Advertising</a>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Resources</div>
+    <a href="/team-roping/">Team Roping Calendar</a>
+    <a href="/horse-property/">Arizona Horse Property</a>
+    <a href="/horse-insurance/">Horse Insurance Guide</a>
+    <a href="/horse-trailers/">Horse Trailers for Sale</a>
+    <a href="/overnight-stabling/">Overnight Stabling</a>
+    <a href="/associations/">Equestrian Associations</a>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Community</div>
+    <a href="/arizona-horse-bulletin-board/">AZ Horse Bulletin Board</a>
+    <a href="/bridle-bit-bulletin-board/">Bridle &amp; Bit Bulletin Board</a>
+    <a href="/rio-verde-bulletin-board/">Rio Verde Bulletin Board</a>
+    <a href="/reining-horse-bulletin-board/">Reining Horse Board</a>
+    <a href="/westworld-scottsdale/">WestWorld Scottsdale</a>
+    <a href="/horseshoe-park/">HorseShoe Park</a>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Network</div>
+    <a href="https://bridleandbit.com" target="_blank">BridleAndBit.com</a>
+    <a href="https://teamroping.ai" target="_blank">TeamRoping.AI</a>
+    <a href="https://reininghorses.ai" target="_blank">ReiningHorses.AI</a>
+    <a href="https://podcastcorral.com" target="_blank">PodcastCorral.com</a>
+  </div>
+</div>
 
 <!-- SITE NAV -->
 <nav class="site-nav">
@@ -843,24 +983,24 @@
 <!-- HERO -->
 <div class="hero">
   <img class="hero-logo" src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public" alt="Bridle & Bit">
-  <h1>Horse News, Rodeo News &amp; <em>Equestrian Events</em></h1>
-  <p>Covering AQHA, APHA, NRHA, NCHA, NRCHA, ProRodeo, PBR, WPRCA, USEF, BLM, USDA Team Roping, Breakaway, Barrel Racing, Reining, Cowhorse, Cutting and more!</p>
+  <h1>Arizona's Premier <em>Horse Publication</em> Since 1978</h1>
+  <p>Team Roping &middot; Reining &middot; Barrel Racing &middot; Rodeo &middot; Cutting &middot; Cowhorse &middot; Horse Property &middot; Events</p>
 </div>
 
 <!-- STATS BAR -->
 <div class="stats-bar-wrap">
   <div class="stats-bar">
     <div class="stat-item">
-      <span class="stat-num">9</span>
+      <span class="stat-num">7</span>
       <span class="stat-label">FB Groups</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">6</span>
-      <span class="stat-label">Websites</span>
+      <span class="stat-num">65K+</span>
+      <span class="stat-label">Members</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">15</span>
-      <span class="stat-label">Properties</span>
+      <span class="stat-num">20+</span>
+      <span class="stat-label">Web Properties</span>
     </div>
   </div>
 </div>
@@ -1402,6 +1542,14 @@
       webTab.appendChild(card.cloneNode(true));
     });
   })();
+
+  // Hamburger drawer
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+    document.getElementById('drawerOverlay').classList.toggle('open');
+    document.querySelector('.hamburger-btn').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('drawer').classList.contains('open') ? 'hidden' : '';
+  }
 </script>
 
 </body>
