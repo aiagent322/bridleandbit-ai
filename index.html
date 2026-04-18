@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#3D2B1F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bridle &amp; Bit Magazine | Western &amp; English Horse Industry News, Training &amp; Events</title>
 <meta name="description" content="Bridle & Bit Magazine delivers expert coverage of the horse industry, including team roping, barrel racing, rodeo, training, breeding, and equestrian lifestyle. Discover events, insights, and elite horse culture across Western and English disciplines.">
 <meta property="og:title" content="Bridle & Bit Magazine | Western & English Horse Industry News, Training & Events">
@@ -18,6 +18,7 @@
 <meta name="twitter:description" content="Bridle & Bit Magazine delivers expert coverage of the horse industry, including team roping, barrel racing, rodeo, training, breeding, and equestrian lifestyle. Discover events, insights, and elite horse culture across Western and English disciplines.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="preload" as="image" href="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -45,6 +46,8 @@
     font-weight: 300;
     overflow-x: hidden;
     font-size: 16px;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -77,6 +80,8 @@
         rgba(255,255,255,0.015) 4px
       );
     padding: 5px 12px;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
     border-bottom: 2px solid var(--rust);
     position: relative;
     z-index: 101;
@@ -210,6 +215,8 @@
     border-bottom: 2px solid var(--rust);
     display: flex;
     overflow-x: auto;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: sticky;
@@ -228,7 +235,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: rgba(245,237,216,0.55);
+    color: rgba(245,237,216,0.7);
     text-decoration: none;
     white-space: nowrap;
     border-bottom: 3px solid transparent;
@@ -328,7 +335,7 @@
   }
   .hub-card-desc {
     font-size: 12px;
-    color: rgba(26,18,8,0.55);
+    color: rgba(26,18,8,0.65);
     line-height: 1.35;
   }
   .hub-card-badge {
@@ -634,7 +641,7 @@
   .card-desc {
     font-size: 13px;
     font-weight: 600;
-    color: rgba(26,18,8,0.55);
+    color: rgba(26,18,8,0.65);
     line-height: 1.4;
     margin-bottom: 8px;
     display: -webkit-box;
@@ -735,6 +742,7 @@
 
   /* FOOTER */
   footer {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
     background: var(--bark);
     color: white;
     font-weight: 700;
@@ -932,7 +940,7 @@
 <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
 
 <!-- SLIDE-OUT DRAWER -->
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer-section">
     <div class="drawer-section-title">Magazine</div>
     <a href="/flipbook/">Read Current Issue</a>
@@ -959,10 +967,10 @@
   </div>
   <div class="drawer-section">
     <div class="drawer-section-title">Network</div>
-    <a href="https://bridleandbit.com" target="_blank">BridleAndBit.com</a>
-    <a href="https://teamroping.ai" target="_blank">TeamRoping.AI</a>
-    <a href="https://reininghorses.ai" target="_blank">ReiningHorses.AI</a>
-    <a href="https://podcastcorral.com" target="_blank">PodcastCorral.com</a>
+    <a href="https://bridleandbit.com" target="_blank" rel="noopener">BridleAndBit.com</a>
+    <a href="https://teamroping.ai" target="_blank" rel="noopener">TeamRoping.AI</a>
+    <a href="https://reininghorses.ai" target="_blank" rel="noopener">ReiningHorses.AI</a>
+    <a href="https://podcastcorral.com" target="_blank" rel="noopener">PodcastCorral.com</a>
   </div>
 </div>
 
@@ -1486,25 +1494,25 @@
 <footer>
   <div class="footer-logo">Bridle &amp; Bit Magazine</div>
   <div class="footer-links">
-    <a href="https://bridleandbit.com" target="_blank">bridleandbit.com</a>
-    <a href="https://podcastcorral.com" target="_blank">PodcastCorral</a>
-    <a href="https://teamroping.ai" target="_blank">TeamRoping.AI</a>
-    <a href="https://horsecalendar.ai" target="_blank">HorseCalendar.AI</a>
+    <a href="https://bridleandbit.com" target="_blank" rel="noopener">bridleandbit.com</a>
+    <a href="https://podcastcorral.com" target="_blank" rel="noopener">PodcastCorral</a>
+    <a href="https://teamroping.ai" target="_blank" rel="noopener">TeamRoping.AI</a>
+    <a href="https://horsecalendar.ai" target="_blank" rel="noopener">HorseCalendar.AI</a>
   </div>
   <div style="margin-bottom:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 6px;">
-    <a href="/media-guide/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Media Guide</a>
-    <a href="/interviews/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Interviews</a>
-    <a href="/team-roping/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Team Roping</a>
-    <a href="/horse-property/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Property</a>
-    <a href="/horse-insurance/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Insurance</a>
-    <a href="/horse-trailers/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Trailers</a>
-    <a href="/overnight-stabling/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Overnight Stabling</a>
-    <a href="/arizona-horse-bulletin-board/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">AZ Bulletin Board</a>
-    <a href="/bridle-bit-bulletin-board/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Bridle &amp; Bit</a>
-    <a href="/rio-verde-bulletin-board/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Rio Verde</a>
-    <a href="/reining-horse-bulletin-board/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Reining Horse</a>
-    <a href="/westworld-scottsdale/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">WestWorld</a>
-    <a href="/horseshoe-park/" target="_blank" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">HorseShoe Park</a>
+    <a href="/media-guide/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Media Guide</a>
+    <a href="/interviews/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Interviews</a>
+    <a href="/team-roping/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Team Roping</a>
+    <a href="/horse-property/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Property</a>
+    <a href="/horse-insurance/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Insurance</a>
+    <a href="/horse-trailers/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Trailers</a>
+    <a href="/overnight-stabling/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Overnight Stabling</a>
+    <a href="/arizona-horse-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">AZ Bulletin Board</a>
+    <a href="/bridle-bit-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Bridle &amp; Bit</a>
+    <a href="/rio-verde-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Rio Verde</a>
+    <a href="/reining-horse-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Reining Horse</a>
+    <a href="/westworld-scottsdale/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">WestWorld</a>
+    <a href="/horseshoe-park/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">HorseShoe Park</a>
   </div>
   <div style="color: rgba(255,255,255,0.5);">
     &copy; 2026 Bridle &amp; Bit Magazine &middot; Arizona's Premier Horse Publication Since 1978
@@ -1548,7 +1556,9 @@
     document.getElementById('drawer').classList.toggle('open');
     document.getElementById('drawerOverlay').classList.toggle('open');
     document.querySelector('.hamburger-btn').classList.toggle('open');
-    document.body.style.overflow = document.getElementById('drawer').classList.contains('open') ? 'hidden' : '';
+    var isOpen = document.getElementById('drawer').classList.contains('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.getElementById('drawer').setAttribute('aria-hidden', isOpen ? 'false' : 'true');
   }
 </script>
 
