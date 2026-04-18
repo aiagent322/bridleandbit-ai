@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#3D2B1F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Horse Insurance Guide | Mortality, Liability &amp; Farm Coverage Explained | Bridle &amp; Bit AI Division</title>
 <meta name="description" content="Understand horse insurance before you buy — mortality, major medical, liability, farm and ranch coverage explained in plain language. Free AI-powered Q&A library with hundreds of answers. From Bridle &amp; Bit Magazine.">
 <meta property="og:title" content="Horse Insurance Guide | Mortality, Liability &amp; Farm Coverage Explained">
@@ -77,6 +77,8 @@
     font-family: var(--font-sans);
     font-weight: 300;
     overflow-x: hidden;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -88,6 +90,8 @@
     background: var(--bark);
     background-image: repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,0.015) 2px,rgba(255,255,255,0.015) 4px);
     padding: 5px 12px;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
     border-bottom: 2px solid var(--rust);
     position: sticky;
     top: 0;
@@ -260,6 +264,7 @@
   .resource-tag.web { color: var(--sage); }
 
   footer {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
     background: var(--bark);
     color: white;
     font-weight: 700;
@@ -288,6 +293,11 @@
     .resource-grid { grid-template-columns: 1fr 1fr; }
     footer { padding: 28px 24px; }
   }
+
+  @media print {
+    header, footer { position: static; }
+    body { background: white; color: black; }
+  }
 </style>
 </head>
 <body>
@@ -301,6 +311,7 @@
   </div>
 </header>
 
+<main>
 <div class="hero">
   <h1>Understanding <em>Horse Insurance</em></h1>
   <p>Mortality, major medical, liability, and farm coverage explained in plain language — with a free AI-powered Q&A library covering hundreds of real questions horse owners ask before they buy a policy.</p>
@@ -382,6 +393,8 @@
 
   </div>
 </div>
+
+</main>
 
 <footer>
   <a class="back-link" href="../">← Back to AI Division</a>

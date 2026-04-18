@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#3D2B1F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Find Team Roping Near Me | Near-Daily Updated Nationwide Calendar | Bridle &amp; Bit AI Division</title>
 <meta name="description" content="Find team roping near you with the largest AI-powered roping calendar in the US. Use geolocation search to find events within driving distance — updated near-daily from real producer flyers. Free from Bridle &amp; Bit Magazine.">
 <meta property="og:title" content="Find Team Roping Near Me | Nationwide Calendar Updated Near-Daily">
@@ -77,6 +77,8 @@
     font-family: var(--font-sans);
     font-weight: 300;
     overflow-x: hidden;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -89,6 +91,8 @@
     background: var(--bark);
     background-image: repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,0.015) 2px,rgba(255,255,255,0.015) 4px);
     padding: 5px 12px;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
     border-bottom: 2px solid var(--rust);
     position: sticky;
     top: 0;
@@ -301,6 +305,7 @@
 
   /* FOOTER */
   footer {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
     background: var(--bark);
     color: white;
     font-weight: 700;
@@ -333,6 +338,11 @@
     .resource-grid { grid-template-columns: 1fr 1fr; }
     footer { padding: 28px 24px; }
   }
+
+  @media print {
+    header, footer { position: static; }
+    body { background: white; color: black; }
+  }
 </style>
 </head>
 <body>
@@ -347,6 +357,7 @@
   </div>
 </header>
 
+<main>
 <!-- HERO -->
 <div class="hero">
   <h1>Find <em>Team Roping</em> Near You</h1>
@@ -432,6 +443,8 @@
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <a class="back-link" href="../">← Back to AI Division</a>
   <div>© 2026 Bridle &amp; Bit Magazine · <a href="https://bridleandbit.com">bridleandbit.com</a></div>
