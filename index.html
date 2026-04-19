@@ -1027,10 +1027,10 @@
       <span class="stat-num">7</span>
       <span class="stat-label">FB Groups</span>
     </div>
-    <div class="stat-item">
+    <a href="#fb-section" class="stat-item" onclick="event.preventDefault();document.getElementById('fb-section').scrollIntoView({behavior:'smooth'});" style="text-decoration:none;cursor:pointer;">
       <span class="stat-num">65K+</span>
-      <span class="stat-label">Members</span>
-    </div>
+      <span class="stat-label" style="color:rgba(255,255,255,0.95);font-weight:700;">Members · Join Here ↓</span>
+    </a>
     <div class="stat-item">
       <span class="stat-num">20+</span>
       <span class="stat-label">Web Properties</span>
@@ -1130,7 +1130,7 @@
 
   <!-- FACEBOOK GROUPS SECTION -->
   <div class="section-label">
-    <h2>Facebook Groups</h2>
+    <h2 id="fb-section">Facebook Groups</h2>
     <div class="line"></div>
     <span class="count-tag">9 COMMUNITIES</span>
   </div>
