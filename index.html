@@ -926,7 +926,7 @@
 
 
   @media print {
-    .site-nav, .format-tabs, .stats-bar-wrap, .hamburger-btn, .drawer, .drawer-overlay, footer { display: none !important; }
+    .site-nav-wrap, .site-nav, .format-tabs, .stats-bar-wrap, .hamburger-btn, .drawer, .drawer-overlay, footer { display: none !important; }
     header { position: static; }
     body { background: white; color: black; }
     .card, .hub-card, .guide-card { break-inside: avoid; border: 1px solid #ccc; }
@@ -995,13 +995,20 @@
 </div>
 
 <!-- SITE NAV -->
-<nav class="site-nav">
-  <a href="/" class="active">Home</a>
-  <a href="/flipbook/">Magazine</a>
-  <a href="/team-roping/">Team Roping</a>
-  <a href="/media-guide/">Media Guide</a>
-  <a href="/horse-property/">Horse Property</a>
-  <a href="https://horseinsurance.ai" target="_blank" rel="noopener">Insurance</a>
+<nav class="site-nav-wrap">
+  <div class="site-nav site-nav-row1">
+    <a href="/" class="active">Home</a>
+    <a href="/flipbook/">Magazine</a>
+    <a href="/team-roping/">Team Roping</a>
+    <a href="/media-guide/">Media Guide</a>
+    <a href="/horse-property/">Horse Property <span style="color:#1877F2;font-weight:900;">FB</span></a>
+    <a href="https://horseinsurance.ai" target="_blank" rel="noopener">Insurance</a>
+  </div>
+  <div class="site-nav site-nav-row2">
+    <a href="https://horsepropertyguide.com" target="_blank" rel="noopener">Horse Property Guide</a>
+    <a href="https://horsepropertyagents.com" target="_blank" rel="noopener">Horse Property Agents</a>
+    <a href="https://horsepropertyfinancing.com" target="_blank" rel="noopener">Horse Property Financing</a>
+  </div>
 </nav>
 
 <main>
