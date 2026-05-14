@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#3D2B1F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact Us | Bridle &amp; Bit Magazine</title>
+<meta name="description" content="Contact Bridle & Bit Magazine — Arizona's premier equestrian social network. Advertising, editorial, event listings, and general inquiries.">
+<meta property="og:title" content="Contact Us | Bridle & Bit Magazine">
+<meta property="og:description" content="Get in touch with Bridle & Bit Magazine — Arizona's premier equestrian social network.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bridleandbit.com/contact/">
+<link rel="canonical" href="https://bridleandbit.com/contact/">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root {
+    --rust: #C1440E;
+    --tan: #D4A96A;
+    --cream: #F5EDD8;
+    --dark: #1A1208;
+    --bark: #3D2B1F;
+    --sage: #7A8C6E;
+    --light-tan: #EDE0C4;
+    --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    font-size: 16px;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  a, button, [onclick] { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+  /* HEADER */
+  header {
+    background: var(--bark);
+    background-image: repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,0.015) 2px,rgba(255,255,255,0.015) 4px);
+    padding: 5px 12px;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    border-bottom: 2px solid var(--rust);
+    position: relative;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 0;
+  }
+  .logo-area { display: flex; align-items: center; gap: 8px; }
+  .logo-text {
+    font-family: var(--font-serif);
+    font-size: clamp(11px, 1.8vw, 14px);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+  .tagline { display: none; }
+
+  /* HAMBURGER */
+  .hamburger-btn {
+    background: none; border: none; color: var(--cream); font-size: 22px;
+    padding: 8px; min-height: 44px; min-width: 44px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    position: relative; z-index: 202;
+  }
+  .hamburger-btn .bar { display: block; width: 20px; height: 2px; background: var(--cream); position: relative; transition: 0.3s; }
+  .hamburger-btn .bar::before, .hamburger-btn .bar::after { content: ''; display: block; width: 20px; height: 2px; background: var(--cream); position: absolute; transition: 0.3s; }
+  .hamburger-btn .bar::before { top: -6px; }
+  .hamburger-btn .bar::after { top: 6px; }
+  .hamburger-btn.open .bar { background: transparent; }
+  .hamburger-btn.open .bar::before { top: 0; transform: rotate(45deg); }
+  .hamburger-btn.open .bar::after { top: 0; transform: rotate(-45deg); }
+
+  .drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 150; }
+  .drawer-overlay.open { display: block; }
+
+  .drawer {
+    position: fixed; top: 0; right: -280px; width: 280px; height: 100%;
+    background: var(--bark); z-index: 200; transition: right 0.3s ease;
+    overflow-y: auto; box-shadow: -4px 0 20px rgba(0,0,0,0.3); padding-top: 60px;
+  }
+  .drawer.open { right: 0; }
+  .drawer-section { padding: 12px 0; border-bottom: 1px solid rgba(212,169,106,0.15); }
+  .drawer-section-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tan); padding: 4px 20px 8px; font-weight: 700; }
+  .drawer a { display: flex; align-items: center; padding: 12px 20px; min-height: 44px; color: var(--cream); text-decoration: none; font-family: var(--font-sans); font-size: 14px; font-weight: 600; transition: background 0.15s; }
+  .drawer a:active, .drawer a:hover { background: rgba(255,255,255,0.06); }
+  .drawer a.active { color: var(--tan); }
+
+  @media (min-width: 1024px) { .hamburger-btn { display: none; } }
+
+  /* SITE NAV */
+  .site-nav {
+    background: var(--bark); border-bottom: 1px solid rgba(212,169,106,0.2);
+    display: flex; overflow-x: auto; white-space: nowrap;
+    padding: 0 12px; gap: 0; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a {
+    display: inline-flex; align-items: center; padding: 0 14px; height: 40px;
+    color: rgba(245,237,216,0.75); text-decoration: none;
+    font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.3px; white-space: nowrap; border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .site-nav a:hover { color: var(--cream); }
+  .site-nav a.active { color: var(--tan); border-bottom-color: var(--rust); }
+
+  /* PAGE CONTENT */
+  main { max-width: 900px; margin: 0 auto; padding: 40px 16px 60px; }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--light-tan);
+  }
+  .page-header h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    color: var(--bark);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .page-header h1 span { color: var(--rust); }
+  .page-header p {
+    font-size: 17px;
+    color: #5a4a30;
+    font-weight: 600;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* CONTACT GRID */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border: 1px solid var(--light-tan);
+    border-top: 3px solid var(--rust);
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(26,18,8,0.08);
+  }
+
+  /* SIDEBAR */
+  .contact-sidebar {
+    background: var(--bark);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .contact-sidebar h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--cream);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .sidebar-rule { width: 36px; height: 2px; background: var(--rust); margin-top: -18px; }
+
+  .contact-method { display: flex; align-items: flex-start; gap: 12px; }
+  .method-icon {
+    width: 36px; height: 36px; min-width: 36px;
+    background: rgba(193,68,14,0.2);
+    border: 1px solid rgba(212,169,106,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; margin-top: 2px;
+  }
+  .method-body label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tan); font-weight: 700; margin-bottom: 4px; }
+  .method-body a, .method-body span { color: var(--cream); font-size: 15px; text-decoration: none; line-height: 1.4; display: block; }
+  .method-body a:hover { color: var(--tan); }
+
+  .sidebar-taglines { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(212,169,106,0.15); }
+  .sidebar-taglines p { font-size: 14px; font-weight: 700; color: var(--cream); line-height: 1.7; margin-bottom: 6px; }
+  .sidebar-taglines p.sub { font-size: 13px; color: var(--tan); font-weight: 600; line-height: 1.7; }
+  .sidebar-taglines p.note { font-size: 12px; color: rgba(212,169,106,0.7); font-weight: 400; margin-top: 10px; }
+
+  /* FORM PANEL */
+  .form-panel { padding: 36px 36px; background: #fdfaf5; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 700; color: var(--bark); margin-bottom: 6px;
+  }
+  .form-group label .req { color: var(--rust); margin-left: 2px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 10px 13px;
+    font-family: var(--font-sans); font-size: 15px; color: var(--dark);
+    background: #fff; border: 1px solid var(--light-tan); border-radius: 2px;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none; -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--tan); box-shadow: 0 0 0 3px rgba(212,169,106,0.15); }
+  .form-group input.error,
+  .form-group textarea.error { border-color: var(--rust); }
+  .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C1440E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px; cursor: pointer;
+  }
+  .field-error { font-size: 12px; color: var(--rust); margin-top: 4px; display: none; }
+  .field-error.visible { display: block; }
+
+  .btn-submit {
+    padding: 12px 34px; background: var(--rust); color: #fff;
+    font-family: var(--font-sans); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 2px;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px; min-width: 150px; justify-content: center;
+  }
+  .btn-submit:hover { background: var(--bark); transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-submit .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+  .btn-submit.loading .spinner { display: block; }
+  .btn-submit.loading .btn-text { display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .form-alert { padding: 13px 16px; border-radius: 2px; font-size: 14px; line-height: 1.5; display: none; margin-top: 18px; }
+  .form-alert.success { background: #edf7ed; border: 1px solid #a3d4a3; color: #2a6a2a; display: flex; align-items: center; gap: 8px; }
+  .form-alert.error-msg { background: #fdf0f0; border: 1px solid #e0a0a0; color: #8a2020; display: flex; align-items: center; gap: 8px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bark);
+    padding: 36px 20px;
+    text-align: center;
+    border-top: 2px solid var(--rust);
+    margin-top: 60px;
+  }
+  footer .footer-logo { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--cream); margin-bottom: 16px; }
+  footer a { color: var(--tan); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-bottom: 16px; }
+  .footer-links a { font-size: 14px; padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-sidebar { padding: 28px 20px; }
+    .form-panel { padding: 28px 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .sidebar-taglines { display: flex; flex-wrap: wrap; gap: 0 16px; }
+  }
+
+  @media (min-width: 1024px) {
+    .tagline { display: block; font-size: 12px; color: var(--tan); letter-spacing: 0.08em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <a href="/" class="logo-text">Bridle &amp; Bit Magazine</a>
+  </div>
+  <div class="tagline">AI Division</div>
+  <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Menu">
+    <span class="bar"></span>
+  </button>
+</header>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+
+<!-- SLIDE-OUT DRAWER -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-section">
+    <div class="drawer-section-title">Magazine</div>
+    <a href="/flipbook/">Read Current Issue</a>
+    <a href="/media-guide/">Media Guide &amp; Advertising</a>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Resources</div>
+    <a href="/team-roping/">Team Roping Calendar</a>
+    <a href="/horse-property/">Arizona Horse Property</a>
+    <a href="https://horseinsurance.ai" target="_blank" rel="noopener">Horse Insurance Guide</a>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Community</div>
+    <a href="/arizona-horse-bulletin-board/">AZ Horse Bulletin Board</a>
+    <a href="/bridle-bit-bulletin-board/">Bridle &amp; Bit Bulletin Board</a>
+    <a href="/rio-verde-bulletin-board/">Rio Verde Bulletin Board</a>
+    <a href="/reining-horse-bulletin-board/">Reining Horse Board</a>
+    <a href="/westworld-scottsdale/">WestWorld Scottsdale</a>
+    <a href="/horseshoe-park/">HorseShoe Park</a>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-section-title">Network</div>
+    <a href="https://bridleandbit.com" target="_blank" rel="noopener">BridleAndBit.com</a>
+    <a href="https://teamroping.ai" target="_blank" rel="noopener">TeamRoping.AI</a>
+    <a href="https://reininghorses.ai" target="_blank" rel="noopener">ReiningHorses.AI</a>
+    <a href="https://podcastcorral.com" target="_blank" rel="noopener">PodcastCorral.com</a>
+  </div>
+  <div class="drawer-section">
+    <a href="/contact/" class="active">Contact Us</a>
+  </div>
+</div>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <a href="/">Home</a>
+  <a href="/flipbook/">Magazine</a>
+  <a href="/team-roping/">Team Roping</a>
+  <a href="/media-guide/">Media Guide</a>
+  <a href="/horse-property/">Horse Property <span style="color:#1877F2;font-weight:900;">FB</span></a>
+  <a href="https://horsepropertyguide.com" target="_blank" rel="noopener">HP Guide</a>
+  <a href="https://horsepropertyagents.com" target="_blank" rel="noopener">HP Agents</a>
+  <a href="https://horsepropertyfinancing.com" target="_blank" rel="noopener">HP Financing</a>
+  <a href="https://horseinsurance.ai" target="_blank" rel="noopener">Insurance</a>
+  <a href="/contact/" class="active">Contact</a>
+</nav>
+
+<main>
+  <div class="page-header">
+    <h1>Contact <span>Bridle &amp; Bit</span></h1>
+    <p><strong>We'd love to hear from you — questions, advertising, or just to say hello.</strong></p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- Sidebar -->
+    <aside class="contact-sidebar">
+      <h2>Get in Touch</h2>
+      <div class="sidebar-rule"></div>
+
+      <div class="contact-method">
+        <div class="method-icon">✉</div>
+        <div class="method-body">
+          <label>Email</label>
+          <a href="mailto:bridleandbit@aol.com">bridleandbit@aol.com</a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="method-icon">📞</div>
+        <div class="method-body">
+          <label>Call or Text</label>
+          <a href="tel:+16023903555">602-390-3555</a>
+        </div>
+      </div>
+
+      <div class="sidebar-taglines">
+        <p>The premier equestrian social network</p>
+        <p class="sub">Magazine · Applications · Websites · Facebook Groups</p>
+        <p class="note">We typically respond within one business day.</p>
+      </div>
+    </aside>
+
+    <!-- Form -->
+    <div class="form-panel">
+      <form id="contactForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Your Name <span class="req">*</span></label>
+            <input type="text" id="cf-name" name="name" placeholder="Jane Smith" autocomplete="name">
+            <div class="field-error" id="err-name">Please enter your name.</div>
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error" id="err-email">Please enter a valid email.</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-phone">Phone (optional)</label>
+            <input type="tel" id="cf-phone" name="phone" placeholder="(602) 555-0100" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Subject</label>
+            <select id="cf-subject" name="subject">
+              <option value="">Select a topic…</option>
+              <option value="Advertising">Advertising &amp; Sponsorship</option>
+              <option value="Editorial">Editorial / Article Submission</option>
+              <option value="Event Listing">Event Listing</option>
+              <option value="Website">Website / AI Properties</option>
+              <option value="General">General Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-message">Message <span class="req">*</span></label>
+          <textarea id="cf-message" name="message" placeholder="Tell us how we can help…"></textarea>
+          <div class="field-error" id="err-message">Please enter a message.</div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span class="btn-text">Send Message</span>
+          <span class="spinner"></span>
+        </button>
+
+        <div class="form-alert success" id="successMsg">✓ &nbsp; Message sent! We'll be in touch soon.</div>
+        <div class="form-alert error-msg" id="errorMsg">✕ &nbsp; Something went wrong. Please try again or call us directly.</div>
+
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">Bridle &amp; Bit Magazine</div>
+  <div class="footer-links">
+    <a href="https://bridleandbit.com" target="_blank" rel="noopener">bridleandbit.com</a>
+    <a href="https://podcastcorral.com" target="_blank" rel="noopener">PodcastCorral</a>
+    <a href="https://teamroping.ai" target="_blank" rel="noopener">TeamRoping.AI</a>
+    <a href="https://horsecalendar.ai" target="_blank" rel="noopener">HorseCalendar.AI</a>
+  </div>
+  <div style="color:rgba(255,255,255,0.5);">&copy; 2026 Bridle &amp; Bit Magazine &middot; Arizona's Premier Horse Publication Since 1978</div>
+</footer>
+
+<script>
+const WORKER_URL = "https://contact-form.bridleandbit.workers.dev";
+
+function toggleDrawer() {
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const btn = document.querySelector('.hamburger-btn');
+  const isOpen = drawer.classList.contains('open');
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('open');
+  btn.classList.toggle('open');
+  drawer.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+}
+
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMsg = document.getElementById('successMsg');
+const errorMsg = document.getElementById('errorMsg');
+
+function validate() {
+  let valid = true;
+  const name = document.getElementById('cf-name');
+  const email = document.getElementById('cf-email');
+  const message = document.getElementById('cf-message');
+  [name, email, message].forEach(el => el.classList.remove('error'));
+  document.querySelectorAll('.field-error').forEach(el => el.classList.remove('visible'));
+
+  if (!name.value.trim()) { name.classList.add('error'); document.getElementById('err-name').classList.add('visible'); valid = false; }
+  const ev = email.value.trim();
+  if (!ev || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)) { email.classList.add('error'); document.getElementById('err-email').classList.add('visible'); valid = false; }
+  if (!message.value.trim()) { message.classList.add('error'); document.getElementById('err-message').classList.add('visible'); valid = false; }
+  return valid;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+  if (!validate()) return;
+  submitBtn.disabled = true;
+  submitBtn.classList.add('loading');
+
+  const payload = {
+    name:        document.getElementById('cf-name').value.trim(),
+    email:       document.getElementById('cf-email').value.trim(),
+    phone:       document.getElementById('cf-phone').value.trim(),
+    subject:     document.getElementById('cf-subject').value,
+    message:     document.getElementById('cf-message').value.trim(),
+    source_site: 'BridleAndBit.com',
+  };
+
+  try {
+    const res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const data = await res.json();
+    if (data.success) { successMsg.style.display = 'flex'; form.reset(); }
+    else { errorMsg.style.display = 'flex'; }
+  } catch { errorMsg.style.display = 'flex'; }
+  finally { submitBtn.disabled = false; submitBtn.classList.remove('loading'); }
+});
+</script>
+
+</body>
+</html>
