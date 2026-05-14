@@ -256,14 +256,13 @@
       background: #edf7ed;
       border: 1.5px solid #8cc88c;
       color: #1e5e1e;
-      display: flex;
     }
     .alert.error {
       background: #fef0ec;
       border: 1.5px solid #e8a090;
       color: #7a1c0c;
-      display: flex;
     }
+    .alert.show { display: flex; }
     .alert-icon { font-size: 18px; line-height: 1; margin-top: 1px; }
 
     /* ── TAGLINE FOOTER ── */
@@ -448,8 +447,8 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    successMsg.style.display = "none";
-    errorMsg.style.display   = "none";
+    successMsg.classList.remove("show");
+    errorMsg.classList.remove("show");
     if (!validate()) return;
 
     submitBtn.disabled = true;
@@ -472,15 +471,15 @@
       });
       const data = await res.json();
       if (data.success) {
-        successMsg.style.display = "flex";
+        successMsg.classList.add("show");
         form.reset();
         // Scroll to success message
         successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        errorMsg.style.display = "flex";
+        errorMsg.classList.add("show");
       }
     } catch {
-      errorMsg.style.display = "flex";
+      errorMsg.classList.add("show");
     } finally {
       submitBtn.disabled = false;
       submitBtn.classList.remove("loading");
