@@ -2,1526 +2,695 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#3D2B1F">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Bridle &amp; Bit Magazine | Western &amp; English Horse Industry News, Training &amp; Events</title>
-<meta name="description" content="Bridle & Bit Magazine delivers expert coverage of the horse industry, including team roping, barrel racing, rodeo, training, breeding, and equestrian lifestyle. Discover events, insights, and elite horse culture across Western and English disciplines.">
-<meta property="og:title" content="Bridle & Bit Magazine | Western & English Horse Industry News, Training & Events">
-<meta property="og:description" content="Bridle & Bit Magazine delivers expert coverage of the horse industry, including team roping, barrel racing, rodeo, training, breeding, and equestrian lifestyle. Discover events, insights, and elite horse culture across Western and English disciplines.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://bridleandbit.com/">
-<meta property="og:image" content="https://bridleandbit.com/images/bridleandbit-fb-card-1200x630.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
-<link rel="canonical" href="https://bridleandbit.com/">
-<meta name="robots" content="index, follow">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bridle & Bit Magazine | Western & English Horse Industry News, Training & Events">
-<meta name="twitter:description" content="Bridle & Bit Magazine delivers expert coverage of the horse industry, including team roping, barrel racing, rodeo, training, breeding, and equestrian lifestyle. Discover events, insights, and elite horse culture across Western and English disciplines.">
-<meta name="twitter:image" content="https://bridleandbit.com/images/bridleandbit-fb-card-1200x630.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%233D2B1F'/><text y='48' x='10' font-size='44'>🐴</text></svg>">
-<link rel="preload" as="image" href="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridle & Bit Magazine | Arizona's Premier Equestrian Publication Since 1978</title>
+<meta name="description" content="Bridle & Bit Magazine — Arizona's premier equestrian and western lifestyle publication since 1978. Access our network of Facebook communities and AI-powered equestrian platforms.">
+<meta property="og:title" content="Bridle & Bit Magazine">
+<meta property="og:description" content="Arizona's premier equestrian publication since 1978. Facebook communities, AI platforms, and western lifestyle resources.">
+<meta property="og:url" content="https://bridleandbit.com">
+<link rel="canonical" href="https://bridleandbit.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rust: #C1440E;
-    --tan: #D4A96A;
-    --cream: #F5EDD8;
-    --dark: #1A1208;
-    --bark: #3D2B1F;
-    --sage: #7A8C6E;
-    --sky: #5B8FA8;
-    --light-tan: #EDE0C4;
-    --fb-blue: #1877F2;
-    --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
-    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+    --cream: #f5f0e8;
+    --dark: #1a1208;
+    --brown: #3d2b1f;
+    --gold: #c8973a;
+    --gold-light: #e8b84b;
+    --rust: #8b3a2a;
+    --sage: #5a6e4a;
+    --border: rgba(200,151,58,0.25);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--cream);
-    color: var(--dark);
-    font-family: var(--font-sans);
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
     font-weight: 300;
-    overflow-x: hidden;
-    font-size: 16px;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    min-height: 100vh;
   }
-
-  a, button, [onclick], .chip, .format-tab, .card {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      transition-duration: 0.01ms !important;
-      animation-duration: 0.01ms !important;
-    }
-  }
-
-  /* =============================================
-     MOBILE-FIRST BASE (320px+)
-     ============================================= */
 
   /* HEADER */
   header {
-    background: var(--bark);
-    background-image:
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(255,255,255,0.015) 2px,
-        rgba(255,255,255,0.015) 4px
-      );
-    padding: 5px 12px;
-    padding-left: max(12px, env(safe-area-inset-left));
-    padding-right: max(12px, env(safe-area-inset-right));
-    border-bottom: 2px solid var(--rust);
+    background: var(--brown);
+    border-bottom: 3px solid var(--gold);
+    padding: 0;
     position: relative;
-    z-index: 101;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 0;
-  }
-
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .logo-text {
-    font-family: var(--font-serif);
-    font-size: clamp(11px, 1.8vw, 14px);
-    font-weight: 700;
-    color: var(--cream);
-    letter-spacing: 0.5px;
-  }
-
-  .tagline {
-    display: none;
-  }
-
-
-
-  /* HAMBURGER MENU */
-  .hamburger-btn {
-    background: none;
-    border: none;
-    color: var(--cream);
-    font-size: 22px;
-    padding: 8px;
-    min-height: 44px;
-    min-width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    position: relative;
-    z-index: 202;
-  }
-  .hamburger-btn .bar {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--cream);
-    position: relative;
-    transition: 0.3s;
-  }
-  .hamburger-btn .bar::before,
-  .hamburger-btn .bar::after {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--cream);
-    position: absolute;
-    transition: 0.3s;
-  }
-  .hamburger-btn .bar::before { top: -6px; }
-  .hamburger-btn .bar::after { top: 6px; }
-  .hamburger-btn.open .bar { background: transparent; }
-  .hamburger-btn.open .bar::before { top: 0; transform: rotate(45deg); }
-  .hamburger-btn.open .bar::after { top: 0; transform: rotate(-45deg); }
-
-  .drawer-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 150;
-  }
-  .drawer-overlay.open { display: block; }
-
-  .drawer {
-    position: fixed;
-    top: 0;
-    right: -280px;
-    width: 280px;
-    height: 100%;
-    background: var(--bark);
-    z-index: 200;
-    transition: right 0.3s ease;
-    overflow-y: auto;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.3);
-    padding-top: 60px;
-  }
-  .drawer.open { right: 0; }
-
-  .drawer-section {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(212,169,106,0.15);
-  }
-  .drawer-section-title {
-    font-size: 14px;
-  }
-  .drawer a {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    min-height: 44px;
-    color: var(--cream);
-    text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.15s;
-    touch-action: manipulation;
-  }
-  .drawer a:active,
-  .drawer a:hover { background: rgba(255,255,255,0.06); }
-
-  @media (min-width: 1024px) {
-    .hamburger-btn { display: none; }
-  }
-
-  /* STICKY NAV BAR */
-  .site-nav {
-    background: var(--dark);
-    border-bottom: 2px solid var(--rust);
-    display: flex;
-    overflow-x: auto;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: sticky;
-    top: 0;
-    z-index: 99;
-  }
-  .site-nav::-webkit-scrollbar { display: none; }
-  .site-nav a {
-    flex-shrink: 0;
-    padding: 13px 16px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(245,237,216,0.7);
-    text-decoration: none;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    transition: color 0.2s;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .site-nav a:hover, .site-nav a.active {
-    color: var(--cream);
-    border-bottom-color: var(--tan);
-  }
-
-  /* HERO */
-  .hero {
-    background: var(--bark);
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    padding: 18px 12px 14px;
-    text-align: center;
-    border-bottom: 1px solid rgba(212,169,106,0.2);
-  }
-
-  .hero-logo {
-    display: block;
-    max-width: clamp(180px, 60vw, 260px);
-    height: auto;
-    margin: 0 auto 8px;
-  }
-
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(15px, 4vw, 22px);
-    font-weight: 900;
-    color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: 8px;
-  }
-
-  .hero h1 em {
-    color: var(--tan);
-    font-style: normal;
-  }
-
-  .hero p {
-    color: rgba(255,255,255,0.8);
-    font-size: clamp(13px, 2vw, 15px);
-    font-weight: 400;
-    max-width: 560px;
-    margin: 0 auto;
-    line-height: 1.5;
-    word-break: break-word;
-    padding: 0 4px;
-  }
-
-
-  /* HUB CARDS */
-  .hub-section {
-    padding: 20px 12px 8px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .hub-heading {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    color: var(--bark);
-    margin-bottom: 12px;
-    padding-left: 2px;
-  }
-  .hub-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .hub-card {
-    background: white;
-    border: 1px solid rgba(61,43,31,0.12);
-    border-radius: 8px;
-    padding: 16px 14px;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    transition: box-shadow 0.2s, transform 0.2s;
-    min-height: 44px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .hub-card:active { transform: scale(0.98); }
-  @media(hover:hover) { .hub-card:hover { box-shadow: 0 4px 16px rgba(44,24,16,0.1); transform: translateY(-2px); } }
-  .hub-card-title {
-    font-family: var(--font-serif);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.2;
-  }
-  .hub-card-desc {
-    font-size: 14px;
-    color: rgba(26,18,8,0.65);
-    line-height: 1.35;
-  }
-  .hub-card-badge {
-    display: inline-block;
-    align-self: flex-start;
-    font-size: 14px;
-    border-radius: 3px;
-    margin-bottom: 2px;
-  }
-  .badge-rust { background: rgba(193,68,14,0.1); color: var(--rust); }
-  .badge-sage { background: rgba(122,140,110,0.15); color: var(--sage); }
-  .badge-sky { background: rgba(91,143,168,0.15); color: var(--sky); }
-  .badge-tan { background: rgba(212,169,106,0.15); color: #8B6914; }
-  .hub-card-arrow {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--rust);
-    margin-top: auto;
-    padding-top: 4px;
-  }
-  @media (min-width: 601px) {
-    .hub-section { padding: 24px 24px 12px; }
-    .hub-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .hub-card { padding: 20px 18px; }
-    .hub-card-title { font-size: 15px; }
-    .hub-card-desc { font-size: 14px; }
-    .hub-heading { font-size: 18px; }
-  }
-  @media (min-width: 1024px) {
-    .hub-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-
-  /* STATS BAR */
-  .stats-bar-wrap {
-    background: var(--bark);
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid rgba(212,169,106,0.2);
-  }
-
-  .stats-bar {
-    background: var(--rust);
-    display: flex;
-    justify-content: space-between;
-    gap: 0;
-    max-width: 520px;
-    width: 100%;
-    border-radius: 0 0 6px 6px;
-  }
-
-  .stat-item {
-    padding: 10px 12px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.15);
-    flex: 1;
-    min-width: 60px;
-  }
-
-  .stat-item:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    font-weight: 700;
-    color: white;
-    display: block;
-  }
-
-  .stat-label {
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.9);
-    font-weight: 700;
-  }
-
-  /* MAGAZINE CARD */
-  .magazine-feature {
-    background: var(--bark);
-    border-bottom: 1px solid rgba(212,169,106,0.2);
-    padding: 14px 12px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .magazine-card {
-    background: var(--cream);
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 16px 14px;
-    max-width: 680px;
-    width: 100%;
-    border: 1px solid rgba(61,43,31,0.1);
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.15s;
-    position: relative;
-  }
-
-  @media(hover:hover) { .magazine-card:hover { background: white; } }
-  .magazine-card:active { background: white; transform: scale(0.99); }
-
-  .magazine-card .card-icon {
-    width: 85px;
-    height: 108px;
-    background: var(--bark);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgba(61,43,31,0.15);
-    border-radius: 4px;
     overflow: hidden;
   }
 
-  .magazine-card .card-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
-
-  .magazine-card .card-title {
-    font-family: var(--font-serif);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 2px;
-    line-height: 1.25;
-  }
-
-  .magazine-card .issue-label {
-    font-size: 14px;
-    color: var(--rust);
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .current-tag {
+  header::before {
+    content: '';
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--rust);
-    color: white;
-    font-size: 14px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    padding: 3px 6px;
-    font-weight: 700;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8973a' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
   }
 
-
-  .member-count {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--rust);
-    letter-spacing: 0.3px;
-    margin-bottom: 4px;
-  }
-
-  /* FORMAT TABS */
-  .format-tabs {
-    background: var(--dark);
-    display: flex;
-    border-bottom: 3px solid var(--rust);
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .format-tabs::-webkit-scrollbar { display: none; }
-
-  .format-tab {
-    flex-shrink: 0;
-    padding: 12px 8px;
-    min-height: 44px;
-    text-align: center;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    color: rgba(245,237,216,0.45);
-    transition: color 0.2s, border-color 0.2s;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -3px;
-  }
-
-  .format-tab.active {
-    color: var(--cream);
-    border-bottom: 3px solid var(--tan);
-  }
-
-  @media(hover:hover) { .format-tab:hover { color: var(--cream); } }
-
-  .format-tab .tab-icon { margin-right: 4px; }
-
-  /* SECTION LABEL */
-  .section-label {
-    padding: 18px 12px 10px;
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 24px 24px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    position: relative;
   }
 
-  .section-label h2 {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    color: var(--bark);
+  .brand {
+    flex: 1;
+  }
+
+  .brand-since {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-name span { color: var(--gold); }
+
+  .brand-tagline {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.6);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .header-badge {
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 2px;
     white-space: nowrap;
   }
 
-  .section-label .line {
-    flex: 1;
-    height: 1px;
-    background: rgba(61,43,31,0.15);
+  /* TABS */
+  .tab-bar {
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    overflow-x: auto;
   }
 
-  .section-label .count-tag {
-    font-size: 13px;
-    color: var(--rust);
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: rgba(245,240,232,0.5);
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.1em;
+    padding: 14px 20px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn.active, .tab-btn:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION LABEL */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 24px;
+  }
+
+  .section-label + .section-label,
+  .card-grid + .section-label {
+    margin-top: 52px;
+  }
+
+  .section-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cream);
+    white-space: nowrap;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-count {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(200,151,58,0.1);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 2px;
     white-space: nowrap;
   }
 
   /* CARD GRID */
   .card-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    margin: 0 12px 2px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
   }
 
+  /* CARD */
   .card {
-    background: var(--cream);
-    padding: 16px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
     display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    transition: background 0.15s;
-    cursor: pointer;
+    gap: 0;
+    overflow: hidden;
     text-decoration: none;
-    color: inherit;
-    position: relative;
-    border: 0.5px solid rgba(61,43,31,0.12);
+    transition: all 0.2s;
   }
 
-  @media(hover:hover) { .card:hover { background: white; } }
-  .card:active { background: white; transform: scale(0.99); }
+  .card:hover {
+    background: rgba(200,151,58,0.08);
+    border-color: rgba(200,151,58,0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
 
-  .card-icon {
-    width: 58px;
-    height: 58px;
-    flex-shrink: 0;
+  .card-img {
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    overflow: hidden;
+    align-self: center;
+    margin: 12px 0 12px 12px;
+    border-radius: 4px;
+    background: rgba(200,151,58,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    border: 2px solid rgba(61,43,31,0.12);
-    border-radius: 4px;
-    overflow: hidden;
+    flex-shrink: 0;
   }
 
-  .card-icon.fb {
-    background: var(--fb-blue);
-    color: white;
-    font-weight: 700;
-    font-family: var(--font-sans);
-    font-size: 30px;
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  .card-icon.web {
-    background: var(--bark);
-    color: var(--tan);
+  .card-img-icon {
+    font-size: 2rem;
   }
 
-  .card-body { flex: 1; min-width: 0; }
+  .card-body {
+    padding: 14px 14px 14px 12px;
+    flex: 1;
+    min-width: 0;
+  }
 
   .card-title {
-    font-family: var(--font-serif);
-    font-size: 14px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
     font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 3px;
-    line-height: 1.25;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: var(--cream);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .card-members {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 5px;
+    letter-spacing: 0.05em;
   }
 
   .card-desc {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(26,18,8,0.65);
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.55);
     line-height: 1.4;
     margin-bottom: 8px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
-  .card-meta {
+  .card-footer {
     display: flex;
-    gap: 8px;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
   }
 
   .type-tag {
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    font-weight: 700;
-    padding: 3px 8px;
-    border: 1px solid currentColor;
-    white-space: nowrap;
+    padding: 2px 7px;
+    border-radius: 2px;
   }
 
-  .type-fb { color: var(--fb-blue); }
-  .type-ai { color: var(--rust); }
-  .type-web { color: var(--sage); }
-  .type-dir { color: var(--sky); }
+  .tag-fb { background: rgba(24,119,242,0.15); color: #5b9af5; border: 1px solid rgba(91,154,245,0.3); }
+  .tag-ai { background: rgba(200,151,58,0.15); color: var(--gold-light); border: 1px solid var(--border); }
+  .tag-web { background: rgba(90,110,74,0.2); color: #8aaa6a; border: 1px solid rgba(90,110,74,0.4); }
+  .tag-mag { background: rgba(139,58,42,0.2); color: #d4866e; border: 1px solid rgba(139,58,42,0.4); }
 
   .visit-btn {
-    margin-left: auto;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: white;
-    padding: 10px 10px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: opacity 0.15s;
-  }
-
-  .visit-btn.fb-btn { background: var(--fb-blue); }
-  .visit-btn.web-btn { background: var(--bark); }
-
-  @media(hover:hover) { .visit-btn:hover { opacity: 0.85; } }
-
-  /* TAB CONTENT */
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* POWERED BY BANNER */
-  .powered-by {
-    background: var(--light-tan);
-    padding: 20px 12px;
-    text-align: center;
-    border-top: 1px solid rgba(61,43,31,0.1);
-    border-bottom: 1px solid rgba(61,43,31,0.1);
-  }
-
-  .powered-by h3 {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    color: var(--bark);
-    margin-bottom: 6px;
-  }
-
-  .powered-by p {
-    font-size: 14px;
-    color: rgba(26,18,8,0.6);
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.5;
-  }
-
-  .tech-badges {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 12px;
-  }
-
-  .tech-badge {
-    background: rgba(255,255,255,0.7);
-    border: 1px solid rgba(61,43,31,0.12);
-    color: var(--bark);
-    font-size: 14px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    padding: 10px 10px;
+    font-size: 0.65rem;
     font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .card:hover .visit-btn {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
   }
 
   /* FOOTER */
   footer {
-    padding-bottom: max(20px, env(safe-area-inset-bottom));
-    background: var(--bark);
-    color: white;
-    font-weight: 700;
-    text-align: center;
-    padding: 24px 12px;
-    font-size: 14px;
-    border-top: 2px solid var(--rust);
-  }
-
-
-  footer .footer-links a {
-    padding: 10px 6px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  footer a { color: var(--tan); text-decoration: none; }
-  @media(hover:hover) { footer a:hover { text-decoration: underline; } }
-
-  footer .footer-logo {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    color: var(--cream);
-    margin-bottom: 8px;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
-  }
-
-  .footer-links a {
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  /* GUIDE CARDS (small) */
-  .guide-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    margin: 0 12px 2px;
-  }
-
-  .guide-card {
-    background: var(--cream);
-    padding: 12px 14px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    transition: background 0.15s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    border: 0.5px solid rgba(61,43,31,0.12);
-    min-height: 44px;
-  }
-
-  @media(hover:hover) { .guide-card:hover { background: white; } }
-  .guide-card:active { background: white; transform: scale(0.99); }
-
-  .guide-card .guide-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-    width: 32px;
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
     text-align: center;
   }
 
-  .guide-card .guide-body { flex: 1; min-width: 0; }
-
-  .guide-card .guide-title {
-    font-family: var(--font-serif);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.25;
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.35);
+    line-height: 1.8;
   }
 
-  .guide-card .guide-desc {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(26,18,8,0.5);
-    line-height: 1.3;
-  }
+  footer a { color: var(--gold); text-decoration: none; }
 
-  .guide-card .guide-arrow {
-    color: var(--rust);
-    font-size: 14px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  /* =============================================
-     TABLET+ (601px and up)
-     ============================================= */
-  @media (min-width: 601px) {
-    header { padding: 5px 24px; }
-    .logo-area { gap: 12px; }
-    .tagline {
-      display: block;
-      font-size: 14px;
-      color: rgba(213,184,138,0.85);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .hero { padding: 28px 24px 20px; }
-    .hero-logo { max-width: clamp(220px, 55vw, 400px); margin-bottom: 10px; }
-    .hero h1 { font-size: clamp(18px, 4.5vw, 32px); margin-bottom: 10px; }
-    .hero p { font-size: clamp(14px, 2vw, 17px); max-width: 680px; }
-
-    .stat-item { padding: 8px 20px; min-width: 80px; }
-    .stat-num { font-size: 20px; }
-
-    .magazine-feature { padding: 20px 24px; }
-    .magazine-card { padding: 22px 20px; gap: 16px; max-width: 480px; }
-    .magazine-card .card-icon { width: 110px; height: 140px; }
-    .magazine-card .card-title { font-size: 17px; }
-    .current-tag { top: 12px; right: 12px; font-size: 13px; padding: 3px 8px; letter-spacing: 1.5px; }
-
-    .format-tab { padding: 14px 16px; font-size: 13px; letter-spacing: 1.5px; }
-    .format-tab .tab-icon { margin-right: 6px; }
-
-    .section-label { padding: 24px 24px 12px; gap: 12px; max-width: 1200px; margin: 0 auto; }
-    .section-label h2 { font-size: 20px; }
-    .section-label .count-tag { font-size: 13px; }
-
-    .card-grid {
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      max-width: 1200px;
-      margin: 0 auto 2px;
-    }
-
-    .card { padding: 22px 20px; gap: 16px; }
-    .card-icon { width: 72px; height: 72px; font-size: 28px; }
-    .card-icon.fb { font-size: 36px; }
-    .card-title { font-size: 15px; }
-
-    .powered-by { padding: 28px 24px; }
-    .powered-by h3 { font-size: 18px; }
-    .tech-badges { gap: 10px; margin-top: 14px; }
-    .tech-badge { padding: 5px 12px; }
-
-    .guide-grid {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      max-width: 1200px;
-      margin: 0 auto 2px;
-    }
-    .guide-card { padding: 14px 18px; }
-    .guide-card .guide-title { font-size: 14px; }
-
-    footer { padding: 28px 24px; }
-    footer .footer-logo { font-size: 18px; }
-    .footer-links { gap: 16px; }
-  }
-
-  /* =============================================
-     DESKTOP (1024px and up)
-     ============================================= */
-  @media (min-width: 1024px) {
-    .card-grid {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-    .guide-grid {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-    header { padding: 6px 32px; }
-    .hero { padding: 48px 32px 40px; }
-    .section-label { padding: 28px 32px 14px; }
-  }
-
-
-  @media print {
-    .site-nav, .format-tabs, .stats-bar-wrap, .hamburger-btn, .drawer, .drawer-overlay, footer { display: none !important; }
-    header { position: static; }
-    body { background: white; color: black; }
-    .card, .hub-card, .guide-card { break-inside: avoid; border: 1px solid #ccc; }
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .brand-name { font-size: 1.8rem; }
+    .header-badge { display: none; }
+    .tab-btn { padding: 12px 14px; font-size: 0.72rem; }
   }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Bridle & Bit Magazine",
-  "url": "https://bridleandbit.com/",
-  "description": "Arizona's premier horse publication since 1978. Covering team roping, reining, barrel racing, rodeo, cutting, cowhorse, and equestrian lifestyle.",
-  "foundingDate": "1978",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Bridle & Bit Magazine"
-  }
-}
-</script>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo-area">
-    <div class="logo-text">Bridle &amp; Bit Magazine</div>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-since">Since 1978</div>
+      <div class="brand-name">Bridle <span>&</span> Bit</div>
+      <div class="brand-tagline">Arizona's Premier Equestrian &amp; Western Lifestyle Publication</div>
+    </div>
+    <div class="header-badge">Est. 1978 · Arizona</div>
   </div>
-  <div class="tagline">AI Division</div>
-  <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Menu">
-    <span class="bar"></span>
-  </button>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('all', this)">All</button>
+    <button class="tab-btn" onclick="showTab('facebook', this)">Facebook Groups</button>
+    <button class="tab-btn" onclick="showTab('websites', this)">Websites & Apps</button>
+  </div>
 </header>
 
-<!-- DRAWER OVERLAY -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
-
-<!-- SLIDE-OUT DRAWER -->
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="drawer-section">
-    <div class="drawer-section-title">Magazine</div>
-    <a href="/flipbook/">Read Current Issue</a>
-    <a href="/media-guide/">Media Guide &amp; Advertising</a>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Resources</div>
-    <a href="/team-roping/">Team Roping Calendar</a>
-    <a href="/horse-property/">Arizona Horse Property</a>
-    <a href="https://horseinsurance.ai" target="_blank" rel="noopener">Horse Insurance Guide</a>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Community</div>
-    <a href="/arizona-horse-bulletin-board/">AZ Horse Bulletin Board</a>
-    <a href="/bridle-bit-bulletin-board/">Bridle &amp; Bit Bulletin Board</a>
-    <a href="/rio-verde-bulletin-board/">Rio Verde Bulletin Board</a>
-    <a href="/reining-horse-bulletin-board/">Reining Horse Board</a>
-    <a href="/westworld-scottsdale/">WestWorld Scottsdale</a>
-    <a href="/horseshoe-park/">HorseShoe Park</a>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Network</div>
-    <a href="https://bridleandbit.com" target="_blank" rel="noopener">BridleAndBit.com</a>
-    <a href="https://teamroping.ai" target="_blank" rel="noopener">TeamRoping.AI</a>
-    <a href="https://reininghorses.ai" target="_blank" rel="noopener">ReiningHorses.AI</a>
-    <a href="https://podcastcorral.com" target="_blank" rel="noopener">PodcastCorral.com</a>
-  </div>
-  <div class="drawer-section">
-    <a href="/contact/">Contact Us</a>
-  </div>
-</div>
-
-<!-- SITE NAV -->
-<nav class="site-nav">
-  <a href="/" class="active">Home</a>
-  <a href="/flipbook/">Magazine</a>
-  <a href="/team-roping/">Team Roping</a>
-  <a href="/media-guide/">Media Guide</a>
-  <a href="/horse-property/">Horse Property <span style="color:#1877F2;font-weight:900;">FB</span></a>
-  <a href="https://horsepropertyguide.com" target="_blank" rel="noopener">HP Guide</a>
-  <a href="https://horsepropertyagents.com" target="_blank" rel="noopener">HP Agents</a>
-  <a href="https://horsepropertyfinancing.com" target="_blank" rel="noopener">HP Financing</a>
-  <a href="https://horseinsurance.ai" target="_blank" rel="noopener">Insurance</a>
-  <a href="/contact/">Contact</a>
-</nav>
-
 <main>
-<!-- HERO -->
-<div class="hero">
-  <img class="hero-logo" width="400" height="64" src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public" alt="Bridle & Bit">
-  <h1>Arizona's Premier <em>Horse Publication</em> Since 1978</h1>
-  <p>Team Roping &middot; Reining &middot; Barrel Racing &middot; Rodeo &middot; Cutting &middot; Cowhorse &middot; Horse Property &middot; Events</p>
-</div>
 
-<!-- STATS BAR -->
-<div class="stats-bar-wrap">
-  <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-num">7</span>
-      <span class="stat-label">FB Groups</span>
+  <!-- ALL TAB -->
+  <div class="tab-panel active" id="tab-all">
+
+    <!-- FACEBOOK GROUPS -->
+    <div class="section-label">
+      <h2>Facebook Communities</h2>
+      <div class="section-line"></div>
+      <span class="section-count">9 Groups</span>
     </div>
-    <a href="#fb-section" class="stat-item" onclick="event.preventDefault();document.getElementById('fb-section').scrollIntoView({behavior:'smooth'});" style="text-decoration:none;cursor:pointer;">
-      <span class="stat-num">65K+</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.95);font-weight:700;">Members · Join Here ↓</span>
-    </a>
-    <div class="stat-item">
-      <span class="stat-num">20+</span>
-      <span class="stat-label">Web Properties</span>
+
+    <div class="card-grid">
+
+      <a class="card" href="https://www.facebook.com/groups/735758536845612" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-2/public" loading="lazy" alt="Team Roping"></div>
+        <div class="card-body">
+          <div class="card-title">Team Roping</div>
+          <div class="card-members">23,200 Members</div>
+          <div class="card-desc">The team roping community hub — events, partner matching, videos, and competition updates.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/476655912930011" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-3/public" loading="lazy" alt="Arizona Horse Bulletin Board"></div>
+        <div class="card-body">
+          <div class="card-title">Arizona Horse Bulletin Board</div>
+          <div class="card-members">13,500 Members</div>
+          <div class="card-desc">Arizona's general equine classifieds — tack, trailers, horses for sale, services, and community announcements.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/1724255897648803" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-4/public" loading="lazy" alt="Arizona Horse Property"></div>
+        <div class="card-body">
+          <div class="card-title">Arizona Horse Property for Sale</div>
+          <div class="card-members">11,600 Members</div>
+          <div class="card-desc">Buy, sell, and browse horse properties across Arizona. Active marketplace for equestrian real estate.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/511334695894703" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-5/public" loading="lazy" alt="Bridle and Bit Bulletin Board"></div>
+        <div class="card-body">
+          <div class="card-title">Bridle &amp; Bit Bulletin Board</div>
+          <div class="card-members">5,200 Members</div>
+          <div class="card-desc">The official Bridle &amp; Bit Magazine community — articles, discussion, and industry connections.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/835769854456790" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-6/public" loading="lazy" alt="Rio Verde"></div>
+        <div class="card-body">
+          <div class="card-title">Rio Verde Bulletin Board</div>
+          <div class="card-members">4,000 Members</div>
+          <div class="card-desc">Community board for Rio Verde and surrounding foothills — events, services, and neighborhood news.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/137326170326138" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-7/public" loading="lazy" alt="Horse Trailers for Sale"></div>
+        <div class="card-body">
+          <div class="card-title">Horse Trailers for Sale</div>
+          <div class="card-members">2,100 Members</div>
+          <div class="card-desc">Buy, sell, and browse horse trailers — listings, deals, and advice from the hauling community.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/398512497690814" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-8/public" loading="lazy" alt="Reining Horse Bulletin Board"></div>
+        <div class="card-body">
+          <div class="card-title">Reining Horse Bulletin Board</div>
+          <div class="card-members">2,000 Members</div>
+          <div class="card-desc">Dedicated to the reining community — horses, trainers, clinics, show results, and industry news.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/2370896266463653" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-9/public" loading="lazy" alt="WestWorld of Scottsdale"></div>
+        <div class="card-body">
+          <div class="card-title">WestWorld of Scottsdale</div>
+          <div class="card-desc">Arizona's premier equestrian venue — shows, events, and expos at WestWorld.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/groups/394292225272650" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-10/public" loading="lazy" alt="HorseShoe Park"></div>
+        <div class="card-body">
+          <div class="card-title">HorseShoe Park Bulletin Board</div>
+          <div class="card-desc">Events, stabling info, arena schedules, and announcements for HorseShoe Park.</div>
+          <div class="card-footer"><span class="type-tag tag-fb">Facebook Group</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
     </div>
-  </div>
-</div>
 
-<!-- HUB CARDS -->
-<div class="hub-section">
-  <div class="hub-heading">Explore Bridle &amp; Bit</div>
-  <div class="hub-grid">
-    <a href="/flipbook/" class="hub-card">
-      <span class="hub-card-badge badge-rust">Current Issue</span>
-      <div class="hub-card-title">Read the Magazine</div>
-      <div class="hub-card-desc">Digital flipbook edition</div>
-      <div class="hub-card-arrow">Read &rarr;</div>
-    </a>
-<a href="/team-roping/" class="hub-card">
-      <span class="hub-card-badge badge-rust">Updated Daily</span>
-      <div class="hub-card-title">Team Roping</div>
-      <div class="hub-card-desc">Nationwide roping calendar</div>
-      <div class="hub-card-arrow">Find Ropings &rarr;</div>
-    </a>
-    <a href="/media-guide/" class="hub-card">
-      <span class="hub-card-badge badge-sky">Advertise</span>
-      <div class="hub-card-title">Media Guide</div>
-      <div class="hub-card-desc">65,000+ reach across all platforms</div>
-      <div class="hub-card-arrow">View &rarr;</div>
-    </a>
-    <a href="/horse-property/" class="hub-card">
-      <span class="hub-card-badge badge-sage">Arizona</span>
-      <div class="hub-card-title">Horse Property</div>
-      <div class="hub-card-desc">Equestrian homes &amp; ranches</div>
-      <div class="hub-card-arrow">Browse &rarr;</div>
-    </a>
-    <a href="https://horseinsurance.ai" target="_blank" rel="noopener" class="hub-card">
-      <span class="hub-card-badge badge-sage">Guide</span>
-      <div class="hub-card-title">Horse Insurance</div>
-      <div class="hub-card-desc">Mortality, liability &amp; farm coverage</div>
-      <div class="hub-card-arrow">Learn &rarr;</div>
-    </a>
-</div>
-</div>
-
-<!-- CURRENT ISSUE -->
-<div class="magazine-feature">
-  <a class="magazine-card" href="/flipbook/" target="_blank" rel="noopener">
-    <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-1/public" loading="lazy" width="144" height="144" alt="Bridle & Bit May 2026 Cover"></div>
-    <div class="card-body">
-      <div class="issue-label">May 2026</div>
-      <div class="card-title">Bridle &amp; Bit Magazine</div>
-      <div class="card-desc" style="font-weight:700;">Arizona's premier horse publication since 1978.</div>
-      <span class="visit-btn web-btn" style="display:inline-block;margin-top:6px;">Read Current Issue</span>
+    <!-- WEBSITES & APPS -->
+    <div class="section-label">
+      <h2>Websites &amp; AI Platforms</h2>
+      <div class="section-line"></div>
+      <span class="section-count">20 Properties</span>
     </div>
-  </a>
-</div>
 
-<!-- FORMAT TABS -->
-<div class="format-tabs">
-  <button class="format-tab active" onclick="switchTab('all', this)">
-    <span class="tab-icon">&#9733;</span>All Properties
-  </button>
-  <button class="format-tab" onclick="switchTab('facebook', this)">
-    <span class="tab-icon">&#xf09a;</span>Facebook Groups
-  </button>
-  <button class="format-tab" onclick="switchTab('websites', this)">
-    <span class="tab-icon">&#9741;</span>Websites
-  </button>
-</div>
+    <div class="card-grid">
 
-<!-- ALL TAB -->
-<div id="tab-all" class="tab-content active">
-
-  <!-- FACEBOOK GROUPS SECTION -->
-  <div class="section-label">
-    <h2 id="fb-section">Facebook Groups</h2>
-    <div class="line"></div>
-    <span class="count-tag">9 COMMUNITIES</span>
-  </div>
-
-  <div class="card-grid" id="fb-cards-all">
-
-    <a class="card" href="https://www.facebook.com/groups/735758536845612" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-2/public" loading="lazy" width="144" height="144" alt="Team Roping" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Team Roping</div>
-        <div class="member-count">23,200 Members</div>
-        <div class="card-desc">The team roping community hub — events, partner matching, videos, tips, and competition updates.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://teamroping.ai" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-11/public" loading="lazy" alt="TeamRoping.AI"></div>
+        <div class="card-body">
+          <div class="card-title">TeamRoping.AI</div>
+          <div class="card-desc">AI-powered team roping event calendar with 320+ events, Near Me search, Q&A, and producer directory.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/476655912930011" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-3/public" loading="lazy" width="144" height="144" alt="Arizona Horse Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Arizona Horse Bulletin Board</div>
-        <div class="member-count">13,500 Members</div>
-        <div class="card-desc">Arizona's general equine classifieds — tack, trailers, horses for sale, services, and community announcements.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://horsecalendar.ai" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">📅</div></div>
+        <div class="card-body">
+          <div class="card-title">HorseCalendar.AI</div>
+          <div class="card-desc">Arizona horse show and event calendar — the complete guide to equestrian events across the state.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/1724255897648803" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-4/public" loading="lazy" width="144" height="144" alt="Arizona Horse Property for Sale" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Arizona Horse Property for Sale</div>
-        <div class="member-count">11,600 Members</div>
-        <div class="card-desc">Buy, sell, and browse horse properties across Arizona. Active marketplace for equestrian real estate.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://horsetrainer.ai" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🏇</div></div>
+        <div class="card-body">
+          <div class="card-title">HorseTrainer.AI</div>
+          <div class="card-desc">Directory of 1,700+ horse trainers nationwide across all disciplines with Near Me search.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/511334695894703" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-5/public" loading="lazy" width="144" height="144" alt="Bridle and Bit Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Bridle &amp; Bit Bulletin Board</div>
-        <div class="member-count">5,200 Members</div>
-        <div class="card-desc">The official Bridle &amp; Bit Magazine community — articles, discussion, and industry connections.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://reininghorses.ai" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🤠</div></div>
+        <div class="card-body">
+          <div class="card-title">ReiningHorses.AI</div>
+          <div class="card-desc">Reining trainer directory, show results archive, and Hall of Fame — the reining industry hub.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/835769854456790" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-6/public" loading="lazy" width="144" height="144" alt="Rio Verde" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Rio Verde Bulletin Board</div>
-        <div class="member-count">4,000 Members</div>
-        <div class="card-desc">Community board for Rio Verde and surrounding foothills — events, services, and neighborhood news.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://stallionmatchmaker.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🐴</div></div>
+        <div class="card-body">
+          <div class="card-title">StallionMatchMaker.com</div>
+          <div class="card-desc">AI-powered stallion matchmaker — 242 stallions across 13 stations matched to your mare.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/137326170326138" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-7/public" loading="lazy" width="144" height="144" alt="Horse Trailers for Sale" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Horse Trailers for Sale</div>
-        <div class="member-count">2,100 Members</div>
-        <div class="card-desc">Buy, sell, and browse horse trailers — listings, deals, and advice from the equestrian hauling community.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://horsebreeding.ai" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🧬</div></div>
+        <div class="card-body">
+          <div class="card-title">HorseBreeding.AI</div>
+          <div class="card-desc">Comprehensive horse breeding resource — genetics, stallion profiles, and breeding strategies.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/398512497690814" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-8/public" loading="lazy" width="144" height="144" alt="Reining Horse Bulletin Board" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">Reining Horse Bulletin Board</div>
-        <div class="member-count">2,000 Members</div>
-        <div class="card-desc">Dedicated to the reining community — horses for sale, trainers, clinics, show results, and industry news.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://reiningsaddles.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🪑</div></div>
+        <div class="card-body">
+          <div class="card-title">ReiningSaddles.com</div>
+          <div class="card-desc">Certified used reining saddle marketplace — 27 hand-selected saddles from trusted dealers.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Marketplace</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/2370896266463653" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-9/public" loading="lazy" width="144" height="144" alt="WestWorld of Scottsdale" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">WestWorld of Scottsdale</div>
-        <div class="card-desc">Community group for WestWorld — Arizona's premier equestrian venue for shows, events, and expos.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://westernsaddles.ai" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🪑</div></div>
+        <div class="card-body">
+          <div class="card-title">WesternSaddles.AI</div>
+          <div class="card-desc">The definitive western saddle authority hub — history, anatomy, makers, and 103-saddle matchmaker.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://www.facebook.com/groups/394292225272650" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-10/public" loading="lazy" width="144" height="144" alt="HorseShoe Park" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">HorseShoe Park Bulletin Boards</div>
-        <div class="card-desc">The go-to community for HorseShoe Park — events, stabling info, arena schedules, and announcements.</div>
-        <div class="card-meta">
-          <span class="type-tag type-fb">Facebook Group</span>
-          <span class="visit-btn fb-btn">Visit</span>
+      <a class="card" href="https://certifiedusedsaddles.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">✅</div></div>
+        <div class="card-body">
+          <div class="card-title">CertifiedUsedSaddles.com</div>
+          <div class="card-desc">Certified pre-owned saddles across all disciplines — inspected, vetted, and ready to ride.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Marketplace</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-
-  </div>
-
-  <!-- WEBSITES SECTION -->
-  <div class="section-label">
-    <h2>Websites &amp; Applications</h2>
-    <div class="line"></div>
-    <span class="count-tag">6 PROPERTIES</span>
-  </div>
-
-  <div class="card-grid" id="web-cards-all">
-
-    <a class="card" href="https://teamroping.ai" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-11/public" loading="lazy" width="144" height="144" alt="TeamRoping.AI" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">TeamRoping.AI</div>
-        <div class="card-desc">AI-powered team roping event calendar, Q&amp;A, and community resource hub with 377+ events nationwide.</div>
-        <div class="card-meta">
-          <span class="type-tag type-ai">AI Platform</span>
-          <span class="visit-btn web-btn">Visit</span>
+      <a class="card" href="https://horseinsurance.ai" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🛡️</div></div>
+        <div class="card-body">
+          <div class="card-title">HorseInsurance.AI</div>
+          <div class="card-desc">Complete horse insurance guide — mortality, major medical, liability, and trailer coverage explained.</div>
+          <div class="card-footer"><span class="type-tag tag-ai">AI Platform</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://teamropingvideos.com" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-12/public" loading="lazy" width="144" height="144" alt="TeamRopingVideos.com" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">TeamRopingVideos.com</div>
-        <div class="card-desc">Curated team roping video library — competition footage, training tips, and instructional content.</div>
-        <div class="card-meta">
-          <span class="type-tag type-web">Website</span>
-          <span class="visit-btn web-btn">Visit</span>
+      <a class="card" href="https://horsepropertyagents.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🏡</div></div>
+        <div class="card-body">
+          <div class="card-title">HorsePropertyAgents.com</div>
+          <div class="card-desc">Find specialized horse property real estate agents — professionals who know equestrian properties.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Directory</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://worldsgreatesthorseman.com" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-13/public" loading="lazy" width="144" height="144" alt="Worlds Greatest Horseman" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">WorldsGreatestHorseman.com</div>
-        <div class="card-desc">The definitive archive of the World's Greatest Horseman competition — 27 champions, history, and event coverage.</div>
-        <div class="card-meta">
-          <span class="type-tag type-web">Website</span>
-          <span class="visit-btn web-btn">Visit</span>
+      <a class="card" href="https://horsepropertyguide.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">📖</div></div>
+        <div class="card-body">
+          <div class="card-title">HorsePropertyGuide.com</div>
+          <div class="card-desc">The complete guide to buying, selling, and developing horse property across the Southwest.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Guide</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://horseinsurance.ai" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-14/public" loading="lazy" width="144" height="144" alt="HorseInsurance.ai" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">HorseInsurance.ai</div>
-        <div class="card-desc">Comprehensive equine insurance guide — 191 Q&amp;A entries, 108 glossary terms, 17 in-depth blog posts.</div>
-        <div class="card-meta">
-          <span class="type-tag type-ai">AI Platform</span>
-          <span class="visit-btn web-btn">Visit</span>
+      <a class="card" href="https://horsepropertyfinancing.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">💰</div></div>
+        <div class="card-body">
+          <div class="card-title">HorsePropertyFinancing.com</div>
+          <div class="card-desc">Financing options and lenders specializing in equestrian properties, barns, and arena construction.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Guide</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://podcastcorral.com" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-15/public" loading="lazy" width="144" height="144" alt="PodcastCorral.com" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">PodcastCorral.com</div>
-        <div class="card-desc">The equestrian podcast directory — 129 shows across 13 categories, from roping to dressage.</div>
-        <div class="card-meta">
-          <span class="type-tag type-dir">Directory</span>
-          <span class="visit-btn web-btn">Visit</span>
+      <a class="card" href="https://podcastcorral.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🎙️</div></div>
+        <div class="card-body">
+          <div class="card-title">PodcastCorral.com</div>
+          <div class="card-desc">The western and equestrian podcast directory — 129 shows across 12 categories.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Directory</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <a class="card" href="https://horsecalendar.ai" target="_blank" rel="noopener">
-      <div class="card-icon"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-16/public" loading="lazy" width="144" height="144" alt="HorseCalendar.ai" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="card-body">
-        <div class="card-title">HorseCalendar.ai</div>
-        <div class="card-desc">AI-powered Arizona equine event calendar — shows, clinics, rodeos, and competitions across the state.</div>
-        <div class="card-meta">
-          <span class="type-tag type-ai">AI Platform</span>
-          <span class="visit-btn web-btn">Visit</span>
+      <a class="card" href="https://reininghalloffame.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🏆</div></div>
+        <div class="card-body">
+          <div class="card-title">ReiningHallOfFame.com</div>
+          <div class="card-desc">127 Hall of Fame profiles celebrating the legends of the reining horse industry.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Authority</span><span class="visit-btn">Visit</span></div>
         </div>
-      </div>
-    </a>
+      </a>
 
+      <a class="card" href="https://worldsgreatesthorseman.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🥇</div></div>
+        <div class="card-body">
+          <div class="card-title">WorldsGreatestHorseman.com</div>
+          <div class="card-desc">27 champion profiles from the World's Greatest Horseman competition — the pinnacle of horsemanship.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Authority</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
 
-  </div>
+      <a class="card" href="https://teamropingvideos.com" target="_blank" rel="noopener">
+        <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-12/public" loading="lazy" alt="TeamRopingVideos.com"></div>
+        <div class="card-body">
+          <div class="card-title">TeamRopingVideos.com</div>
+          <div class="card-desc">The best team roping instructional and competition videos — learn from the pros.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Video</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
 
-</div>
+      <a class="card" href="https://reininghorsevideos.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🎬</div></div>
+        <div class="card-body">
+          <div class="card-title">ReiningHorseVideos.com</div>
+          <div class="card-desc">Reining instructional and competition video library — patterns, training tips, and show coverage.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Video</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
 
-<!-- FACEBOOK TAB -->
-<div id="tab-facebook" class="tab-content">
+      <a class="card" href="https://wickenburghorseproperty.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🌵</div></div>
+        <div class="card-body">
+          <div class="card-title">WickenburgHorseProperty.com</div>
+          <div class="card-desc">Horse properties for sale in Wickenburg — Arizona's horse capital real estate resource.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Real Estate</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
 
-  <div class="section-label">
-    <h2>Facebook Groups We Control</h2>
-    <div class="line"></div>
-    <span class="count-tag">9 COMMUNITIES</span>
+      <a class="card" href="https://fantasyrunforamillion.com" target="_blank" rel="noopener">
+        <div class="card-img"><div class="card-img-icon">🎯</div></div>
+        <div class="card-body">
+          <div class="card-title">FantasyRunForAMillion.com</div>
+          <div class="card-desc">Fantasy competition platform for the Run For A Million — pick your team and compete for prizes.</div>
+          <div class="card-footer"><span class="type-tag tag-web">Fantasy</span><span class="visit-btn">Visit</span></div>
+        </div>
+      </a>
+
+    </div>
+
+  </div><!-- /tab-all -->
+
+  <!-- FACEBOOK TAB -->
+  <div class="tab-panel" id="tab-facebook">
+    <div class="section-label">
+      <h2>Facebook Communities</h2>
+      <div class="section-line"></div>
+      <span class="section-count">9 Groups</span>
+    </div>
+    <div class="card-grid" id="fb-only"></div>
   </div>
 
-  <div class="card-grid" id="fb-cards-tab"></div>
-
-</div>
-
-<!-- WEBSITES TAB -->
-<div id="tab-websites" class="tab-content">
-
-  <div class="section-label">
-    <h2>Websites &amp; Applications</h2>
-    <div class="line"></div>
-    <span class="count-tag">6 PROPERTIES</span>
+  <!-- WEBSITES TAB -->
+  <div class="tab-panel" id="tab-websites">
+    <div class="section-label">
+      <h2>Websites &amp; AI Platforms</h2>
+      <div class="section-line"></div>
+      <span class="section-count">20 Properties</span>
+    </div>
+    <div class="card-grid" id="web-only"></div>
   </div>
-
-  <div class="card-grid" id="web-cards-tab"></div>
-
-</div>
-
-<!-- GUIDES SECTION -->
-<div class="section-label">
-  <h2>Guides</h2>
-  <div class="line"></div>
-  <span class="count-tag">13 GUIDES</span>
-</div>
-
-<div class="guide-grid">
-
-  <a class="guide-card" href="media-guide/">
-    <div class="guide-icon">📢</div>
-    <div class="guide-body">
-      <div class="guide-title">Media Guide — Advertise with Bridle &amp; Bit</div>
-      <div class="guide-desc">61,600+ FB members, 6 websites, and 120+ page monthly magazine</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-<a class="guide-card" href="team-roping/">
-    <div class="guide-icon">🤠</div>
-    <div class="guide-body">
-      <div class="guide-title">Team Roping — Find Ropings Near You</div>
-      <div class="guide-desc">Nationwide calendar updated near-daily from real producer flyers</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="horse-property/">
-    <div class="guide-icon">🏡</div>
-    <div class="guide-body">
-      <div class="guide-title">Arizona Horse Property for Sale</div>
-      <div class="guide-desc">Equestrian estates, roping ranches, and horse-friendly acreage</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="https://horseinsurance.ai" target="_blank" rel="noopener">
-    <div class="guide-icon">🛡️</div>
-    <div class="guide-body">
-      <div class="guide-title">Horse Insurance Guide</div>
-      <div class="guide-desc">Mortality, liability, and farm coverage explained in plain language</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-<a class="guide-card" href="arizona-horse-bulletin-board/">
-    <div class="guide-icon">📋</div>
-    <div class="guide-body">
-      <div class="guide-title">Arizona Horse Bulletin Board</div>
-      <div class="guide-desc">13,500+ members — horses, tack, trailers, hay, and services for sale</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="bridle-bit-bulletin-board/">
-    <div class="guide-icon">📰</div>
-    <div class="guide-body">
-      <div class="guide-title">Bridle &amp; Bit Bulletin Board</div>
-      <div class="guide-desc">5,200+ members — magazine community, industry news, and discussion</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="rio-verde-bulletin-board/">
-    <div class="guide-icon">🏜️</div>
-    <div class="guide-body">
-      <div class="guide-title">Rio Verde Bulletin Board</div>
-      <div class="guide-desc">4,000+ members — Arizona's elite horse ranch community</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="reining-horse-bulletin-board/">
-    <div class="guide-icon">🐎</div>
-    <div class="guide-body">
-      <div class="guide-title">Reining Horse Bulletin Board</div>
-      <div class="guide-desc">2,000+ members — NRHA news, horses for sale, trainers, and show results</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="westworld-scottsdale/">
-    <div class="guide-icon">🏟️</div>
-    <div class="guide-body">
-      <div class="guide-title">WestWorld of Scottsdale</div>
-      <div class="guide-desc">Arizona's premier equestrian venue — shows, rodeos, expos, and events</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-  <a class="guide-card" href="horseshoe-park/">
-    <div class="guide-icon">🔧</div>
-    <div class="guide-body">
-      <div class="guide-title">HorseShoe Park Bulletin Board</div>
-      <div class="guide-desc">Queen Creek's go-to arena — team roping, barrel racing, rodeos, and events</div>
-    </div>
-    <div class="guide-arrow">→</div>
-  </a>
-
-</div>
-
-<!-- ASSOCIATIONS SECTION -->
-<div class="section-label">
-  <h2>Associations</h2>
-  <div class="line"></div>
-  <span class="count-tag">11 ASSOCIATIONS</span>
-</div>
-
-<div class="guide-grid">
-</div>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Bridle &amp; Bit Magazine</div>
-  <div class="footer-links">
-    <a href="https://bridleandbit.com" target="_blank" rel="noopener">bridleandbit.com</a>
-    <a href="https://podcastcorral.com" target="_blank" rel="noopener">PodcastCorral</a>
-    <a href="https://teamroping.ai" target="_blank" rel="noopener">TeamRoping.AI</a>
-    <a href="https://horsecalendar.ai" target="_blank" rel="noopener">HorseCalendar.AI</a>
-  </div>
-  <div style="margin-bottom:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 6px;">
-    <a href="/media-guide/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Media Guide</a><a href="/team-roping/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Team Roping</a>
-    <a href="/horse-property/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Property</a>
-    <a href="https://horseinsurance.ai" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Horse Insurance</a><a href="/arizona-horse-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">AZ Bulletin Board</a>
-    <a href="/bridle-bit-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Bridle &amp; Bit</a>
-    <a href="/rio-verde-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Rio Verde</a>
-    <a href="/reining-horse-bulletin-board/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">Reining Horse</a>
-    <a href="/westworld-scottsdale/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">WestWorld</a>
-    <a href="/horseshoe-park/" target="_blank" rel="noopener" style="font-size:13px;letter-spacing:0.5px;padding:10px 6px;min-height:44px;display:inline-flex;align-items:center;">HorseShoe Park</a>
-  </div>
-  <div style="color: rgba(255,255,255,0.5);">
-    &copy; 2026 Bridle &amp; Bit Magazine &middot; Arizona's Premier Horse Publication Since 1978
-  </div>
-  <div style="margin-top:10px;font-size:14px;color:rgba(255,255,255,0.45);max-width:700px;margin-left:auto;margin-right:auto;line-height:1.6;padding:0 12px;">
-    <strong style="color:rgba(255,255,255,0.6);">Disclaimer:</strong> Some content on this site is AI-generated and may contain errors or inaccuracies. Always verify event dates, times, locations, entry fees, and other information directly with the event producer or organization before making plans. Bridle &amp; Bit Magazine makes no representations or warranties regarding the accuracy or completeness of AI-generated content.
-  </div>
-
-  <div style="text-align:center;margin-top:24px;padding-bottom:8px;">
-    <a href="/network/" style="display:inline-block;padding:12px 32px;background:#c9973a;color:#1a1208;font-family:Georgia,serif;font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;">The Bridle &amp; Bit Network</a>
-  </div>
-
+  <p>
+    <strong style="color:var(--gold);font-family:'Playfair Display',serif;">Bridle &amp; Bit Magazine</strong><br>
+    Arizona's Premier Equestrian &amp; Western Lifestyle Publication Since 1978<br>
+    <a href="mailto:info@bridleandbit.com">info@bridleandbit.com</a>
+  </p>
 </footer>
 
 <script>
-  // Tab switching
-  function switchTab(tab, el) {
-    // Update tab buttons
-    document.querySelectorAll('.format-tab').forEach(function(t) { t.classList.remove('active'); });
-    el.classList.add('active');
-
-    // Hide all tab content
-    document.querySelectorAll('.tab-content').forEach(function(tc) { tc.classList.remove('active'); });
-
-    // Show selected tab
-    document.getElementById('tab-' + tab).classList.add('active');
+  function showTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
   }
 
-  // Clone cards into individual tabs on load
-  (function() {
-    var fbAll = document.getElementById('fb-cards-all');
-    var webAll = document.getElementById('web-cards-all');
-    var fbTab = document.getElementById('fb-cards-tab');
-    var webTab = document.getElementById('web-cards-tab');
-
-    // Clone FB cards
-    Array.from(fbAll.children).forEach(function(card) {
-      fbTab.appendChild(card.cloneNode(true));
-    });
-
-    // Clone website cards
-    Array.from(webAll.children).forEach(function(card) {
-      webTab.appendChild(card.cloneNode(true));
-    });
-  })();
-
-  // Hamburger drawer
-  function toggleDrawer() {
-    document.getElementById('drawer').classList.toggle('open');
-    document.getElementById('drawerOverlay').classList.toggle('open');
-    document.querySelector('.hamburger-btn').classList.toggle('open');
-    var isOpen = document.getElementById('drawer').classList.contains('open');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    document.getElementById('drawer').setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-  }
+  // Clone cards into filtered tabs
+  document.addEventListener('DOMContentLoaded', () => {
+    const fbCards = document.querySelectorAll('#tab-all .card-grid:first-of-type .card');
+    const webCards = document.querySelectorAll('#tab-all .card-grid:last-of-type .card');
+    const fbGrid = document.getElementById('fb-only');
+    const webGrid = document.getElementById('web-only');
+    fbCards.forEach(c => fbGrid.appendChild(c.cloneNode(true)));
+    webCards.forEach(c => webGrid.appendChild(c.cloneNode(true)));
+  });
 </script>
 
 </body>
