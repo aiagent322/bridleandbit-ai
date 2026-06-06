@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Bridle & Bit Magazine</title>
+<meta name="description" content="Contact Bridle & Bit Magazine — Arizona's premier equestrian publication since 1978.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --dark: #1a1208;
+    --brown: #3d2b1f;
+    --gold: #c8973a;
+    --rust: #8b3a2a;
+    --border: rgba(200,151,58,0.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--dark); color: var(--cream); font-family: 'Source Sans 3', sans-serif; font-weight: 300; min-height: 100vh; }
+
+  header {
+    background: var(--brown);
+    border-bottom: 3px solid var(--gold);
+    padding: 28px 24px 24px;
+  }
+  .header-inner { max-width: 700px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand-since { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .brand-name { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; color: var(--cream); line-height: 1; }
+  .brand-name span { color: var(--gold); }
+  .back-btn { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); border: 1px solid var(--border); padding: 7px 16px; border-radius: 2px; text-decoration: none; white-space: nowrap; }
+  .back-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  main { max-width: 700px; margin: 0 auto; padding: 60px 24px 80px; }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .page-title span { color: var(--gold); }
+  .page-sub { font-size: 0.9rem; color: rgba(245,240,232,0.55); margin-bottom: 48px; }
+
+  .contact-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px;
+    margin-bottom: 20px;
+  }
+
+  .contact-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(200,151,58,0.1);
+  }
+  .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .contact-icon { font-size: 1.2rem; width: 28px; flex-shrink: 0; margin-top: 2px; }
+
+  .contact-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 3px;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--cream);
+  }
+
+  .contact-value a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .contact-value a:hover { text-decoration: underline; }
+
+  .email-btn {
+    display: inline-block;
+    margin-top: 32px;
+    background: var(--rust);
+    color: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.2s;
+  }
+  .email-btn:hover { background: #a0442f; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+  footer p { font-size: 0.75rem; color: rgba(245,240,232,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-since">Since 1978</div>
+      <div class="brand-name">Bridle <span>&</span> Bit</div>
+    </div>
+    <a href="/" class="back-btn">← Home</a>
+  </div>
+</header>
+
+<main>
+  <div class="page-title">Contact <span>Us</span></div>
+  <div class="page-sub">Arizona's Premier Equestrian &amp; Western Lifestyle Publication Since 1978</div>
+
+  <div class="contact-card">
+    <h2>Get In Touch</h2>
+
+    <div class="contact-row">
+      <div class="contact-icon">✉</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:bridleandbit@aol.com">bridleandbit@aol.com</a></div>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label">Publication</div>
+        <div class="contact-value">Bridle &amp; Bit Magazine<br>Arizona's Premier Equestrian Publication</div>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-icon">📅</div>
+      <div>
+        <div class="contact-label">Established</div>
+        <div class="contact-value">1978 — Serving the Arizona equestrian community for over 45 years</div>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-icon">🌐</div>
+      <div>
+        <div class="contact-label">Network</div>
+        <div class="contact-value"><a href="/">View all our websites &amp; Facebook communities →</a></div>
+      </div>
+    </div>
+
+    <a href="mailto:bridleandbit@aol.com" class="email-btn">✉ Send Us an Email</a>
+  </div>
+
+  <div class="contact-card">
+    <h2>Advertising &amp; Sponsorship</h2>
+    <div class="contact-row">
+      <div class="contact-icon">📣</div>
+      <div>
+        <div class="contact-label">Inquiries</div>
+        <div class="contact-value">Reach Arizona's equestrian community through Bridle &amp; Bit Magazine and our network of 20+ digital properties and 60,000+ Facebook community members.<br><br><a href="mailto:bridleandbit@aol.com">bridleandbit@aol.com</a></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Bridle &amp; Bit Magazine · Est. 1978 · Arizona</p>
+</footer>
+
+</body>
+</html>
