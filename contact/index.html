@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Bridle & Bit Magazine</title>
-<meta name="description" content="Contact Bridle & Bit Magazine — Arizona's premier equestrian publication since 1978.">
+<meta name="description" content="Contact Bridle & Bit Magazine — advertising, sponsorships, editorial, and support.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -13,107 +13,118 @@
     --dark: #1a1208;
     --brown: #3d2b1f;
     --gold: #c8973a;
+    --gold-light: #e8b84b;
     --rust: #8b3a2a;
+    --sage: #5a6e4a;
     --border: rgba(200,151,58,0.25);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--dark); color: var(--cream); font-family: 'Source Sans 3', sans-serif; font-weight: 300; min-height: 100vh; }
 
-  header {
-    background: var(--brown);
-    border-bottom: 3px solid var(--gold);
-    padding: 28px 24px 24px;
-  }
-  .header-inner { max-width: 700px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  header { background: var(--brown); border-bottom: 3px solid var(--gold); padding: 28px 24px 24px; }
+  .header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .brand-since { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
   .brand-name { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; color: var(--cream); line-height: 1; }
   .brand-name span { color: var(--gold); }
   .back-btn { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); border: 1px solid var(--border); padding: 7px 16px; border-radius: 2px; text-decoration: none; white-space: nowrap; }
   .back-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-  main { max-width: 700px; margin: 0 auto; padding: 60px 24px 80px; }
+  main { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
 
-  .page-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 900;
-    color: var(--cream);
-    margin-bottom: 8px;
-  }
+  .page-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: var(--cream); margin-bottom: 8px; }
   .page-title span { color: var(--gold); }
   .page-sub { font-size: 0.9rem; color: rgba(245,240,232,0.55); margin-bottom: 48px; }
 
-  .contact-card {
+  /* REASON SELECTOR */
+  .reason-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+
+  .reason-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 40px; }
+
+  .reason-btn {
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 36px;
-    margin-bottom: 20px;
-  }
-
-  .contact-card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .contact-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(200,151,58,0.1);
-  }
-  .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
-
-  .contact-icon { font-size: 1.2rem; width: 28px; flex-shrink: 0; margin-top: 2px; }
-
-  .contact-label {
-    font-size: 0.65rem;
+    border-radius: 4px;
+    color: rgba(245,240,232,0.7);
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.4);
-    margin-bottom: 3px;
+    letter-spacing: 0.05em;
+    padding: 16px 14px;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
+  .reason-btn:hover { border-color: rgba(200,151,58,0.5); color: var(--cream); background: rgba(200,151,58,0.06); }
+  .reason-btn.active { background: rgba(200,151,58,0.12); border-color: var(--gold); color: var(--gold-light); }
+  .reason-icon { font-size: 1.2rem; }
 
-  .contact-value {
-    font-size: 0.95rem;
+  /* CONTEXT PANEL */
+  .context-panel { display: none; background: rgba(200,151,58,0.07); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; margin-bottom: 32px; }
+  .context-panel.visible { display: block; }
+  .context-panel p { font-size: 0.85rem; color: rgba(245,240,232,0.7); line-height: 1.7; }
+  .context-panel strong { color: var(--gold); }
+
+  /* FORM */
+  .form-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; padding: 36px; }
+
+  .form-row { margin-bottom: 20px; }
+  .form-row-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+
+  label { display: block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.5); margin-bottom: 7px; }
+
+  input, select, textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(200,151,58,0.2);
+    border-radius: 3px;
     color: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
   }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+  textarea { resize: vertical; min-height: 130px; }
+  select option { background: #2a1a0e; }
 
-  .contact-value a {
-    color: var(--gold);
-    text-decoration: none;
-  }
-  .contact-value a:hover { text-decoration: underline; }
-
-  .email-btn {
-    display: inline-block;
-    margin-top: 32px;
+  .submit-btn {
     background: var(--rust);
+    border: none;
+    border-radius: 2px;
     color: var(--cream);
+    cursor: pointer;
     font-family: 'Source Sans 3', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.1em;
+    padding: 15px 36px;
     text-transform: uppercase;
-    padding: 14px 32px;
-    border-radius: 2px;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.2s;
+    transition: background 0.2s;
+    margin-top: 8px;
   }
-  .email-btn:hover { background: #a0442f; }
+  .submit-btn:hover { background: #a0442f; }
+
+  /* SUCCESS */
+  .success-msg { display: none; text-align: center; padding: 48px 24px; }
+  .success-msg.visible { display: block; }
+  .success-icon { font-size: 3rem; margin-bottom: 16px; }
+  .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); margin-bottom: 10px; }
+  .success-msg p { font-size: 0.9rem; color: rgba(245,240,232,0.6); }
 
   footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
   footer p { font-size: 0.75rem; color: rgba(245,240,232,0.35); }
+
+  @media (max-width: 600px) {
+    .form-row-split { grid-template-columns: 1fr; }
+    .reason-grid { grid-template-columns: 1fr 1fr; }
+    .form-card { padding: 24px 18px; }
+  }
 </style>
 </head>
 <body>
@@ -132,60 +143,140 @@
   <div class="page-title">Contact <span>Us</span></div>
   <div class="page-sub">Arizona's Premier Equestrian &amp; Western Lifestyle Publication Since 1978</div>
 
-  <div class="contact-card">
-    <h2>Get In Touch</h2>
-
-    <div class="contact-row">
-      <div class="contact-icon">✉</div>
-      <div>
-        <div class="contact-label">Email</div>
-        <div class="contact-value"><a href="mailto:bridleandbit@aol.com">bridleandbit@aol.com</a></div>
-      </div>
-    </div>
-
-    <div class="contact-row">
-      <div class="contact-icon">📍</div>
-      <div>
-        <div class="contact-label">Publication</div>
-        <div class="contact-value">Bridle &amp; Bit Magazine<br>Arizona's Premier Equestrian Publication</div>
-      </div>
-    </div>
-
-    <div class="contact-row">
-      <div class="contact-icon">📅</div>
-      <div>
-        <div class="contact-label">Established</div>
-        <div class="contact-value">1978 — Serving the Arizona equestrian community for over 45 years</div>
-      </div>
-    </div>
-
-    <div class="contact-row">
-      <div class="contact-icon">🌐</div>
-      <div>
-        <div class="contact-label">Network</div>
-        <div class="contact-value"><a href="/">View all our websites &amp; Facebook communities →</a></div>
-      </div>
-    </div>
-
-    <a href="mailto:bridleandbit@aol.com" class="email-btn">✉ Send Us an Email</a>
+  <!-- REASON SELECTOR -->
+  <div class="reason-label">How can we help you?</div>
+  <div class="reason-grid">
+    <button class="reason-btn" onclick="selectReason('advertising', this)">
+      <span class="reason-icon">📣</span>Advertising
+    </button>
+    <button class="reason-btn" onclick="selectReason('sponsorship', this)">
+      <span class="reason-icon">🤝</span>Sponsorship
+    </button>
+    <button class="reason-btn" onclick="selectReason('editorial', this)">
+      <span class="reason-icon">✏️</span>Editorial
+    </button>
+    <button class="reason-btn" onclick="selectReason('support', this)">
+      <span class="reason-icon">🛠️</span>Support
+    </button>
+    <button class="reason-btn" onclick="selectReason('general', this)">
+      <span class="reason-icon">💬</span>General
+    </button>
   </div>
 
-  <div class="contact-card">
-    <h2>Advertising &amp; Sponsorship</h2>
-    <div class="contact-row">
-      <div class="contact-icon">📣</div>
-      <div>
-        <div class="contact-label">Inquiries</div>
-        <div class="contact-value">Reach Arizona's equestrian community through Bridle &amp; Bit Magazine and our network of 20+ digital properties and 60,000+ Facebook community members.<br><br><a href="mailto:bridleandbit@aol.com">bridleandbit@aol.com</a></div>
+  <!-- CONTEXT PANELS -->
+  <div class="context-panel" id="ctx-advertising">
+    <p><strong>Advertising</strong> — Reach Arizona's equestrian community through Bridle &amp; Bit Magazine and our network of 20+ digital properties with <strong>60,000+ Facebook community members</strong>. We offer print, digital, and social placement. Tell us about your business and we'll put together a media package.</p>
+  </div>
+  <div class="context-panel" id="ctx-sponsorship">
+    <p><strong>Sponsorship</strong> — Partner with Bridle &amp; Bit to sponsor events, arena listings, video series, or our AI platforms including TeamRoping.AI, HorseTrainer.AI, and more. Sponsorships drive year-round brand visibility across print, digital, and social channels.</p>
+  </div>
+  <div class="context-panel" id="ctx-editorial">
+    <p><strong>Editorial</strong> — Submit a story idea, press release, event announcement, or photo for consideration. We cover team roping, reining, reined cow horse, barrel racing, rodeo, western lifestyle, and Arizona equestrian news. Include as much detail as possible.</p>
+  </div>
+  <div class="context-panel" id="ctx-support">
+    <p><strong>Support</strong> — Questions about our websites, AI platforms, Facebook groups, or digital properties? Let us know what you're experiencing and we'll get back to you promptly.</p>
+  </div>
+  <div class="context-panel" id="ctx-general">
+    <p><strong>General Inquiries</strong> — Subscriptions, letters to the editor, community questions, or anything else. We've been serving Arizona's equestrian community since 1978 and love hearing from our readers.</p>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="form-card">
+    <div class="form-row-split">
+      <div class="form-row" style="margin-bottom:0">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="Jane">
       </div>
+      <div class="form-row" style="margin-bottom:0">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Smith">
+      </div>
+    </div>
+
+    <div class="form-row" style="margin-top:20px">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="jane@example.com">
+    </div>
+
+    <div class="form-row">
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" placeholder="(480) 555-0100">
+    </div>
+
+    <div class="form-row">
+      <label for="reason">Reason for Contact</label>
+      <select id="reason">
+        <option value="">— Select one —</option>
+        <option value="Advertising">Advertising</option>
+        <option value="Sponsorship">Sponsorship</option>
+        <option value="Editorial / Press Release">Editorial / Press Release</option>
+        <option value="Support">Support</option>
+        <option value="General Inquiry">General Inquiry</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="Brief subject line">
+    </div>
+
+    <div class="form-row">
+      <label for="message">Message / Comments</label>
+      <textarea id="message" placeholder="Tell us about yourself and how we can help..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitForm()">Send Message →</button>
+
+    <div class="success-msg" id="success">
+      <div class="success-icon">✅</div>
+      <h3>Message Sent</h3>
+      <p>Thank you for reaching out. We'll be in touch at <strong id="confirm-email"></strong> shortly.</p>
     </div>
   </div>
 
 </main>
 
 <footer>
-  <p>© 2026 Bridle &amp; Bit Magazine · Est. 1978 · Arizona</p>
+  <p>© 2026 Bridle &amp; Bit Magazine · Est. 1978 · Arizona · <a href="mailto:bridleandbit@aol.com" style="color:var(--gold)">bridleandbit@aol.com</a></p>
 </footer>
+
+<script>
+  function selectReason(type, btn) {
+    document.querySelectorAll('.reason-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.context-panel').forEach(p => p.classList.remove('visible'));
+    btn.classList.add('active');
+    document.getElementById('ctx-' + type).classList.add('visible');
+    // Sync the select dropdown
+    const map = { advertising: 'Advertising', sponsorship: 'Sponsorship', editorial: 'Editorial / Press Release', support: 'Support', general: 'General Inquiry' };
+    document.getElementById('reason').value = map[type] || '';
+  }
+
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const reason = document.getElementById('reason').value;
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!fname || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const body = encodeURIComponent(
+      `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nReason: ${reason}\n\n${message}`
+    );
+    const subj = encodeURIComponent((reason ? reason + ': ' : '') + (subject || 'Website Contact'));
+
+    window.location.href = `mailto:bridleandbit@aol.com?subject=${subj}&body=${body}`;
+
+    document.getElementById('confirm-email').textContent = email;
+    document.querySelector('.form-card > button').style.display = 'none';
+    document.getElementById('success').classList.add('visible');
+  }
+</script>
 
 </body>
 </html>
