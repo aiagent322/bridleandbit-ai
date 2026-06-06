@@ -40,6 +40,8 @@
     background: linear-gradient(135deg, #2a1508 0%, #3d2b1f 50%, #1a1208 100%);
     border-bottom: 2px solid var(--gold);
     padding: 28px 16px;
+    display: block;
+    min-height: 120px;
   }
   .mag-hero-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 24px; }
   .mag-cover {
@@ -154,8 +156,8 @@
 <!-- MAGAZINE HERO -->
 <div class="mag-hero">
   <div class="mag-hero-inner">
-    <a href="/flipbook/" class="mag-cover">
-      <img src="/flipbook/cover.jpg" alt="Bridle & Bit Magazine Cover" loading="eager">
+    <a href="/flipbook/" class="mag-cover" style="display:block;width:110px;min-width:110px;min-height:143px;background:var(--brown);border-radius:3px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);flex-shrink:0;">
+      <img src="/flipbook/cover.jpg" alt="Bridle &amp; Bit June 2026" loading="eager" style="width:100%;display:block;" onerror="this.style.display='none';this.parentNode.innerHTML+='<div style=&quot;padding:20px;text-align:center;color:var(--gold);font-family:Playfair Display,serif;font-size:0.8rem;&quot;>Bridle<br>&amp;<br>Bit</div>'">
     </a>
     <div class="mag-info">
       <div class="mag-eyebrow">📖 Now Reading · June 2026</div>
@@ -179,6 +181,24 @@
 
   <!-- ALL TAB -->
   <div class="tab-panel active" id="tab-all">
+
+    <!-- MAGAZINE CARD -->
+    <div class="section-label">
+      <h2>Current Issue</h2>
+      <div class="section-line"></div>
+      <span class="section-count">June 2026</span>
+    </div>
+    <div style="margin-bottom:32px;">
+      <a href="/flipbook/" style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#2a1508,#3d2b1f);border:2px solid var(--gold);border-radius:6px;padding:20px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='#e8b84b'" onmouseout="this.style.borderColor='var(--gold)'">
+        <img src="/flipbook/cover.jpg" alt="Bridle &amp; Bit June 2026" style="width:90px;min-width:90px;border-radius:3px;box-shadow:0 6px 20px rgba(0,0,0,0.5);" loading="eager">
+        <div>
+          <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">📖 Now Reading</div>
+          <div style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,3vw,1.5rem);font-weight:900;color:var(--cream);margin-bottom:8px;">Bridle &amp; Bit Magazine — June 2026</div>
+          <div style="font-size:0.8rem;color:rgba(245,240,232,0.6);margin-bottom:14px;">Arizona's premier equestrian publication — team roping, reining, western lifestyle, and industry news since 1978.</div>
+          <span style="background:var(--gold);color:var(--dark);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 20px;border-radius:2px;display:inline-block;">Read the Magazine →</span>
+        </div>
+      </a>
+    </div>
 
     <div class="section-label">
       <h2>Facebook Communities</h2>
