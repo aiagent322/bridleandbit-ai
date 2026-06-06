@@ -359,7 +359,7 @@
       <span class="section-count">9 Groups</span>
     </div>
 
-    <div class="card-grid">
+    <div class="card-grid" id="all-fb-grid">
 
       <a class="card" href="https://www.facebook.com/groups/735758536845612" target="_blank" rel="noopener">
         <div class="card-img"><img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-2/public" loading="lazy" alt="Team Roping"></div>
@@ -684,8 +684,8 @@
 
   // Clone cards into filtered tabs
   document.addEventListener('DOMContentLoaded', () => {
-    const fbCards = document.querySelectorAll('#tab-all .card-grid:first-of-type .card');
-    const webCards = document.querySelectorAll('#tab-all .card-grid:last-of-type .card');
+    const fbCards = document.querySelectorAll('#all-fb-grid .card');
+    const webCards = document.querySelectorAll('#all-web-grid .card');
     const fbGrid = document.getElementById('fb-only');
     const webGrid = document.getElementById('web-only');
     fbCards.forEach(c => fbGrid.appendChild(c.cloneNode(true)));
