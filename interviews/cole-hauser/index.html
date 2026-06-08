@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cole Hauser Interview | Bridle &amp; Bit Magazine — July 2022</title>
+<meta name="description" content="Cole Hauser on becoming Rip Wheeler on Yellowstone, his physical transformation, his friendship with Kevin Costner, growing up on ranches in Oregon, and what Taylor Sheridan has built. Bridle &amp; Bit July 2022.">
+<meta property="og:title" content="Cole Hauser on Becoming Rip Wheeler | Bridle &amp; Bit Magazine — July 2022">
+<meta property="og:description" content="Cole Hauser on Yellowstone, Kevin Costner, his physical transformation into Rip, growing up riding horses, and Taylor Sheridan's genius as a writer.">
+<meta property="og:url" content="https://bridleandbit.com/interviews/cole-hauser/">
+<link rel="canonical" href="https://bridleandbit.com/interviews/cole-hauser/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f5f0e8;
+  --dark: #1a1208;
+  --brown: #3d2b1f;
+  --gold: #c8973a;
+  --gold-light: #e8b84b;
+  --border: rgba(200,151,58,0.25);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--dark); color: var(--cream); font-family: 'Source Sans 3', sans-serif; font-weight: 300; min-height: 100vh; }
+header { background: var(--brown); border-bottom: 3px solid var(--gold); }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 18px 16px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand-since { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+.brand-name { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.4rem); font-weight: 900; color: var(--cream); line-height: 1; }
+.brand-name span { color: var(--gold); }
+.brand-tagline { font-size: 0.72rem; color: rgba(245,240,232,0.55); margin-top: 4px; }
+.header-badge { background: var(--gold); color: var(--dark); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+.breadcrumb { background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border); padding: 10px 16px; }
+.breadcrumb-inner { max-width: 1100px; margin: 0 auto; font-size: 0.7rem; color: rgba(245,240,232,0.4); }
+.breadcrumb-inner a { color: var(--gold); text-decoration: none; }
+.breadcrumb-inner a:hover { color: var(--gold-light); }
+.breadcrumb-inner span { margin: 0 6px; }
+.interview-hero { background: linear-gradient(135deg, #2a1508 0%, #3d2b1f 50%, #1a1208 100%); border-bottom: 2px solid var(--gold); padding: 40px 16px 36px; }
+.interview-hero-inner { max-width: 1000px; margin: 0 auto; }
+.eyebrow { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.interview-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 3.4rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 10px; }
+.interview-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 3vw, 1.4rem); font-style: italic; color: var(--gold); margin-bottom: 16px; }
+.interview-byline { font-size: 0.75rem; color: rgba(245,240,232,0.5); letter-spacing: 0.08em; }
+main { max-width: 1000px; margin: 0 auto; padding: 32px 16px 80px; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--gold); text-decoration: none; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; }
+.back-link:hover { color: var(--gold-light); }
+
+/* SPREAD VIEWER */
+.spread-wrapper {
+  border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+  background: #0d0a05;
+}
+.spread-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.04); border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+}
+.spread-topbar span { font-size: 0.72rem; color: rgba(245,240,232,0.45); letter-spacing: 0.06em; }
+.zoom-btn {
+  background: var(--gold); color: var(--dark);
+  border: none; border-radius: 3px; padding: 6px 16px;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s;
+}
+.zoom-btn:hover { background: var(--gold-light); }
+.spread-img-wrap { overflow-x: auto; }
+.spread-img-wrap img { width: 100%; display: block; cursor: zoom-in; min-width: 600px; }
+.swipe-hint { font-size: 0.68rem; color: rgba(245,240,232,0.3); letter-spacing: 0.06em; text-align: center; padding: 10px; }
+
+/* ZOOM OVERLAY */
+.zoom-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.95); z-index: 1000;
+  align-items: center; justify-content: center;
+  cursor: zoom-out; overflow: auto;
+}
+.zoom-overlay.open { display: flex; }
+.zoom-overlay img { max-width: 98vw; max-height: 98vh; object-fit: contain; }
+
+/* TEXT TOGGLE */
+.text-toggle-bar { margin-top: 32px; border-top: 1px solid var(--border); padding-top: 24px; }
+.text-toggle-btn {
+  background: transparent; border: 1px solid var(--border); color: var(--gold);
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 20px;
+  border-radius: 3px; cursor: pointer; transition: all 0.2s;
+}
+.text-toggle-btn:hover { background: rgba(200,151,58,0.08); border-color: var(--gold); }
+.interview-text { display: none; margin-top: 24px; }
+.interview-text.open { display: block; }
+.interview-body { font-size: 1rem; line-height: 1.75; color: rgba(245,240,232,0.85); }
+.interview-body p { margin-bottom: 1.4em; }
+.intro-block { font-style: italic; color: rgba(245,240,232,0.65); border-left: 3px solid var(--border); padding: 12px 16px; margin-bottom: 2rem; font-size: 0.92rem; line-height: 1.7; }
+.section-heading { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.qa-block { margin-bottom: 2rem; }
+.qa-q { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--gold); background: rgba(200,151,58,0.07); border-left: 3px solid var(--gold); padding: 10px 14px; margin-bottom: 10px; border-radius: 0 4px 4px 0; }
+.qa-q .q-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; color: rgba(200,151,58,0.7); margin-bottom: 4px; }
+.qa-a { padding-left: 14px; }
+.qa-a .a-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; display: block; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+.source-note { font-size: 0.72rem; color: rgba(245,240,232,0.35); font-style: italic; margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="brand-since">Est. 1978</div>
+      <div class="brand-name">Bridle <span>&amp;</span> Bit</div>
+      <div class="brand-tagline">Arizona's Premier Equestrian Publication</div>
+    </div>
+    <div><span class="header-badge">Feature Interview</span></div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a><span>›</span><a href="/interviews/">Interviews</a><span>›</span>Cole Hauser
+  </div>
+</div>
+
+<div class="interview-hero">
+  <div class="interview-hero-inner">
+    <div class="eyebrow">Feature Interview · July 2022</div>
+    <div class="interview-title">Cole Hauser</div>
+    <div class="interview-subtitle">On Becoming Rip Wheeler — Yellowstone, Kevin Costner &amp; the Horse Life</div>
+    <div class="interview-byline">By David Phillips / Awards Daily &nbsp;·&nbsp; SAG Ensemble Nominee &nbsp;·&nbsp; Bridle &amp; Bit Magazine</div>
+  </div>
+</div>
+
+<main>
+  <a class="back-link" href="/interviews/">← All Interviews</a>
+
+  <!-- SPREAD VIEWER -->
+  <div class="spread-wrapper">
+    <div class="spread-topbar">
+      <span>Pages 8–9 &nbsp;·&nbsp; July 2022 &nbsp;·&nbsp; Scroll horizontally on mobile · Tap to zoom</span>
+      <button class="zoom-btn" onclick="openZoom()">🔍 Full Screen</button>
+    </div>
+    <div class="spread-img-wrap">
+      <img id="spreadImg" src="spread.jpg" alt="Cole Hauser Interview — Bridle &amp; Bit July 2022 — Pages 8–9" loading="eager" onclick="openZoom()">
+    </div>
+    <p class="swipe-hint">Scroll horizontally to read · Tap image or use Full Screen for best view</p>
+  </div>
+
+  <!-- ZOOM OVERLAY -->
+  <div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+    <img src="spread.jpg" alt="Cole Hauser Interview spread — full size">
+  </div>
+
+  <!-- TEXT VERSION -->
+  <div class="text-toggle-bar">
+    <button class="text-toggle-btn" onclick="toggleText(this)">📄 Read Text Version</button>
+
+    <div class="interview-text" id="interviewText">
+      <div class="interview-body">
+
+        <p class="source-note">Interview by David Phillips / Awards Daily · Reprinted in Bridle &amp; Bit Magazine · July 2022</p>
+
+        <div class="intro-block">
+          Veteran actor Cole Hauser experienced a breakthrough way back in 1997 as one of Matt Damon's closest friends in Good Will Hunting, but it took nearly two decades for him to land the definitive role of 'Rip' on Yellowstone. In this SAG Ensemble Nominee conversation, Cole discusses his physical transformation to embody the character, his friendship with Kevin Costner, and how his life has changed as Yellowstone has become a ratings and cultural phenomenon.
+        </div>
+
+        <div class="section-heading">Finding Rip</div>
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>In 1997 I went to a movie called Good Will Hunting on a first date, and I was like "Who is this Cole Hauser guy who's stealing all these scenes?"</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>Nooo, really? I was passed out for most of it. [Laughs] I remember thinking to myself as I was reading about Yellowstone before it came out, "Oh wow this is a Kevin Costner show, and I'm a big Taylor Sheridan fan based on Hell Or High Water and other projects, Cole Hauser's in this too. Great." I watched the pilot and at the end I said, "Where was Cole Hauser in all of this?" I'm embarrassed to say I did not recognize you. You went through a physical transformation to play this part.</p>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>There's also a sort of physical heft that Rip has that I don't recognize in your other roles. Is it something you incorporated into the role?</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>I wanted to be bigger than everybody, but it also makes sense to be country strong. He's not going to a gym. He's lifting bales of hay and working, so he's not skinny and muscular. He's just a big country strong looking guy. So, I put on twenty pounds and most of it, I won't lie, was weight. It wasn't tonal muscle. I also think the reality of these guys when they get older is, they start to break down. Again, they're not going to the gym, they're not taking growth hormones or anything to be shredded. They eat meat and potatoes, and it's just kind of who they are. I just wanted to be as authentic as possible.</p>
+          </div>
+        </div>
+
+        <div class="section-heading">Growing Up on Horses</div>
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>Luke Grimes before and he said he went to basically horse riding school. How prepared were you for that part of trying to achieve that authenticity?</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>So, I grew up, for about six years, in Oregon on a ranch. When I was a kid, I used to have my own horse. I used to ride bareback into the woods of the Oregon countryside. My mom would ring this bell, and wherever I was, the horse would turn and go right back. I couldn't stop it. He knew that he was going to eat and he knew that mom wanted me back. He'd put his head down and I'd slide right down his mane, that's how small I was at the time. I rode a lot as a kid so I was never worried about horses. I did a movie called The Last Champion, that came out recently.</p>
+            <p>I was doing a scene in New Mexico on this horse I didn't know, and they just threw me on and said hey can you haul ass across the desert and we're gonna film it from afar? So, I went hauling ass on this horse and felt pretty comfortable and next thing I know, I was on my back and I had fractured my back. I don't know if the horse saw a rattlesnake or just got spooked, and jumped in the air and landed weird and I went flying off of it. Three months after that, and I'm thinking oh my god I have a fractured back and I'm gonna have to get on a horse. Cowboy became a little more painful than I wanted it to be.</p>
+          </div>
+        </div>
+
+        <div class="section-heading">Kevin Costner &amp; the Yellowstone Family</div>
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>Luke Grimes said that the interesting thing about working with Kevin is that he's such an icon that he's never going to become "your buddy Kev".</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>I don't know that I would ever call him Kev. [Laughs] I'm not looking for that. I've got a lot of friends, I'm good. I'm looking for somebody who I think brings not only a standard and a quality of work to the day, to the scene. We're about to go on a long journey here in Montana, and what I know I'll get from Kevin is I will get 110%. To me it's not about being buds or friends or any of that. It's about work and about doing great work. And if that happens, which it certainly has with Kevin and I, we have become friends, then great.</p>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>Kelly Reilly gives a performance that I don't know is easy to contextualize. You get the most intimate scenes with her. I'm curious about building chemistry. How did that come about?</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>Actually it's easier because it's Kevin. I think Kevin and I come from the same world. He's from Ventura, I'm from Santa Barbara originally. That's where I was born and I grew up for some time there. Our two high schools were huge rivals so there was a lot of shit talk between the two of us. He's obviously somebody I had been watching from afar as a fan. I've always respected his style, the way he's held himself in his personal life as well. He's just a good role model in many respects.</p>
+            <p>They were meant for each other, 1000%. They are soulmates, for good or bad. They're going to have their differences, their viewpoints. They're not perfect. This is just my opinion, what Taylor's done is made these imperfect people that love each other. I think what the audience sees in them is, you know what, no relationship is perfect. A lot of these shows that you watch on television or even in film, it's like this is horse shit. That's not real. Taylor has written two characters that have a lot of different colors to them and it depends what day it is to what color you're going to get.</p>
+          </div>
+        </div>
+
+        <div class="section-heading">Taylor Sheridan as a Writer</div>
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>You mentioned Taylor, obviously he's an unusual talent. I remember watching Hell or High Water, and I was thinking back on how the country has prospered and there's this kind of anger in the people who have been forgotten. He connected to that in Hell or High Water and Yellowstone actually continues that. How does he do this great job of not telling you what to think, he asks the question.</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>This is the quality of writers and screenwriters, the best thing you can do for an audience is not to spoon feed them. When you see these network shows on television they're acting like the audience is stupid and they're not. The stupider you treat them, the stupider they really are. If you actually treat them as if they're really smart and they're going to follow the story lines, they are invested in the show. That's what Taylor does. He gives you just enough for you to want to come back next week and watch, but also in the end he usually throws you totally off like we did in season three. It just absolutely explodes in your face. He just has this great ability to walk the line when it comes to keeping the audience invested at all times. That's the sign of a great writer.</p>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-label">Q</span>How has your life changed over these four seasons? Or has it?</div>
+          <div class="qa-a"><span class="a-label">A</span>
+            <p>I tell myself all the time I'm always going to be who I am. Obviously this character has struck a chord in not only men but women across this country, across the globe I should say. When I originally got into acting, it was to affect people and to do something that entertained them, enlightened them, educated them in some way. Having that effect on people is the greatest acknowledgement. Has my life changed? Yes. Have I changed? No. I never will. I'll always be the same person. But, it's a little easier to get into ball games. [Laughs]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+function openZoom() {
+  document.getElementById('zoomOverlay').classList.add('open');
+}
+function closeZoom() {
+  document.getElementById('zoomOverlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
+
+function toggleText(btn) {
+  const el = document.getElementById('interviewText');
+  el.classList.toggle('open');
+  btn.textContent = el.classList.contains('open') ? '✕ Hide Text Version' : '📄 Read Text Version';
+}
+</script>
+
+</body>
+</html>
