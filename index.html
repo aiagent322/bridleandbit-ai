@@ -89,7 +89,7 @@
   .tab-bar { background: rgba(0,0,0,0.3); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .tab-bar::-webkit-scrollbar { display: none; }
   .tab-inner { max-width: 1100px; margin: 0 auto; display: flex; width: 100%; padding: 0 16px; }
-  .tab-btn { background: none; border: none; border-bottom: 3px solid transparent; color: rgba(245,240,232,0.5); cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding: 13px 16px; text-transform: uppercase; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .tab-btn { background: none; border: none; border-bottom: 3px solid transparent; color: rgba(245,240,232,0.5); cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding: 13px 16px; text-transform: uppercase; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; display: inline-flex; align-items: center; text-decoration: none; }
   .tab-btn.active, .tab-btn:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
   /* MAIN */
@@ -163,7 +163,7 @@
     <button class="tab-btn active" onclick="showTab('all', this)">All</button>
     <button class="tab-btn" onclick="showTab('facebook', this)">Facebook Groups</button>
     <button class="tab-btn" onclick="showTab('websites', this)">Websites &amp; Apps</button>
-    <a class="tab-btn" href="/interviews/" style="text-decoration:none;">Interviews</a>
+    <a class="tab-btn" href="/interviews/" style="text-decoration:none;display:inline-flex;align-items:center;">Interviews</a>
   </div>
 </div>
 
