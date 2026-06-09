@@ -106,10 +106,11 @@ main { max-width: 900px; margin: 0 auto; padding: 32px 16px 80px; }
     <div class="flipbook-nav">
       <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" disabled>← Prev</button>
       <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-        <span class="page-counter" id="pageCounter">Page 1 of 2</span>
+        <span class="page-counter" id="pageCounter">Page 1 of 3</span>
         <div class="dot-track">
           <div class="dot active" onclick="goToPage(0)"></div>
           <div class="dot" onclick="goToPage(1)"></div>
+          <div class="dot" onclick="goToPage(2)"></div>
         </div>
       </div>
       <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
@@ -120,6 +121,9 @@ main { max-width: 900px; margin: 0 auto; padding: 32px 16px 80px; }
       </div>
       <div class="page-slide" id="page-1">
         <img src="page2.jpg" alt="Taylor Sheridan Interview Spread — Pages 46–47 | Bridle &amp; Bit November 2021" loading="lazy" width="900" onclick="openZoom(this.src)">
+      </div>
+      <div class="page-slide" id="page-2">
+        <img src="page3.jpg" alt="Taylor Sheridan Interview Spread — Pages 48–49 | Bridle &amp; Bit November 2021" loading="lazy" width="900" onclick="openZoom(this.src)">
       </div>
     </div>
     <p class="swipe-hint">Tap image to zoom · Use arrows or swipe to navigate</p>
@@ -220,7 +224,7 @@ main { max-width: 900px; margin: 0 auto; padding: 32px 16px 80px; }
 
 <script>
 let current = 0;
-const total = 2;
+const total = 3;
 function changePage(dir) { goToPage(current + dir); }
 function goToPage(idx) {
   if (idx < 0 || idx >= total) return;
