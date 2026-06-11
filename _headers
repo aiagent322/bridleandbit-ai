@@ -1,24 +1,36 @@
+# Block suspicious paths outright
+/wp-login.php
+  X-Robots-Tag: noindex, nofollow
+
+/xmlrpc.php
+  X-Robots-Tag: noindex, nofollow
+
+# Security headers on all pages
 /*
   X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
 
+# HTML - short cache (was no-store which caused max bot load)
 /*.html
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Cache-Control: public, max-age=3600, s-maxage=86400
 
 /
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Cache-Control: public, max-age=3600, s-maxage=86400
 
 /index.html
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Cache-Control: public, max-age=3600, s-maxage=86400
 
 /contact/
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Cache-Control: public, max-age=3600, s-maxage=86400
 
 /flipbook/
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Cache-Control: public, max-age=3600, s-maxage=86400
 
 /interviews/
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Cache-Control: public, max-age=3600, s-maxage=86400
 
+# Static assets - long cache
 /*.css
   Cache-Control: public, max-age=31536000, immutable
 
