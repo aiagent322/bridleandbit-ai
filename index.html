@@ -29,14 +29,17 @@
 
   /* HEADER */
   header { background: var(--brown); border-bottom: 3px solid var(--gold); }
-  .header-inner { max-width: 1100px; margin: 0 auto; padding: 18px 16px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .brand-since { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
-  .brand-name { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.4rem); font-weight: 900; color: var(--cream); line-height: 1; }
-  .brand-name span { color: var(--gold); }
-  .brand-tagline { font-size: 0.72rem; color: rgba(245,240,232,0.55); margin-top: 4px; }
-  .header-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-  .header-badge { background: var(--gold); color: var(--dark); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
-  .contact-btn { background: var(--rust); color: var(--cream); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-width: 0; }
+  .brand { flex-shrink: 0; }
+  .brand img { height: 44px; width: auto; display: block; }
+  .header-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; min-width: 0; }
+  .header-badge { background: var(--gold); color: var(--dark); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .header-btns { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+  .header-btns a { font-family: 'Source Sans 3', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 10px; border-radius: 3px; text-decoration: none; white-space: nowrap; }
+  @media (min-width: 480px) { .brand img { height: 50px; } .header-btns a { font-size: 0.7rem; padding: 8px 14px; } .header-inner { padding: 14px 16px; } }
+  @media (min-width: 768px) { .brand img { height: 56px; } .header-btns a { font-size: 0.75rem; padding: 9px 18px; } .header-inner { padding: 18px 16px 14px; } }
+  .header-badge { display: none; }
+  @media (min-width: 480px) { .header-badge { display: inline-block; } }
 
   /* MAGAZINE HERO */
   .mag-hero {
@@ -145,14 +148,14 @@
 <header>
   <div class="header-inner">
     <div class="brand">
-      <img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public" alt="Bridle &amp; Bit Magazine" style="height:56px;width:auto;display:block;" loading="eager">
+      <img src="https://imagedelivery.net/9VlM7Y9GaQMXOu5Ypg50yA/bb-hp-0/public" alt="Bridle &amp; Bit Magazine" loading="eager">
     </div>
     <div class="header-actions">
       <div class="header-badge">Est. 1978 · Arizona</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
-        <a href="/interviews/" style="display:inline-block;background:transparent;color:#c8973a;font-family:'Source Sans 3',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 18px;border-radius:3px;text-decoration:none;border:1px solid #c8973a;white-space:nowrap;">📖 Interviews</a>
-        <a href="/flipbook/" style="display:inline-block;background:transparent;color:#f5f0e8;font-family:'Source Sans 3',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 18px;border-radius:3px;text-decoration:none;border:1px solid rgba(255,255,255,0.2);white-space:nowrap;">📰 Current Issue</a>
-        <a href="/contact/" style="display:inline-block;background:#8b3a2a;color:#f5f0e8;font-family:'Source Sans 3',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 18px;border-radius:3px;text-decoration:none;border:1px solid rgba(255,255,255,0.2);white-space:nowrap;">✉ Contact Us</a>
+      <div class="header-btns">
+        <a href="/interviews/" style="background:transparent;color:#c8973a;border:1px solid #c8973a;">📖 Interviews</a>
+        <a href="/flipbook/" style="background:transparent;color:#f5f0e8;border:1px solid rgba(255,255,255,0.2);">📰 Current Issue</a>
+        <a href="/contact/" style="background:#8b3a2a;color:#f5f0e8;border:1px solid rgba(255,255,255,0.2);">✉ Contact</a>
       </div>
     </div>
   </div>
