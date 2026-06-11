@@ -1,0 +1,10 @@
+/wp-login.php /404.html 404
+/wp-admin/* /404.html 404
+/xmlrpc.php /404.html 404
+/.env /404.html 404
+/.git/* /404.html 404
+/config.php /404.html 404
+/administrator/* /404.html 404
+/phpmyadmin/* /404.html 404
+/wp-content/* /404.html 404
+/wp-includes/* /404.html 404
