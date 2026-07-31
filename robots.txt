@@ -25,4 +25,7 @@ Disallow: /
 User-agent: BLEXBot
 Disallow: /
 
+User-agent: Applebot
+Disallow: /
+
 Sitemap: https://bridleandbit.com/sitemap.xml
