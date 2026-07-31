@@ -8,3 +8,12 @@
 /phpmyadmin/* /404.html 404
 /wp-content/* /404.html 404
 /wp-includes/* /404.html 404
+
+# Redirects for pages removed 2026-06-06 (infected files, no replacement content)
+# still receiving real traffic from old search/social links -- send to homepage
+/horse-insurance/* / 301
+/horse-property/* / 301
+/westworld-scottsdale/* / 301
+/horseshoe-park/* / 301
+/media-guide/* / 301
+/horse-trailers/* / 301
