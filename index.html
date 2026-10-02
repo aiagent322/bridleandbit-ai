@@ -101,6 +101,10 @@
 
   /* MAIN */
   main { max-width: 1100px; margin: 0 auto; padding: 20px 16px 40px; }
+  /* Banner ads: Revive serves fixed-size images (e.g. 610x154); scale them down on narrow screens instead of overflowing */
+  .ad-slot { max-width: 100%; overflow: hidden; }
+  .ad-slot ins, .ad-slot ins a { display: block; max-width: 100%; }
+  .ad-slot ins a > img { max-width: 100% !important; height: auto !important; }
   @media (min-width: 768px) { main { padding: 28px 16px 80px; } }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
@@ -209,7 +213,7 @@
     </div>
 
     <!-- Revive Adserver Hosted edition Asynchronous JS Tag - Generated with Revive Adserver v6.0.6 -->
-    <div style="text-align:center;margin-bottom:32px;">
+    <div class="ad-slot" style="text-align:center;margin-bottom:32px;">
     <ins data-revive-zoneid="30286" data-revive-id="727bec5e09208690b050ccfc6a45d384"></ins>
     <script async src="//servedby.revive-adserver.net/asyncjs.php"></script>
     </div>
