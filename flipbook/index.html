@@ -102,7 +102,7 @@ header p{font-size:.92rem;font-weight:700;color:#ffffff;margin-top:3px;}
         <div class="book-cover" id="left-cover"><canvas id="left-canvas"></canvas></div>
         <div id="spine-line"></div>
         <div class="book-cover" id="right-cover">
-          <img id="cover-img" src="cover.jpg" alt="Bridle & Bit October 2026 Cover">
+          <img id="cover-img" src="cover.jpg?v=2026-10" alt="Bridle & Bit October 2026 Cover">
           <canvas id="right-canvas" style="display:none;position:absolute;top:0;left:0;"></canvas>
         </div>
         <div id="flip-page">
@@ -127,7 +127,7 @@ header p{font-size:.92rem;font-weight:700;color:#ffffff;margin-top:3px;}
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-const PDF_URL='magazine.pdf';
+const PDF_URL='magazine.pdf?v=2026-10';
 let pdfDoc=null,totalPages=0,spread=0,PAGE_W=0,PAGE_H=0,SCALE=1,isFlipping=false,ready=false;
 const pageCache={};
 
