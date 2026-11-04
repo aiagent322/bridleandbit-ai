@@ -193,6 +193,10 @@
   footer p { font-size: 0.72rem; color: rgba(245,240,232,0.35); line-height: 1.8; }
   footer a { color: var(--gold); text-decoration: none; }
   footer a:hover { color: var(--gold-light); }
+  /* Banner ads: Revive serves fixed-size images; scale them down on narrow screens instead of overflowing */
+  .ad-slot { max-width: 100%; overflow: hidden; }
+  .ad-slot ins, .ad-slot ins a { display: block; max-width: 100%; }
+  .ad-slot ins a > img { max-width: 100% !important; height: auto !important; }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQCJJZL1EJ"></script>
@@ -238,6 +242,12 @@
 </div>
 
 <main>
+
+    <!-- Revive Adserver Hosted edition Asynchronous JS Tag - Generated with Revive Adserver v6.0.6 -->
+    <div class="ad-slot" style="text-align:center;margin-bottom:32px;">
+    <ins data-revive-zoneid="31463" data-revive-id="727bec5e09208690b050ccfc6a45d384"></ins>
+    <script async src="//servedby.revive-adserver.net/asyncjs.php"></script>
+    </div>
 
   <div class="section-label">
     <h2>Featured Interviews</h2>
