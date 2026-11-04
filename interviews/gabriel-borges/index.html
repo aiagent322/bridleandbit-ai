@@ -56,6 +56,10 @@ main { max-width: 800px; margin: 0 auto; padding: 40px 16px 80px; }
 .photo-block { margin: 2rem 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
 .photo-block img { width: 100%; display: block; }
 .photo-caption { background: rgba(255,255,255,0.04); padding: 10px 14px; font-size: 0.72rem; color: rgba(245,240,232,0.45); font-style: italic; text-align: center; }
+  /* Banner ads: Revive serves fixed-size images; scale them down on narrow screens instead of overflowing */
+  .ad-slot { max-width: 100%; overflow: hidden; }
+  .ad-slot ins, .ad-slot ins a { display: block; max-width: 100%; }
+  .ad-slot ins a > img { max-width: 100% !important; height: auto !important; margin: 0 auto; }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQCJJZL1EJ"></script>
@@ -227,6 +231,13 @@ main { max-width: 800px; margin: 0 auto; padding: 40px 16px 80px; }
 
   </div>
 </main>
+
+<!-- Revive Adserver Hosted edition Asynchronous JS Tag - Generated with Revive Adserver v6.0.6 -->
+<div class="ad-slot" style="text-align:center;max-width:1100px;margin:24px auto;padding:0 16px;">
+<ins data-revive-zoneid="31466" data-revive-id="727bec5e09208690b050ccfc6a45d384"></ins>
+<script async src="//servedby.revive-adserver.net/asyncjs.php"></script>
+</div>
+
 
 </body>
 </html>
