@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Bridle & Bit Magazine</title>
-<meta name="description" content="Contact Bridle & Bit Magazine — advertising, sponsorships, editorial, and support.">
+<meta name="description" content="Contact Bridle & Bit Magazine for advertising, sponsorships, editorial and support, or submit your event flyer for the calendar and print edition.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -113,6 +113,13 @@
   }
   .submit-btn:hover { background: #a0442f; }
 
+  /* ATTACHMENT + FLYER OPTIONS */
+  .check-label { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: none; color: rgba(245,240,232,0.8); cursor: pointer; margin-bottom: 0; }
+  .check-label input { width: auto; margin-top: 3px; flex: 0 0 auto; }
+  .attach-note { font-size: 0.78rem; color: rgba(245,240,232,0.5); line-height: 1.6; margin: 6px 0 0 26px; }
+  .reason-btn-flyer { border-color: rgba(200,151,58,0.55); color: var(--gold-light); }
+  .context-panel a { text-decoration: underline; }
+
   /* SUCCESS */
   .success-msg { display: none; text-align: center; padding: 48px 24px; }
   .success-msg.visible { display: block; }
@@ -179,6 +186,9 @@
     <button class="reason-btn" onclick="selectReason('general', this)">
       <span class="reason-icon">💬</span>General
     </button>
+    <button class="reason-btn reason-btn-flyer" onclick="selectReason('flyer', this)">
+      <span class="reason-icon">🗓️</span>Submit Your Flyer to the Calendar
+    </button>
   </div>
 
   <!-- CONTEXT PANELS -->
@@ -193,6 +203,10 @@
   </div>
   <div class="context-panel" id="ctx-support">
     <p><strong>Support</strong> — Questions about our websites, AI platforms, Facebook groups, or digital properties? Let us know what you're experiencing and we'll get back to you promptly.</p>
+  </div>
+  <div class="context-panel" id="ctx-flyer">
+    <p><strong>Submit Your Flyer to the Calendar</strong> — Send us your event flyer or image to be considered for <a href="https://horsecalendar.ai" target="_blank" rel="noopener" style="color:var(--gold)">HorseCalendar.ai</a>. Fill in the form below, then <strong>attach your flyer or image (JPG, PNG or PDF) to the email that opens</strong> and send it. Please include the event name, dates, location, entry fees and a contact.</p>
+    <p style="margin-top:10px"><strong>Policies</strong> — Submissions are reviewed by our staff and listing is not guaranteed. Tick the print option below if you would like your event considered for the Bridle &amp; Bit Magazine print calendar; print placement is at the editors' discretion.</p>
   </div>
   <div class="context-panel" id="ctx-general">
     <p><strong>General Inquiries</strong> — Subscriptions, letters to the editor, community questions, or anything else. We've been serving Arizona's equestrian community since 1978 and love hearing from our readers.</p>
@@ -230,6 +244,7 @@
         <option value="Editorial / Press Release">Editorial / Press Release</option>
         <option value="Support">Support</option>
         <option value="General Inquiry">General Inquiry</option>
+        <option value="Calendar Flyer Submission">Submit Your Flyer to the Calendar</option>
       </select>
     </div>
 
@@ -243,12 +258,20 @@
       <textarea id="message" placeholder="Tell us about yourself and how we can help..."></textarea>
     </div>
 
+    <div class="form-row attach-row">
+      <label class="check-label"><input type="checkbox" id="has-attachment"> I'm attaching a flyer or image to the email</label>
+      <p class="attach-note">Your email app will open when you click Send. Attach your flyer or image there (JPG, PNG or PDF) before you send it.</p>
+    </div>
+    <div class="form-row" id="print-row" style="display:none">
+      <label class="check-label"><input type="checkbox" id="print-opt"> Also consider this event for the Bridle &amp; Bit Magazine print calendar</label>
+    </div>
+
     <button class="submit-btn" onclick="submitForm()">Send Message →</button>
 
     <div class="success-msg" id="success">
       <div class="success-icon">✅</div>
-      <h3>Message Sent</h3>
-      <p>Thank you for reaching out. We'll be in touch at <strong id="confirm-email"></strong> shortly.</p>
+      <h3>Almost Done</h3>
+      <p>Your email app should have opened with your message. <span id="attach-reminder" style="display:none"><strong>Attach your flyer or image to that email,</strong> then </span><span id="send-reminder">press Send there to deliver it.</span> We'll reply to <strong id="confirm-email"></strong>.</p>
     </div>
   </div>
 
@@ -271,8 +294,11 @@
     btn.classList.add('active');
     document.getElementById('ctx-' + type).classList.add('visible');
     // Sync the select dropdown
-    const map = { advertising: 'Advertising', sponsorship: 'Sponsorship', editorial: 'Editorial / Press Release', support: 'Support', general: 'General Inquiry' };
+    const map = { advertising: 'Advertising', sponsorship: 'Sponsorship', editorial: 'Editorial / Press Release', support: 'Support', general: 'General Inquiry', flyer: 'Calendar Flyer Submission' };
     document.getElementById('reason').value = map[type] || '';
+    const isFlyer = type === 'flyer';
+    document.getElementById('print-row').style.display = isFlyer ? 'block' : 'none';
+    if (isFlyer) document.getElementById('has-attachment').checked = true;
   }
 
   function submitForm() {
@@ -283,6 +309,8 @@
     const reason = document.getElementById('reason').value;
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
+    const hasAttach = document.getElementById('has-attachment').checked;
+    const wantsPrint = reason === 'Calendar Flyer Submission' && document.getElementById('print-opt').checked;
 
     if (!fname || !email || !message) {
       alert('Please fill in your name, email, and message.');
@@ -290,13 +318,18 @@
     }
 
     const body = encodeURIComponent(
-      `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nReason: ${reason}\n\n${message}`
+      `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nReason: ${reason}\n` +
+      (reason === 'Calendar Flyer Submission' ? `Print calendar: ${wantsPrint ? 'Yes, please consider for print' : 'No'}\n` : '') +
+      (hasAttach ? `Flyer/image: attached to this email\n` : '') +
+      `\n${message}`
     );
     const subj = encodeURIComponent((reason ? reason + ': ' : '') + (subject || 'Website Contact'));
 
     window.location.href = `mailto:bridleandbit@aol.com?subject=${subj}&body=${body}`;
 
     document.getElementById('confirm-email').textContent = email;
+    document.getElementById('attach-reminder').style.display = hasAttach ? 'inline' : 'none';
+    document.getElementById('send-reminder').textContent = hasAttach ? 'press Send to deliver it.' : 'press Send there to deliver it.';
     document.querySelector('.form-card > button').style.display = 'none';
     document.getElementById('success').classList.add('visible');
   }
