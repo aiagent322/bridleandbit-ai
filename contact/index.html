@@ -116,7 +116,12 @@
   /* ATTACHMENT + FLYER OPTIONS */
   .check-label { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: none; color: rgba(245,240,232,0.8); cursor: pointer; margin-bottom: 0; }
   .check-label input { width: auto; margin-top: 3px; flex: 0 0 auto; }
-  .attach-note { font-size: 0.78rem; color: rgba(245,240,232,0.5); line-height: 1.6; margin: 6px 0 0 26px; }
+  .attach-note { font-size: 0.78rem; color: rgba(245,240,232,0.5); line-height: 1.6; margin: 8px 0 0; }
+  .attach-row input[type=file] { padding: 9px 12px; cursor: pointer; }
+  .attach-row input[type=file]::file-selector-button { background: var(--gold); border: none; border-radius: 2px; color: var(--dark); cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; margin-right: 12px; padding: 8px 14px; text-transform: uppercase; }
+  .file-preview { display: none; align-items: center; gap: 12px; margin-top: 10px; font-size: 0.82rem; color: var(--gold-light); word-break: break-all; }
+  .file-preview.visible { display: flex; }
+  .file-preview img { max-height: 90px; max-width: 120px; border: 1px solid var(--border); border-radius: 3px; }
   .reason-btn-flyer { border-color: rgba(200,151,58,0.55); color: var(--gold-light); }
   .context-panel a { text-decoration: underline; }
   .policy-list { margin: 8px 0 0 20px; font-size: 0.85rem; color: rgba(245,240,232,0.7); line-height: 1.7; }
@@ -207,7 +212,7 @@
     <p><strong>Support</strong> — Questions about our websites, AI platforms, Facebook groups, or digital properties? Let us know what you're experiencing and we'll get back to you promptly.</p>
   </div>
   <div class="context-panel" id="ctx-flyer">
-    <p><strong>Submit Your Flyer to the Calendar</strong> — Send us your event flyer or image to be considered for <a href="https://horsecalendar.ai" target="_blank" rel="noopener" style="color:var(--gold)">HorseCalendar.ai</a>. Fill in the form below, then <strong>attach your flyer or image (JPG, PNG or PDF) to the email that opens</strong> and send it. Please include the event name, dates, location, entry fees and a contact.</p>
+    <p><strong>Submit Your Flyer to the Calendar</strong> — Send us your event flyer or image to be considered for <a href="https://horsecalendar.ai" target="_blank" rel="noopener" style="color:var(--gold)">HorseCalendar.ai</a>. Fill in the form below and use <strong>Add Your Flyer or Image</strong> to choose your file (JPG, PNG or PDF). Please include the event name, dates, location, entry fees and a contact.</p>
     <p style="margin-top:12px"><strong>Calendar &amp; Print Policies</strong></p>
     <ul class="policy-list">
       <li><strong>What we list:</strong> equestrian and western events such as horse shows, rodeos, ropings, barrel racing, bull riding, cutting, driving, gymkhana, ranch sorting, horse sales and auctions, trail rides, fairs and clinics. Events with no horse content are not listed automatically; we will check with you first.</li>
@@ -268,9 +273,11 @@
       <textarea id="message" placeholder="Tell us about yourself and how we can help..."></textarea>
     </div>
 
-    <div class="form-row attach-row">
-      <label class="check-label"><input type="checkbox" id="has-attachment"> I'm attaching a flyer or image to the email</label>
-      <p class="attach-note">Your email app will open when you click Send. Attach your flyer or image there (JPG, PNG or PDF) before you send it.</p>
+    <div class="form-row attach-row" id="attach-row">
+      <label for="flyer-file">Add Your Flyer or Image (optional)</label>
+      <input type="file" id="flyer-file" accept="image/*,application/pdf">
+      <div class="file-preview" id="file-preview"></div>
+      <p class="attach-note"><strong>On a phone or tablet</strong>, Send opens your share menu so you can choose your email app with the file already attached. <strong>On a computer</strong>, your email app opens with your message; attach the file you chose here (JPG, PNG or PDF) before you press Send.</p>
     </div>
     <div class="form-row" id="print-row" style="display:none">
       <label class="check-label"><input type="checkbox" id="print-opt"> Also consider this event for the Bridle &amp; Bit Magazine print calendar</label>
@@ -308,7 +315,41 @@
     document.getElementById('reason').value = map[type] || '';
     const isFlyer = type === 'flyer';
     document.getElementById('print-row').style.display = isFlyer ? 'block' : 'none';
-    if (isFlyer) document.getElementById('has-attachment').checked = true;
+    if (isFlyer) document.getElementById('attach-row').scrollIntoView({ block: 'nearest' });
+  }
+
+  document.getElementById('flyer-file').addEventListener('change', function () {
+    const box = document.getElementById('file-preview');
+    box.innerHTML = '';
+    const f = this.files && this.files[0];
+    if (!f) { box.classList.remove('visible'); return; }
+    if (f.size > 20 * 1024 * 1024) {
+      alert('That file is over 20 MB. Please choose a smaller image or PDF.');
+      this.value = '';
+      box.classList.remove('visible');
+      return;
+    }
+    if (f.type.indexOf('image/') === 0) {
+      const img = document.createElement('img');
+      img.alt = 'Preview of ' + f.name;
+      img.src = URL.createObjectURL(f);
+      box.appendChild(img);
+    }
+    const name = document.createElement('span');
+    name.textContent = f.name;
+    box.appendChild(name);
+    box.classList.add('visible');
+  });
+
+  function showDone(email, shared, hasFile) {
+    document.getElementById('confirm-email').textContent = email;
+    const reminder = document.getElementById('attach-reminder');
+    reminder.style.display = (hasFile && !shared) ? 'inline' : 'none';
+    document.getElementById('send-reminder').textContent = shared
+      ? 'finish sending it in the email app you chose.'
+      : (hasFile ? 'press Send to deliver it.' : 'press Send there to deliver it.');
+    document.querySelector('.form-card > button').style.display = 'none';
+    document.getElementById('success').classList.add('visible');
   }
 
   function submitForm() {
@@ -319,7 +360,7 @@
     const reason = document.getElementById('reason').value;
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
-    const hasAttach = document.getElementById('has-attachment').checked;
+    const file = document.getElementById('flyer-file').files[0] || null;
     const wantsPrint = reason === 'Calendar Flyer Submission' && document.getElementById('print-opt').checked;
 
     if (!fname || !email || !message) {
@@ -327,21 +368,31 @@
       return;
     }
 
-    const body = encodeURIComponent(
+    const bodyText =
       `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nReason: ${reason}\n` +
       (reason === 'Calendar Flyer Submission' ? `Print calendar: ${wantsPrint ? 'Yes, please consider for print' : 'No'}\n` : '') +
-      (hasAttach ? `Flyer/image: attached to this email\n` : '') +
-      `\n${message}`
-    );
-    const subj = encodeURIComponent((reason ? reason + ': ' : '') + (subject || 'Website Contact'));
+      (file ? `Flyer/image: ${file.name} (attached)\n` : '') +
+      `\n${message}`;
+    const subjText = (reason ? reason + ': ' : '') + (subject || 'Website Contact');
 
-    window.location.href = `mailto:bridleandbit@aol.com?subject=${subj}&body=${body}`;
+    function viaMailto() {
+      window.location.href = 'mailto:bridleandbit@aol.com?subject=' + encodeURIComponent(subjText) + '&body=' + encodeURIComponent(bodyText);
+      showDone(email, false, !!file);
+    }
 
-    document.getElementById('confirm-email').textContent = email;
-    document.getElementById('attach-reminder').style.display = hasAttach ? 'inline' : 'none';
-    document.getElementById('send-reminder').textContent = hasAttach ? 'press Send to deliver it.' : 'press Send there to deliver it.';
-    document.querySelector('.form-card > button').style.display = 'none';
-    document.getElementById('success').classList.add('visible');
+    // Phones/tablets: the share menu can carry the file into the email app.
+    if (file && navigator.canShare && navigator.share) {
+      let data = null;
+      try { data = { files: [file], title: subjText, text: 'To: bridleandbit@aol.com\n\n' + bodyText }; } catch (e) {}
+      if (data && navigator.canShare(data)) {
+        navigator.share(data).then(function () { showDone(email, true, true); }).catch(function (err) {
+          if (err && err.name === 'AbortError') return; // visitor closed the share menu
+          viaMailto();
+        });
+        return;
+      }
+    }
+    viaMailto();
   }
 </script>
 
